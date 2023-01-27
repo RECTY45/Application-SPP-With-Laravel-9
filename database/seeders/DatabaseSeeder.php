@@ -26,16 +26,16 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        $pegawai = [
+        $petugas = [
             [
                 'username' => 'admin',
-                'password' => 'adminadmin',
+                'password' => bcrypt('adminadmin'),
                 'nama_petugas' => 'Bintang',
                 'level' => 'admin'
             ],
             [
                 'username' => 'petugas',
-                'password' => 'petugaspetugas',
+                'password' => bcrypt('petugaspetugas'),
                 'nama_petugas' => 'Zhaka',
                 'level' => 'petugas'
             ],
@@ -106,7 +106,7 @@ class DatabaseSeeder extends Seeder
                     'kompetensi_keahlian' => "Teknik Komputer Dan Jaringan"
                 ]
            ];
-foreach ($pegawai as $user) {
+foreach ($petugas as $user) {
     User::create($user);
 }
 foreach ($siswas as $siswa) {

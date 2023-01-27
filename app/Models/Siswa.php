@@ -15,7 +15,7 @@ class Siswa extends Model
     }
 
     public function spp(){
-        return $this->belongsTo(Spp::class,);
+        return $this->belongsTo(Spp::class,'id_spp','id');
     }
 
     public function pembayaran(){

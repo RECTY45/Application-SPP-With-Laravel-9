@@ -13,4 +13,7 @@ class Pembayaran extends Model
         public function siswa(){
             return $this->hasMany(Siswa::class,'nisn','nisn');
         }
+        public function petugas(){
+            return $this->belongsTo(User::class,'id_petugas', 'id');
+        }
 }
