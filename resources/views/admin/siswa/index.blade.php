@@ -8,14 +8,14 @@
                     <div class="row mb-2">
                         <div class="col-md-12 ">
                             <span>
-                                <p class="font-weight-bold" style="line-height: 10px">Data Petugas</p>
-                                <p class="h2">Kelola Data Petugas</p>
+                                <p class="h2">Kelola Data Siswa</p>
+                                <p class="font-weight-bold" style="line-height: 10px">Dashboard/{{ $name }}</p>
                             </span>
                         </div>
                     </div>
                 </section>
                 <div class="d-flex justify-content-end">
-                    <a href="#" class="btn btn-primary">Tambah Data</a>
+                    <a href="{{ route('siswa.create') }}" class="btn btn-primary">Tambah Data</a>
                 </div>
             </div>
             <div class="card-body white-block">
@@ -31,7 +31,7 @@
                 @endif
                 <div class="table-responsive">
                 <table class="table users-table-info" id="table">
-                    <thead class="text-center">
+                    <thead>
                         <tr class="stat-cards-info__num">
                             <th>No</th>
                             <th>Nisn</th>
@@ -43,7 +43,7 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody class="users-table-info text-center">
+                    <tbody class="users-table-info">
                         @forelse($siswas as $siswa)
                         <tr>
                             <td>{{ $loop->iteration }}</td>

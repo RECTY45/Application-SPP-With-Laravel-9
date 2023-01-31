@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Validation\Rule;
 use App\Models\Siswa;
+use App\Models\Kelas;
+use App\Models\Spp;
 use Illuminate\Http\Request;
 
 class SiswaController extends Controller
@@ -16,7 +18,7 @@ class SiswaController extends Controller
     {
         $siswas = Siswa::all();
         return view('admin.siswa.index',[
-            'title' => "Siswa",
+            'title' => 'Siswa',
             'name' => 'Data Siswa',
             'siswas' => $siswas
         ]);
@@ -29,7 +31,14 @@ class SiswaController extends Controller
      */
     public function create()
     {
-        //
+        $items = Kelas::all();
+        $spp = Spp::all();
+        return view('admin.siswa.create',[
+            'title' => 'Create Siswa',
+            'name' => 'Create Data Siswa',
+            'items' => $items,
+            'dataSpp'=> $spp,
+        ]);
     }
 
     /**
@@ -40,7 +49,28 @@ class SiswaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $idkelas = Kelas::pluck('id')->toArray();
+        $idSpp = Kelas::pluck('id')->toArray();
+
+        $validateData = $request->validate([
+            'nisn' => ['required', 'unique:siswas,nisn','max:10' ],
+            'nis' => ['required', 'unique:siswas,nis', 'max:8'],
+            'nama' => ['required'],
+            'id_kelas' => ['required', Rule::in($idkelas)],
+            'id_spp' => ['required', Rule::in($idSpp)],
+            'alamat' => ['required'],
+            'no_telp' => ['required'],
+        ]);
+
+        if($validateData){
+            $check = Siswa::create($validateData);
+        }
+
+        if($check){
+            return redirect(route('siswa.index'))->with('success','Data Berhasil Di Tambah');
+        }
+        return back()->with('error','Data Gagal Di Hapus');
+
     }
 
     /**

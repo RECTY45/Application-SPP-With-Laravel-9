@@ -37,21 +37,31 @@ Route::get('dashboard',[DashboardController::class,'dashboard'])->name('dashboar
 Route::group(['prefix' => 'dashboard', 'middleware' => 'admin'],function() {
     // RECORD SISWA
     Route::get('data-siswa',[SiswaController::class,'index'])->name('siswa.index');
+    // CREATE
+    Route::get('data-siswa/create',[SiswaController::class,'create'])->name('siswa.create');
+    // STORE
+    Route::post('data-siswa/create',[SiswaController::class,'store'])->name('siswa.store');
+    // EDIT
+    Route::get('data-siswa/{siswa:id}/edit',[SiswaController::class,'edit'])->name('siswa.edit');
+    // UPDATE
+    Route::put('data-siswa/{siswa:id}',[SiswaController::class,'update'])->name('siswa.update');
     // DELETE
     Route::delete('data-siswa/{siswa:id}',[SiswaController::class,'destroy'])->name('siswa.destroy');
 
+
+
     // RECORD PETUGAS
     Route::get('data-petugas',[PetugasController::class,'index'])->name('petugas.index');
-    // DELETE
-    Route::delete('data-petugas/{petugas:id}', [PetugasController::class,'destroy'])->name('petugas.destroy');
     //CREATE
-    Route::get('dashbord/data-petugas/create',[PetugasController::class, 'create'])->name('petugas.create');
+    Route::get('data-petugas/create',[PetugasController::class, 'create'])->name('petugas.create');
     //STORE
     Route::post('data-petugas/create', [PetugasController::class, 'store'])->name('petugas.store');
     //EDIT
     Route::get('data-petugas/{petugas:id}/edit',[PetugasController::class,'edit'])->name('petugas.edit');
     //UPDATE
     Route::put('data-petugas/{petugas:id}',[PetugasController::class,'update'])->name('petugas.update');
+    // DELETE
+    Route::delete('data-petugas/{petugas:id}', [PetugasController::class,'destroy'])->name('petugas.destroy');
 
     // PAGE KELAS
     Route::get('data-kelas',[KelasController::class,'index'])->name('kelas.index');
