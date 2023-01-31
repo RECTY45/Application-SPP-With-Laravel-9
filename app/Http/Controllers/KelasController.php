@@ -14,7 +14,11 @@ class KelasController extends Controller
      */
     public function index()
     {
-        //
+        $kelas = Kelas::all();
+        return view('admin.kelas.index',[
+            'title' => "Kelas",
+            'kelas' => $kelas,
+        ]);
     }
 
     /**

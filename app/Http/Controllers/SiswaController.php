@@ -14,7 +14,11 @@ class SiswaController extends Controller
      */
     public function index()
     {
-        //
+        $siswas = Siswa::all();
+        return view('admin.siswa.index',[
+            'title' => "Siswa",
+            'siswas' => $siswas
+        ]);
     }
 
     /**

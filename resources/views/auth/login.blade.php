@@ -6,11 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
     <title>E-Spp</title>
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    @include('partials.css')
     <link href="https://fonts.googleapis.com/css?family=Quicksand:400,500,600,700&amp;display=swap" rel="stylesheet">
-    <link href="{{ asset('assets/css/bootstraps.css') }}" rel="stylesheet"
-        type="text/css">
-         <link href="{{ asset('assets/css/form-2.css') }}" rel="stylesheet"
-        type="text/css">
+    <link href="{{ asset('assets/css/form-2.css') }}" rel="stylesheet" type="text/css">
 </head>
 
 <body class="form"
@@ -23,9 +21,8 @@
                 <div class="form-container">
                     <div class="form-content" style="background-color: #00000040; border: none;">
 
-                        <img class="rounded-circle"
-                            src="{{ asset('assets/img/avatar/icon.jpg') }}"
-                            alt="logo" style="height: 100px;">
+                        <img class="rounded-circle" src="{{ asset('assets/img/avatar/icon.jpg') }}" alt="logo"
+                            style="height: 100px;">
                         <h4 class="" style="color: white;">Selamat Datang Di Aplikasi Kami</h4>
                         <p class="" style="color: white;">Silahkan Anda Login Untuk Masuk</p>
 
@@ -55,8 +52,7 @@
                                     </svg>
                                     <input id="username" name="username" type="text"
                                         class="form-control @error('username')is-invalid @enderror"
-                                        placeholder="Username"
-                                        style="height: 50px;">
+                                        placeholder="Username" style="height: 50px;">
                                     @error('username')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -77,8 +73,7 @@
                                     </svg>
                                     <input id="password" name="password" type="password"
                                         class="form-control @error('password')is-invalid @enderror"
-                                        placeholder="Password"
-                                        style="height: 50px;">
+                                        placeholder="Password" style="height: 50px;">
                                     @error('password')
                                         <div class="invalid-feedback">
                                             {{ $message }}

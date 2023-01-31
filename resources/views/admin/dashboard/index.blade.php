@@ -75,3 +75,12 @@
     </div>
 </div>
 @endsection
+@push('script')
+      <!-- Chart library -->
+  <script src="{{ asset('assets/plugins/chart.min.js') }}"></script>
+  <!-- Icons library -->
+  <script src="{{ asset('assets/plugins/feather.min.js') }}"></script>
+  <!-- Custom scripts -->
+  <script src="{{ asset('assets/js/script.js') }}"></script>
+
+@endpush

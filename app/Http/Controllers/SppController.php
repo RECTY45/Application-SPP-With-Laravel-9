@@ -14,7 +14,11 @@ class SppController extends Controller
      */
     public function index()
     {
-        //
+        $spps = Spp::all();
+        return view('admin.spp.index',[
+            'title' => "SPP",
+            'spps' => $spps,
+        ]);
     }
 
     /**

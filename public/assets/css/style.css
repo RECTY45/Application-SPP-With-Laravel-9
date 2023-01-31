@@ -3307,6 +3307,10 @@ label {
   background-color: #222235;
 }
 
+.darkmode .tableData {
+    background-color: #222235;
+}
+
 .darkmode .gray-circle-btn {
   background-color: #222235;
 }

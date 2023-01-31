@@ -1,8 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\Petugas;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PetugasController extends Controller
@@ -14,7 +13,12 @@ class PetugasController extends Controller
      */
     public function index()
     {
-        //
+        $petugas = User::all();
+        return view('admin.petugas.index',[
+            'title' => 'Petugas',
+            'name'  => 'Data Petugas',
+            'items' => $petugas,
+        ]);
     }
 
     /**
@@ -24,7 +28,10 @@ class PetugasController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.petugas.create',[
+            'title' => 'Tambah Petugas',
+            'name' => 'Tambah Data Petugas',
+        ]);
     }
 
     /**
@@ -35,7 +42,23 @@ class PetugasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData = $request->validate([
+            'username' => ['required'],
+            'password' => ['required'],
+            'nama_petugas' => ['required'],
+            'level' => ['required']
+        ]);
+
+        $validateData['password'] = bcrypt($validateData['password']);
+
+        if($validateData){
+            $check = User::create($validateData);
+        }
+
+        if($check){
+            return redirect(@route('petugas.index'))->with('success', 'Data berhasil di tambah');
+        }
+        return back()->with('error', 'Data gagal di tambah');
     }
 
     /**
@@ -44,7 +67,7 @@ class PetugasController extends Controller
      * @param  \App\Models\Petugas  $petugas
      * @return \Illuminate\Http\Response
      */
-    public function show(Petugas $petugas)
+    public function show(User $petugas)
     {
         //
     }
@@ -55,9 +78,13 @@ class PetugasController extends Controller
      * @param  \App\Models\Petugas  $petugas
      * @return \Illuminate\Http\Response
      */
-    public function edit(Petugas $petugas)
+    public function edit(User $petugas)
     {
-        //
+        return view('admin.petugas.update',[
+            'title' => 'Edit Petugas',
+            'name'  => 'Edit Data Petugas',
+            'item'=> $petugas,
+        ]);
     }
 
     /**
@@ -67,19 +94,35 @@ class PetugasController extends Controller
      * @param  \App\Models\Petugas  $petugas
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Petugas $petugas)
+    public function update(Request $request,User $petugas)
     {
-        //
-    }
+        $validateData = $request->validate([
+            'username' => ['required'],
+            'nama_petugas' => ['required'],
+            'level' => ['required'],
+        ]);
 
+        if($validateData){
+            $check = $petugas->update($validateData);
+        }
+
+        if($check){
+            return redirect(@route('petugas.index'))->with('success', 'Data berhasil di ubah');
+        }
+        return back()->with('error', 'Data gagal di ubah');
+    }
     /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Petugas  $petugas
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Petugas $petugas)
+    public function destroy(User $petugas)
     {
-        //
+        $check = $petugas->delete();
+        if($check){
+            return back()->with('success', 'Data berhasil di hapus!');
+        }
+        return back()->with('error','Data gagal di hapus!');
     }
 }
