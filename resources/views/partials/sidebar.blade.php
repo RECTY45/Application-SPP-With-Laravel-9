@@ -32,7 +32,7 @@
                             <span class="sr-only">Open List</span>
                         </span>
                         <li>
-                            <a class="{{ request()->routeIs('siswa.index') ? 'active' : '' }}"
+                            <a class="{{ request()->routeIs('siswa.index','siswa.create') ? 'active' : '' }}"
                                 href="{{ route('siswa.index') }}"><span class="icon radio "
                                     aria-hidden="true"></span>Kelola Data Siswa</a>
                         </li>

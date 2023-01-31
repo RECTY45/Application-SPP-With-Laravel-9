@@ -55,7 +55,7 @@
                             <td>{{ $siswa->alamat }}</td>
                             <td>
                                 <div class="form-control-icon d-flex">
-                                    <a href="#" method="POST"
+                                    <a href="{{ @route('siswa.edit', $siswa->id) }}" method="POST"
                                         class="bg-success border-0 mb-3 px-2 py-1 rounded mx-1"><i
                                             class="icon edit"></i></a>
                                     <form action="{{ @route('siswa.destroy',$siswa->id) }}" method="POST">

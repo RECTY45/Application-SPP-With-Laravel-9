@@ -31,12 +31,12 @@ class SiswaController extends Controller
      */
     public function create()
     {
-        $items = Kelas::all();
+        $kelas = Kelas::all();
         $spp = Spp::all();
         return view('admin.siswa.create',[
             'title' => 'Create Siswa',
             'name' => 'Create Data Siswa',
-            'items' => $items,
+            'dataKelas' => $kelas,
             'dataSpp'=> $spp,
         ]);
     }
@@ -69,7 +69,7 @@ class SiswaController extends Controller
         if($check){
             return redirect(route('siswa.index'))->with('success','Data Berhasil Di Tambah');
         }
-        return back()->with('error','Data Gagal Di Hapus');
+        return back()->with('error','Data Gagal Di Edit');
 
     }
 
@@ -92,7 +92,13 @@ class SiswaController extends Controller
      */
     public function edit(Siswa $siswa)
     {
-        //
+        return view('admin.siswa.update',[
+            'title' => 'Edit Siswa',
+            'name' => 'Edit Data Siswa',
+            'item' => $siswa,
+            'dataSpp' => Spp::all(),
+            'dataKelas' => Kelas::all()
+        ]);
     }
 
     /**
@@ -104,7 +110,27 @@ class SiswaController extends Controller
      */
     public function update(Request $request, Siswa $siswa)
     {
-        //
+        $idkelas = Kelas::pluck('id')->toArray();
+        $idSpp = Kelas::pluck('id')->toArray();
+
+        $validateData = $request->validate([
+            'nisn' => ['required', 'unique:siswas,nisn','max:10' ],
+            'nis' => ['required', 'unique:siswas,nis', 'max:8'],
+            'nama' => ['required'],
+            'id_kelas' => ['required', Rule::in($idkelas)],
+            'id_spp' => ['required', Rule::in($idSpp)],
+            'alamat' => ['required'],
+            'no_telp' => ['required'],
+        ]);
+
+        if($validateData){
+            $check = $siswa->update($validateData);
+        }
+
+        if($check){
+            return redirect(route('siswa.index'))->with('success','Data Berhasil Di Edit');
+        }
+        return back()->with('error','Data Gagal Di Edit');
     }
 
     /**

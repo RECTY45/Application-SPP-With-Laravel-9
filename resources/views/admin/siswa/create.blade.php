@@ -72,7 +72,7 @@
                                 <select name="id_spp" class="form-control form-input @error('id_spp')is-invalid @enderror">
                                     <option value="">Nominal Spp</option>
                                     @foreach($dataSpp as $spp)
-                                    <option value="{{ $spp->id }}">Rp {{ $spp->nominal }}</option>
+                                    <option value="{{ $spp->id }}">Rp. {{ $spp->nominal }}</option>
                                     @endforeach
                                 </select>
                                 @error('id_spp')
@@ -101,8 +101,8 @@
                                 <label>Kelas</label>
                                 <select name="id_kelas" class="form-control form-input @error('id_kelas')is-invalid @enderror">
                                     <option value="">Pilih Kelas</option>
-                                    @foreach($items as $item)
-                                    <option value="{{ $item->id }}">{{ $item->nama_kelas }}</option>
+                                    @foreach($dataKelas as $kelas)
+                                    <option value="{{ $kelas->id }}">{{ $kelas->nama_kelas }}</option>
                                     @endforeach
                                 </select>
                                 @error('level')
