@@ -35,8 +35,11 @@ Route::get('dashboard',[DashboardController::class,'dashboard'])->name('dashboar
 
 // PAGE  ADMIN
 Route::group(['prefix' => 'dashboard', 'middleware' => 'admin'],function() {
-    // PAGE SISWA
-    Route::get('dashboard/data-siswa',[SiswaController::class,'index'])->name('siswa.index');
+    // RECORD SISWA
+    Route::get('data-siswa',[SiswaController::class,'index'])->name('siswa.index');
+    // DELETE
+    Route::delete('data-siswa/{siswa:id}',[SiswaController::class,'destroy'])->name('siswa.destroy');
+
     // RECORD PETUGAS
     Route::get('data-petugas',[PetugasController::class,'index'])->name('petugas.index');
     // DELETE
@@ -49,8 +52,10 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'admin'],function() {
     Route::get('data-petugas/{petugas:id}/edit',[PetugasController::class,'edit'])->name('petugas.edit');
     //UPDATE
     Route::put('data-petugas/{petugas:id}',[PetugasController::class,'update'])->name('petugas.update');
+
     // PAGE KELAS
     Route::get('data-kelas',[KelasController::class,'index'])->name('kelas.index');
+
     // PAGE SPP
     Route::get('data-spp',[SppController::class,'index'])->name('spp.index');
 });

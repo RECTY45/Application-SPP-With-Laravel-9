@@ -17,6 +17,7 @@ class SiswaController extends Controller
         $siswas = Siswa::all();
         return view('admin.siswa.index',[
             'title' => "Siswa",
+            'name' => 'Data Siswa',
             'siswas' => $siswas
         ]);
     }
@@ -84,6 +85,10 @@ class SiswaController extends Controller
      */
     public function destroy(Siswa $siswa)
     {
-        //
+        $check = $siswa->delete();
+        if($check){
+            return back()->with('success','Data berhasil di hapus');
+        }
+        return back()->with('error', 'Data gagal di hapus');
     }
 }

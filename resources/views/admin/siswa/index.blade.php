@@ -38,38 +38,40 @@
                             <th>Nis</th>
                             <th>Nama</th>
                             <th>Kelas</th>
-                            <th>Alamat</th>
                             <th>No Telp</th>
-                            <th>Tahun</th>
-                            <th>Nominal</th>
+                            <th>Alamat</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody class="users-table-info text-center">
-                            <tr>
-                                <td>1</td>
-                                <td>012212121112</td>
-                                <td>202-098</td>
-                                <td>Zhaka Hidayat Yasir</td>
-                                <td>XII</td>
-                                <td>Pajjaiang No.9</td>
-                                <td>083321131313</td>
-                                <td>2023</td>
-                                <td>8000000</td>
-                                <td>
-                                    <div class="form-control-icon d-flex">
-                                        <a href="#" method="POST"
-                                            class="bg-success border-0 mb-3 px-2 py-1 rounded mx-1"><i
-                                                class="icon edit"></i></a>
-                                        <form action="icon edit" method="POST">
-                                            @method('delete')
-                                            @csrf
-                                            <button type="submit" class="border-0 bg-danger px-2 py-1 rounded mx-1"><i
-                                                    class="icon delete"></i></button>
-                                        </form>
-                                    </div>
-                                </td>
-                            </tr>
+                        @forelse($siswas as $siswa)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $siswa->nisn }}</td>
+                            <td>{{ $siswa->nis }}</td>
+                            <td>{{ $siswa->nama }}</td>
+                            <td>{{ $siswa->kelas->nama_kelas }}</td>
+                            <td>{{ $siswa->no_telp }}</td>
+                            <td>{{ $siswa->alamat }}</td>
+                            <td>
+                                <div class="form-control-icon d-flex">
+                                    <a href="#" method="POST"
+                                        class="bg-success border-0 mb-3 px-2 py-1 rounded mx-1"><i
+                                            class="icon edit"></i></a>
+                                    <form action="{{ @route('siswa.destroy',$siswa->id) }}" method="POST">
+                                        @method('delete')
+                                        @csrf
+                                        <button type="submit" class="border-0 bg-danger px-2 py-1 rounded mx-1" onclick="confirmDelete(event,this)"><i
+                                                class="icon delete"></i></button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                        @empty
+                        <div>
+                            <span>Data Tidak Ada</span>
+                        </div>
+                        @endforelse
                     </tbody>
                 </table>
                 </div>
