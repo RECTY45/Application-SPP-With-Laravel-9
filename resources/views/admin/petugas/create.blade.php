@@ -1,5 +1,4 @@
 @extends('layouts.main')
-@include('partials.css')
 @section('content')
     <div class="container">
         <div class="white-block">
@@ -81,8 +80,8 @@
                             </div>
                         </div>
                         <div class="form-group px-3">
-                            <button type="submit" class="btn btn-sm btn-primary">Tambah</button>
-                            <a href="{{ route('petugas.index') }}" class="btn btn-sm btn-success">Batal</a>
+                            <button type="submit" class="btn btn-primary">Tambah</button>
+                            <a href="{{ route('petugas.index') }}" class="btn  btn-success">Batal</a>
                         </div>
                     </div>
                 </form>

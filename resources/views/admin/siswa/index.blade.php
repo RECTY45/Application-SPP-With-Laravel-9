@@ -1,5 +1,4 @@
 @extends('layouts.main')
-@include('partials.css')
 @section('content')
     <div class="container">
         <div class="white-block">
@@ -8,7 +7,7 @@
                     <div class="row mb-2">
                         <div class="col-md-12 ">
                             <span>
-                                <p class="h2">Kelola Data Siswa</p>
+                                <p class="h2 md:fs-3 fs-6">Kelola Data Siswa</p>
                                 <p class="font-weight-bold" style="line-height: 10px">Dashboard/{{ $name }}</p>
                             </span>
                         </div>
@@ -19,18 +18,8 @@
                 </div>
             </div>
             <div class="card-body white-block">
-                @if (session()->has('succes'))
-                    <div class="alert-succes p-3 raunded">
-                        {{ session('success') }}
-                    </div>
-                @endif
-                @if (session()->has('error'))
-                    <div class="alert-error p-3 raunded">
-                        {{ session('error') }}
-                    </div>
-                @endif
                 <div class="table-responsive">
-                <table class="table users-table-info" id="table">
+                <table class="table users-table-info" id="dataTable">
                     <thead>
                         <tr class="stat-cards-info__num">
                             <th>No</th>
@@ -68,9 +57,6 @@
                             </td>
                         </tr>
                         @empty
-                        <div>
-                            <span>Data Tidak Ada</span>
-                        </div>
                         @endforelse
                     </tbody>
                 </table>

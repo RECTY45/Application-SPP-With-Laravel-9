@@ -1,5 +1,4 @@
 @extends('layouts.main')
-@include('partials.css')
 @section('content')
     <div class="container">
         <div class="white-block">
@@ -76,7 +75,6 @@
                                     @endif
                                     <option value="">Nominal SPP</option>
                                     @foreach($dataSpp as $spp)
-
                                     @if (old('id_spp') == $spp->id)
                                         <option selected value="{{ $spp->id }}">Rp. {{ $spp->nominal }}</option>
                                     @endif
@@ -127,7 +125,7 @@
                             </div>
                             <div class="form-group">
                                 <label>No Telp</label>
-                                <input value="{{ $item->no_telp }}" type="text" name="no_telp"
+                                <input value="{{ $item->no_telp }}" type="number" name="no_telp"
                                     class="form-control form-input @error('no_telp')is-invalid @enderror"
                                     placeholder="Masukkan No Telp Anda">
                                 @error('no_telp')
@@ -140,8 +138,8 @@
                         </div>
 
                         <div class="form-group px-3">
-                            <button type="submit" class="btn btn-primary">Tambah</button>
-                            <a href="{{ route('siswa.index') }}" class="btn  btn-success">Batal</a>
+                            <button type="submit" class="btn btn-primary">Edit</button>
+                            <a href="{{ route('siswa.index') }}" class="btn btn-success">Batal</a>
                         </div>
                     </div>
                 </form>

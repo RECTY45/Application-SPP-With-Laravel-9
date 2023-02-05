@@ -17,7 +17,8 @@ class SppController extends Controller
         $spps = Spp::all();
         return view('admin.spp.index',[
             'title' => "SPP",
-            'spps' => $spps,
+            'name' => 'Data SPP',
+            'items' => $spps,
         ]);
     }
 
@@ -28,7 +29,9 @@ class SppController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.spp.create',[
+            'title' => 'SPP'
+        ]);
     }
 
     /**
@@ -39,7 +42,18 @@ class SppController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData = $request->validate([
+            'tahun' => ['required'],
+            'nominal' => ['required']
+        ]);
+
+        if($validateData){
+            $check = Spp::create($validateData);
+        }
+        if($check){
+            return redirect(@route('spp.index'))->with('success', 'Data Berhasil Di Tambah');
+        }
+        return back()->with('error', 'Data Gagal Di Tambah');
     }
 
     /**
@@ -61,7 +75,10 @@ class SppController extends Controller
      */
     public function edit(Spp $spp)
     {
-        //
+        return view('admin.spp.update',[
+            'title' => 'Edit SPP',
+            'item' => $spp
+        ]);
     }
 
     /**
@@ -73,7 +90,18 @@ class SppController extends Controller
      */
     public function update(Request $request, Spp $spp)
     {
-        //
+        $validateData = $request->validate([
+            'tahun' => ['required'],
+            'nominal' => ['required']
+        ]);
+
+        if($validateData){
+            $check = $spp->update($validateData);
+        }
+        if($check){
+            return redirect(@route('spp.index'))->with('success', 'Data Berhasil Di Ubah');
+        }
+        return back()->with('error', 'Data Gagal Di Ubah');
     }
 
     /**
@@ -84,6 +112,11 @@ class SppController extends Controller
      */
     public function destroy(Spp $spp)
     {
-        //
+        $check = $spp->delete();
+
+        if($check){
+            return back()->with('success', 'Data berhasil di hapus');
+        }
+        return back()->with('error', 'Data gagal di hapus');
     }
 }

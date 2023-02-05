@@ -34,7 +34,7 @@ class SiswaController extends Controller
         $kelas = Kelas::all();
         $spp = Spp::all();
         return view('admin.siswa.create',[
-            'title' => 'Create Siswa',
+            'title' => 'Siswa',
             'name' => 'Create Data Siswa',
             'dataKelas' => $kelas,
             'dataSpp'=> $spp,
@@ -50,7 +50,7 @@ class SiswaController extends Controller
     public function store(Request $request)
     {
         $idkelas = Kelas::pluck('id')->toArray();
-        $idSpp = Kelas::pluck('id')->toArray();
+        $idSpp = Spp::pluck('id')->toArray();
 
         $validateData = $request->validate([
             'nisn' => ['required', 'unique:siswas,nisn','max:10' ],
@@ -93,7 +93,7 @@ class SiswaController extends Controller
     public function edit(Siswa $siswa)
     {
         return view('admin.siswa.update',[
-            'title' => 'Edit Siswa',
+            'title' => 'Siswa',
             'name' => 'Edit Data Siswa',
             'item' => $siswa,
             'dataSpp' => Spp::all(),
@@ -114,8 +114,8 @@ class SiswaController extends Controller
         $idSpp = Kelas::pluck('id')->toArray();
 
         $validateData = $request->validate([
-            'nisn' => ['required', 'unique:siswas,nisn','max:10' ],
-            'nis' => ['required', 'unique:siswas,nis', 'max:8'],
+            'nisn' => ['required', 'max:10' ],
+            'nis' => ['required',  'max:8'],
             'nama' => ['required'],
             'id_kelas' => ['required', Rule::in($idkelas)],
             'id_spp' => ['required', Rule::in($idSpp)],

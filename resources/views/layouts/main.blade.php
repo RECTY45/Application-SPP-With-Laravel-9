@@ -4,10 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ asset('assets/img/avatar/icon.jpg') }}" type="image/x-icon">
+    <!-- Custom styles -->
+    <link href="{{ asset('assets/css/bootstraps.css') }}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="{{ asset('assets/css/style.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/sweetalert2/animate.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/sweetalert2/sweetalert2.min.css') }}">
-    <title>E-SPP Dashboard | {{ $title }}</title>
+    <link rel="stylesheet" href="{{ asset('assets/css/jquery.dataTables.min.css') }}">
+
+    <title>E-SPP</title>
 </head>
 
 <body>
@@ -24,10 +30,16 @@
             <main class="main users chart-page" id="skip-target">
                 @yield('content')
             </main>
-            <!-- ! Footer -->
-            @include('partials.footer')
         </div>
     </div>
+
+    <script src="{{ asset('assets/js/jquery-3.6.0.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.dataTables.min.js') }}"></script>
+
+    {{-- Modal --}}
+    <script src="{{ asset('assets/js/popper.min.js') }}"></script>
+    <script src="{{ asset('assets/js/bootstrap.min.js')}}"></script>
+    {{-- End Modal --}}
 
   <!-- Chart library -->
   <script src="{{ asset('assets/plugins/chart.min.js') }}"></script>
@@ -36,7 +48,11 @@
   <!-- Custom scripts -->
   <script src="{{ asset('assets/js/script.js') }}"></script>
   <script src="{{ asset('assets/sweetalert2/sweetalert2.min.js') }}"></script>
-  <script src="{{ asset('assets/js/jquery-3.6.3.slim.js') }}" integrity="sha256-DKU1CmJ8kBuEwumaLuh9Tl/6ZB6jzGOBV/5YpNE2BWc=" crossorigin="anonymous"></script>
+
+
+  <script>
+
+  </script>
 
 </body>
 
@@ -71,5 +87,15 @@
             }
         })
     }
+
+    $('#dataTable').DataTable({ "oLanguage": {
+                "sSearchPlaceholder": "Silahkan Search...",
+                "sLengthMenu": "Results :  _MENU_",
+            },
+            "stripeClasses": [],
+            "lengthMenu": [1,5, 10, 20, 50],
+            "pageLength": 5
+        });
 </script>
+
 </html>

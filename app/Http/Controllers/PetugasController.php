@@ -28,7 +28,7 @@ class PetugasController extends Controller
     public function create()
     {
         return view('admin.petugas.create',[
-            'title' => 'Tambah Petugas',
+            'title' => 'Petugas',
             'name' => 'Tambah Data Petugas',
         ]);
     }
@@ -80,8 +80,7 @@ class PetugasController extends Controller
     public function edit(User $petugas)
     {
         return view('admin.petugas.update',[
-            'title' => 'Edit Petugas',
-            'name'  => 'Edit Data Petugas',
+            'title' => 'Petugas',
             'item'=> $petugas,
         ]);
     }

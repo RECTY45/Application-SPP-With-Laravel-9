@@ -1,13 +1,12 @@
 <nav class="main-nav--bg">
-    <div class="container main-nav">
+    <div class="container main-nav ">
         <div class="main-nav-start">
-        <div class="search-wrapper">
-            <i data-feather="search" aria-hidden="true"></i>
-            <input type="text" placeholder="Enter keywords ..." required>
-        </div>
+            <div class="search-wrapper white-block font-weight-bold card text-center">
+                <h5>E-SPP Home/{{ $title }}</h5>
+            </div>
         </div>
         <div class="main-nav-end">
-        <button class="sidebar-toggle transparent-btn" title="Menu" type="button">
+            <button class="sidebar-toggle transparent-btn" title="Menu" type="button">
             <span class="sr-only">Toggle menu</span>
             <span class="icon menu-toggle--gray" aria-hidden="true"></span>
         </button>

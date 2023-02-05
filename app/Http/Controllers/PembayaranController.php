@@ -1,9 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Validation\Rule;
+use index;
 use App\Models\Pembayaran;
+use App\Models\Siswa;
+use App\Models\User;
+use App\Models\Spp;
 use Illuminate\Http\Request;
+
 
 class PembayaranController extends Controller
 {
@@ -14,7 +19,12 @@ class PembayaranController extends Controller
      */
     public function index()
     {
-        //
+        $pembayaran = Pembayaran::all();
+        return view('admin.Entry_pembayaran.index',[
+            'title' => 'Pembayaran',
+            'name' => 'Data Pembayaran',
+            'items' => $pembayaran,
+        ]);
     }
 
     /**
@@ -24,7 +34,18 @@ class PembayaranController extends Controller
      */
     public function create()
     {
-        //
+        $siswa = Siswa::all();
+        $petugas = User::all();
+        $spp = Spp::all();
+
+        return view('admin.Entry_Pembayaran.create',[
+            'title' => 'Pembayaran',
+            'name' => 'Create Data Pembayaran',
+            'dataSiswa' => $siswa,
+            'dataPetugas' => $petugas,
+            'dataSpp' => $spp,
+
+        ]);
     }
 
     /**
@@ -35,7 +56,30 @@ class PembayaranController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $idSiswa = Siswa::pluck('id')->toArray();
+        $idPetugas = User::pluck('id')->toArray();
+        $idSpp = Spp::pluck('id')->toArray();
+
+        $validateData = $request->validate([
+            'id_petugas' => ['required', Rule::in($idPetugas)],
+            'id_siswa' => ['required', Rule::in($idSiswa)],
+            'id_spp' => ['required',Rule::in($idSpp)],
+            'tgl_bayar' => ['required'],
+            'bulan_dibayar' => ['required'],
+            'tahun_dibayar' => ['required'],
+            'jumlah_bayar' => ['required'],
+            'nisn' => ['required','max:10'],
+
+        ]);
+
+        if($validateData){
+            $check = Pembayaran::create($validateData);
+        }
+
+        if($check){
+            return redirect(@route('pembayaran.index'))->with('success', 'Data Berhasil Di Tambah');
+        }
+        return back()->with('error', 'Data Gagal Di Tambah');
     }
 
     /**
@@ -57,7 +101,14 @@ class PembayaranController extends Controller
      */
     public function edit(Pembayaran $pembayaran)
     {
-        //
+        return view('admin.Entry_Pembayaran.update',[
+            'title' => 'Pembayaran',
+            'name' => 'Edit Data Pembayaran',
+            'item' => $pembayaran,
+            'dataSiswa' => Siswa::all(),
+            'dataPetugas' => User::all(),
+            'dataSpp' => Spp::all(),
+        ]);
     }
 
     /**
@@ -69,7 +120,30 @@ class PembayaranController extends Controller
      */
     public function update(Request $request, Pembayaran $pembayaran)
     {
-        //
+        $idSiswa = Siswa::pluck('id')->toArray();
+        $idPetugas = User::pluck('id')->toArray();
+        $idSpp = Spp::pluck('id')->toArray();
+
+        $validateData = $request->validate([
+            'id_petugas' => ['required', Rule::in($idPetugas)],
+            'id_siswa' => ['required', Rule::in($idSiswa)],
+            'id_spp' => ['required',Rule::in($idSpp)],
+            'tgl_bayar' => ['required'],
+            'bulan_dibayar' => ['required'],
+            'tahun_dibayar' => ['required'],
+            'jumlah_bayar' => ['required'],
+            'nisn' => ['required','max:10'],
+
+        ]);
+
+        if($validateData){
+            $check = $pembayaran->update($validateData);
+        }
+
+        if($check){
+            return redirect(@route('pembayaran.index'))->with('success', 'Data Berhasil Di Edit');
+        }
+        return back()->with('error', 'Data Gagal Di Edit');
     }
 
     /**
@@ -80,6 +154,10 @@ class PembayaranController extends Controller
      */
     public function destroy(Pembayaran $pembayaran)
     {
-        //
+        $check = $pembayaran->delete();
+            if($check){
+                return back()->with('success', 'Data berhasil di hapus');
+            }
+            return back()->with('error', 'Data gagal di hapus');
     }
 }

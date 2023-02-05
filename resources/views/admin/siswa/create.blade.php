@@ -1,5 +1,4 @@
 @extends('layouts.main')
-@include('partials.css')
 @section('content')
     <div class="container">
         <div class="white-block">
@@ -65,8 +64,6 @@
                                 @enderror
                             </div>
 
-
-
                             <div class="form-group">
                                 <label>SPP</label>
                                 <select name="id_spp" class="form-control form-input @error('id_spp')is-invalid @enderror">
@@ -113,7 +110,7 @@
                             </div>
                             <div class="form-group">
                                 <label>No Telp</label>
-                                <input type="text" name="no_telp"
+                                <input type="number" name="no_telp"
                                     class="form-control form-input @error('no_telp')is-invalid @enderror"
                                     placeholder="Masukkan No Telp Anda">
                                 @error('no_telp')
@@ -126,8 +123,8 @@
                         </div>
 
                         <div class="form-group px-3">
-                            <button type="submit" class="btn btn-sm btn-primary">Tambah</button>
-                            <a href="{{ route('siswa.index') }}" class="btn btn-sm btn-success">Batal</a>
+                            <button type="submit" class="btn btn-primary">Tambah</button>
+                            <a href="{{ route('siswa.index') }}" class="btn btn-success">Batal</a>
                         </div>
                     </div>
                 </form>

@@ -7,6 +7,7 @@ use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\SppController;
+use App\Http\Controllers\PembayaranController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,6 +36,7 @@ Route::get('dashboard',[DashboardController::class,'dashboard'])->name('dashboar
 
 // PAGE  ADMIN
 Route::group(['prefix' => 'dashboard', 'middleware' => 'admin'],function() {
+    //  PAGE ADMIN SISWA
     // RECORD SISWA
     Route::get('data-siswa',[SiswaController::class,'index'])->name('siswa.index');
     // CREATE
@@ -49,7 +51,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'admin'],function() {
     Route::delete('data-siswa/{siswa:id}',[SiswaController::class,'destroy'])->name('siswa.destroy');
 
 
-
+    // PAGE ADMIN PETUGAS
     // RECORD PETUGAS
     Route::get('data-petugas',[PetugasController::class,'index'])->name('petugas.index');
     //CREATE
@@ -63,11 +65,48 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'admin'],function() {
     // DELETE
     Route::delete('data-petugas/{petugas:id}', [PetugasController::class,'destroy'])->name('petugas.destroy');
 
-    // PAGE KELAS
+    // PAGE ADMIN KELAS
+    //  RECORD
     Route::get('data-kelas',[KelasController::class,'index'])->name('kelas.index');
+    // CREATE
+    Route::get('data-kelas/create',[KelasController::class, 'create'])->name('kelas.create');
+    // STORE
+    Route::post('data-kelas/create',[KelasController::class, 'store'])->name('kelas.store');
+    // EDIT
+    Route::get('data-kelas/{kelas:id}/edit',[KelasController::class, 'edit'])->name('kelas.edit');
+    // UPDATE
+    Route::put('data-kelas/{kelas:id}',[KelasController::class, 'update'])->name('kelas.update');
+    //  DELTE
+    Route::delete('data-kelas/{kelas:id}',[KelasController::class, 'destroy'])->name('kelas.destroy');
 
-    // PAGE SPP
-    Route::get('data-spp',[SppController::class,'index'])->name('spp.index');
+    // PAGE SPP ADMIN
+    // RECORD
+    Route::get('data-spp',[SppController::class, 'index'])->name('spp.index');
+    // CREATE
+    Route::get('data-spp/create',[SppController::class, 'create'])->name('spp.create');
+    // STORE
+    Route::post('data-spp/create',[SppController::class, 'store'])->name('spp.store');
+    // EDIT
+    Route::get('data-spp/{spp:id}/edit',[SppController::class, 'edit'])->name('spp.edit');
+    // UPDATE
+    Route::put('data-spp/{spp:id}',[SppController::class, 'update'])->name('spp.update');
+    // DELETE
+    Route::delete('data-spp/{spp:id}',[SppController::class, 'destroy'])->name('spp.destroy');
+
+    // PAGE PEMBAYARAN ADMIN
+    // RECORD
+    Route::get('data-pembayaran',[PembayaranController::class, 'index'])->name('pembayaran.index');
+    // CREATE
+    Route::get('data-pembayaran/create',[PembayaranController::class, 'create'])->name('pembayaran.create');
+    // STORE
+    Route::post('data-pembayaran/create',[PembayaranController::class, 'store'])->name('pembayaran.store');
+    // EDIT
+    Route::get('data-pembayaran/{pembayaran:id}/edit',[PembayaranController::class, 'edit'])->name('pembayaran.edit');
+    // UPDATE
+    Route::put('data-pembayaran/{pembayaran:id}',[PembayaranController::class,'update'])->name('pembayaran.update');
+    // DELETE
+    Route::delete('data-pembayaran/{pembayaran:id}',[PembayaranController::class,'destroy'])->name('pembayaran.destroy');
+
 });
 
 

@@ -32,7 +32,7 @@
                             <span class="sr-only">Open List</span>
                         </span>
                         <li>
-                            <a class="{{ request()->routeIs('siswa.index','siswa.create') ? 'active' : '' }}"
+                            <a class="{{ request()->routeIs('siswa.index','siswa.create','siswa.edit') ? 'active' : '' }}"
                                 href="{{ route('siswa.index') }}"><span class="icon radio "
                                     aria-hidden="true"></span>Kelola Data Siswa</a>
                         </li>
@@ -52,13 +52,11 @@
                                     aria-hidden="true"></span>Kelola Data SPP</a>
                         </li>
                         <li>
-                            <a href="##"><span class="icon pay" aria-hidden="true"></span>Entri Pembayaran</a>
+                            <a  class="{{ request()->routeIs('pembayaran.index') ? 'active' : '' }}"
+                            href="{{ route('pembayaran.index') }}"><span class="icon pay" aria-hidden="true"></span>Entri Pembayaran</a>
                         </li>
                         <li>
-                            <a href="##"><span class="icon report" aria-hidden="true"></span>Generate Laporan</a>
-                        </li>
-                        <li>
-                            <a href="##"><span class="icon paper" aria-hidden="true"></span>History Pembayaran</a>
+                            <a href="#"><span class="icon paper" aria-hidden="true"></span>History Pembayaran</a>
                         </li>
                     </ul>
                 @endif

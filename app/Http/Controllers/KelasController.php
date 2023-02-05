@@ -16,8 +16,9 @@ class KelasController extends Controller
     {
         $kelas = Kelas::all();
         return view('admin.kelas.index',[
-            'title' => "Kelas",
-            'kelas' => $kelas,
+            'title' => 'Kelas',
+            'name' => 'Data Kelas',
+            'items' => $kelas,
         ]);
     }
 
@@ -28,7 +29,10 @@ class KelasController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.kelas.create',[
+            'title' => 'Kelas',
+            'name' => 'Tambah Data Kelas',
+        ]);
     }
 
     /**
@@ -39,7 +43,18 @@ class KelasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData = $request->validate([
+            'nama_kelas' => ['required'],
+            'kompetensi_keahlian' => ['required']
+        ]);
+
+        if($validateData){
+            $check = Kelas::create($validateData);
+        }
+        if($check){
+            return redirect(@route('kelas.index'))->with('success', 'Data berhasil di tambah');
+        }
+        return back()->with('error', 'Data gagal di tambah');
     }
 
     /**
@@ -61,7 +76,11 @@ class KelasController extends Controller
      */
     public function edit(Kelas $kelas)
     {
-        //
+        return view('admin.kelas.update',[
+            'title' => 'Kelas',
+            'name' => 'Edit Data Kelas',
+            'item' => $kelas
+        ]);
     }
 
     /**
@@ -73,7 +92,18 @@ class KelasController extends Controller
      */
     public function update(Request $request, Kelas $kelas)
     {
-        //
+        $validateData = $request->validate([
+            'nama_kelas' => ['required'],
+            'kompetensi_keahlian' => ['required']
+        ]);
+
+        if($validateData){
+            $check = $kelas->update($validateData);
+        }
+        if($check){
+            return redirect(@route('kelas.index'))->with('success', 'Data berhasil di ubah');
+        }
+        return back()->with('error', 'Data gagal di ubah');
     }
 
     /**
@@ -84,6 +114,10 @@ class KelasController extends Controller
      */
     public function destroy(Kelas $kelas)
     {
-        //
-    }
+        $check = $kelas->delete();
+        if($check){
+            return back()->with('success', 'Data berhasil di hapus');
+        }
+        return back()->with('error', 'Data gagal di hapus');
+     }
 }
