@@ -11,7 +11,9 @@ class Siswa extends Model
    protected $guarded = ['id'];
 
     public function kelas(){
-        return $this->belongsTo(Kelas::class,'id_kelas','id');
+        return $this->belongsTo(Kelas::class,'id_kelas','id')->withDefault(function($kelas){
+            $kelas->nama_kelas = 'Tidak Ada';
+        });
     }
 
     public function spp(){

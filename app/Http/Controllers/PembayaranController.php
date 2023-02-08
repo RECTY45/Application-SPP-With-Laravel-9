@@ -34,17 +34,14 @@ class PembayaranController extends Controller
      */
     public function create()
     {
-        $siswa = Siswa::all();
         $petugas = User::all();
         $spp = Spp::all();
 
         return view('admin.Entry_Pembayaran.create',[
             'title' => 'Pembayaran',
             'name' => 'Create Data Pembayaran',
-            'dataSiswa' => $siswa,
             'dataPetugas' => $petugas,
             'dataSpp' => $spp,
-
         ]);
     }
 
@@ -56,20 +53,17 @@ class PembayaranController extends Controller
      */
     public function store(Request $request)
     {
-        $idSiswa = Siswa::pluck('id')->toArray();
         $idPetugas = User::pluck('id')->toArray();
         $idSpp = Spp::pluck('id')->toArray();
 
         $validateData = $request->validate([
             'id_petugas' => ['required', Rule::in($idPetugas)],
-            'id_siswa' => ['required', Rule::in($idSiswa)],
             'id_spp' => ['required',Rule::in($idSpp)],
             'tgl_bayar' => ['required'],
             'bulan_dibayar' => ['required'],
             'tahun_dibayar' => ['required'],
             'jumlah_bayar' => ['required'],
             'nisn' => ['required','max:10'],
-
         ]);
 
         if($validateData){
@@ -105,7 +99,6 @@ class PembayaranController extends Controller
             'title' => 'Pembayaran',
             'name' => 'Edit Data Pembayaran',
             'item' => $pembayaran,
-            'dataSiswa' => Siswa::all(),
             'dataPetugas' => User::all(),
             'dataSpp' => Spp::all(),
         ]);
@@ -120,13 +113,11 @@ class PembayaranController extends Controller
      */
     public function update(Request $request, Pembayaran $pembayaran)
     {
-        $idSiswa = Siswa::pluck('id')->toArray();
         $idPetugas = User::pluck('id')->toArray();
         $idSpp = Spp::pluck('id')->toArray();
 
         $validateData = $request->validate([
             'id_petugas' => ['required', Rule::in($idPetugas)],
-            'id_siswa' => ['required', Rule::in($idSiswa)],
             'id_spp' => ['required',Rule::in($idSpp)],
             'tgl_bayar' => ['required'],
             'bulan_dibayar' => ['required'],

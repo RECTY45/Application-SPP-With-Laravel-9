@@ -47,6 +47,7 @@ class DatabaseSeeder extends Seeder
                 'nis' => '202-001',
                 'nama' => 'Bintang',
                 'id_kelas' => 1,
+                'jenis_kelamin' => 'L',
                 'alamat' => "Jl.Pajjaiang",
                 'no_telp' => '09328388',
                 'id_spp' => 1
@@ -56,6 +57,7 @@ class DatabaseSeeder extends Seeder
                 'nis' => '202-002',
                 'nama' => 'Zhaka',
                 'id_kelas' => 2,
+                'jenis_kelamin' => 'L',
                 'alamat' => "Jl.Pajjaiang",
                 'no_telp' => '09328380',
                 'id_spp' => 2

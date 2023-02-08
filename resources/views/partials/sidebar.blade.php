@@ -42,17 +42,17 @@
                                     aria-hidden="true"></span>Kelola Data Petugas</a>
                         </li>
                         <li>
-                            <a class="{{ request()->routeIs('kelas.index') ? 'active' : '' }}"
+                            <a class="{{ request()->routeIs('kelas.index','kelas.create','kelas.edit') ? 'active' : '' }}"
                                 href="{{ route('kelas.index') }}"><span class="icon home"
                                     aria-hidden="true"></span>Kelola Data Kelas</a>
                         </li>
                         <li>
-                            <a class="{{ request()->routeIs('spp.index') ? 'active' : '' }}"
+                            <a class="{{ request()->routeIs('spp.index','spp.create','spp.edit') ? 'active' : '' }}"
                                 href="{{ route('spp.index') }}"><span class="icon money"
                                     aria-hidden="true"></span>Kelola Data SPP</a>
                         </li>
                         <li>
-                            <a  class="{{ request()->routeIs('pembayaran.index') ? 'active' : '' }}"
+                            <a  class="{{ request()->routeIs('pembayaran.index','pembayaran.create','pembayaran.edit') ? 'active' : '' }}"
                             href="{{ route('pembayaran.index') }}"><span class="icon pay" aria-hidden="true"></span>Entri Pembayaran</a>
                         </li>
                         <li>
@@ -67,7 +67,8 @@
                             <span class="sr-only">Open List</span>
                         </span>
                         <li>
-                            <a href="##"><span class="icon edit" aria-hidden="true"></span>Entri Pembayaran</a>
+                            <a class="{{ request()->routeIs('pembayaran.index','pembayaran.create','pembayaran.edit') ? 'active' : '' }}"
+                            href="{{ route('pembayaran.index') }}"><span class="icon edit" aria-hidden="true"></span>Entri Pembayaran</a>
                         </li>
                         <li>
                             <a href="##"><span class="icon paper" aria-hidden="true"></span>History Pembayaran</a>

@@ -8,7 +8,8 @@
                         <div class="col-md-12 ">
                             <span>
                                 <p class="h2">Kelola Data Petugas</p>
-                                <p class="font-weight-bold" style="line-height: 10px">Dashboard/Data Petugas/{{ $name }}</p>
+                                <p class="font-weight-bold" style="line-height: 10px">Dashboard/Data
+                                    Petugas/{{ $name }}</p>
                             </span>
                         </div>
                     </div>

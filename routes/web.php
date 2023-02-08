@@ -35,7 +35,7 @@ Route::get('/', function () {
 Route::get('dashboard',[DashboardController::class,'dashboard'])->name('dashboard.index')->middleware('auth');
 
 // PAGE  ADMIN
-Route::group(['prefix' => 'dashboard', 'middleware' => 'admin'],function() {
+Route::group(['prefix' => 'dashboard', 'middleware' => 'isAdmin'],function() {
     //  PAGE ADMIN SISWA
     // RECORD SISWA
     Route::get('data-siswa',[SiswaController::class,'index'])->name('siswa.index');
@@ -109,4 +109,19 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'admin'],function() {
 
 });
 
-
+// PAGE  PETUGAS
+    Route::group(['prefix' => 'dashboard', 'middleware' => 'isPetugas'],function() {
+    // PAGE PEMBAYARAN PETUGAS
+    // RECORD
+    Route::get('data-pembayaran',[PembayaranController::class, 'index'])->name('pembayaran.index');
+    // CREATE
+    Route::get('data-pembayaran/create',[PembayaranController::class, 'create'])->name('pembayaran.create');
+    // STORE
+    Route::post('data-pembayaran/create',[PembayaranController::class, 'store'])->name('pembayaran.store');
+    // EDIT
+    Route::get('data-pembayaran/{pembayaran:id}/edit',[PembayaranController::class, 'edit'])->name('pembayaran.edit');
+    // UPDATE
+    Route::put('data-pembayaran/{pembayaran:id}',[PembayaranController::class,'update'])->name('pembayaran.update');
+    // DELETE
+    Route::delete('data-pembayaran/{pembayaran:id}',[PembayaranController::class,'destroy'])->name('pembayaran.destroy');
+});

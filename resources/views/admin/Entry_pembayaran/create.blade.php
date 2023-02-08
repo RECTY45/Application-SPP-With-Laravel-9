@@ -8,7 +8,8 @@
                         <div class="col-md-12 ">
                             <span>
                                 <p class="h2">Kelola Data Pembayaran</p>
-                                <p class="font-weight-bold" style="line-height: 10px">Dashboard/Data Pembayaran/{{ $name }}</p>
+                                <p class="font-weight-bold" style="line-height: 10px">Dashboard/Data
+                                    Pembayaran/{{ $name }}</p>
                             </span>
                         </div>
                     </div>
@@ -31,10 +32,11 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Nama Petugas</label>
-                                <select name="id_petugas" class="form-control form-input @error('id_petugas')is-invalid @enderror">
+                                <select name="id_petugas"
+                                    class="form-control form-input @error('id_petugas')is-invalid @enderror">
                                     <option value="">Pilih Petugas</option>
-                                    @foreach($dataPetugas as $petugas)
-                                    <option value="{{ $petugas->id }}">{{ $petugas->nama_petugas }}</option>
+                                    @foreach ($dataPetugas as $petugas)
+                                        <option value="{{ $petugas->id }}">{{ $petugas->nama_petugas }}</option>
                                     @endforeach
                                 </select>
                                 @error('id_petugas')
@@ -48,8 +50,8 @@
                                 <label>SPP</label>
                                 <select name="id_spp" class="form-control form-input @error('id_spp')is-invalid @enderror">
                                     <option value="">Nominal Spp</option>
-                                    @foreach($dataSpp as $spp)
-                                    <option value="{{ $spp->id }}">Rp. {{ $spp->nominal }}</option>
+                                    @foreach ($dataSpp as $spp)
+                                        <option value="{{ $spp->id }}">Rp. {{ $spp->nominal }}</option>
                                     @endforeach
                                 </select>
                                 @error('id_spp')
@@ -86,20 +88,6 @@
                         </div>
 
                         <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Nama Siswa</label>
-                                <select name="id_siswa" class="form-control form-input @error('id_siswa')is-invalid @enderror">
-                                    <option value="">Pilih Siswa</option>
-                                    @foreach($dataSiswa as $siswa)
-                                    <option value="{{ $siswa->id }}">{{ $siswa->nama }}</option>
-                                    @endforeach
-                                </select>
-                                @error('id_siswa')
-                                    <div class="invalid-feedbabck">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
                             <div class="form-group">
                                 <label>NISN</label>
                                 <input type="number" name="nisn"

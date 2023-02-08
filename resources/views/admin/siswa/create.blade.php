@@ -8,7 +8,8 @@
                         <div class="col-md-12 ">
                             <span>
                                 <p class="h2">Kelola Data Siswa</p>
-                                <p class="font-weight-bold" style="line-height: 10px">Dashboard/Data Siswa/{{ $name }}</p>
+                                <p class="font-weight-bold" style="line-height: 10px">Dashboard/Data Siswa/{{ $name }}
+                                </p>
                             </span>
                         </div>
                     </div>
@@ -31,7 +32,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>NISN</label>
-                                <input type="text" name="nisn"
+                                <input type="text" name="nisn" id="nisn" value="{{ old('nisn') }}"
                                     class="form-control form-input @error('nisn')is-invalid  @enderror"
                                     placeholder="Masukkan Nisn Anda">
                                 @error('nisn')
@@ -42,7 +43,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Nama</label>
-                                <input type="text" name="nama"
+                                <input type="text" name="nama" id="nama" value="{{ old('nama') }}"
                                     class="form-control form-input @error('nama')is-invalid @enderror"
                                     placeholder="Masukkan Nama Anda">
                                 @error('nama')
@@ -54,7 +55,7 @@
 
                             <div class="form-group">
                                 <label>Alamat</label>
-                                <input type="text" name="alamat"
+                                <input type="text" name="alamat" id="alamat" value="{{ old('alamat') }}"
                                     class="form-control form-input @error('alamat')is-invalid @enderror"
                                     placeholder="Masukkan Alamat Anda">
                                 @error('alamat')
@@ -66,10 +67,10 @@
 
                             <div class="form-group">
                                 <label>SPP</label>
-                                <select name="id_spp" class="form-control form-input @error('id_spp')is-invalid @enderror">
+                                <select name="id_spp" id="id_spp" class="form-control form-input @error('id_spp')is-invalid @enderror">
                                     <option value="">Nominal Spp</option>
-                                    @foreach($dataSpp as $spp)
-                                    <option value="{{ $spp->id }}">Rp. {{ $spp->nominal }}</option>
+                                    @foreach ($dataSpp as $spp)
+                                        <option value="{{ $spp->id }}">Rp. {{ $spp->nominal }}</option>
                                     @endforeach
                                 </select>
                                 @error('id_spp')
@@ -84,7 +85,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>NIS</label>
-                                <input id="nis" type="nis" name="nis"
+                                <input id="nis" type="nis" name="nis" value="{{ old('nis') }}"
                                     class="form-control form-input @error('nis')is-invalid @enderror"
                                     placeholder="Masukkan NIs Anda">
                                 @error('nis')
@@ -95,11 +96,29 @@
                             </div>
 
                             <div class="form-group">
+                                <label>Jenis Kelamin</label>
+                                <select id="jenis_kelamin" name="jenis_kelamin"
+                                    class="form-control form-input @error('jenis_kelamin')is-invalid @enderror">
+                                    <option value="">Pilih Jenis Kelamin</option>
+                                    <option value="L" {{ old('jenis_kelamin') == 'L' ? 'selected' : '' }}>Laki-Laki
+                                    </option>
+                                    <option value="P" {{ old('jenis_kelamin') == 'P' ? 'selected' : '' }}>Perempuan
+                                    </option>
+                                </select>
+                                @error('jenis_kelamin')
+                                    <div class="invalid-feedbabck">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+
+                            <div class="form-group">
                                 <label>Kelas</label>
-                                <select name="id_kelas" class="form-control form-input @error('id_kelas')is-invalid @enderror">
+                                <select name="id_kelas"
+                                    class="form-control form-input @error('id_kelas')is-invalid @enderror">
                                     <option value="">Pilih Kelas</option>
-                                    @foreach($dataKelas as $kelas)
-                                    <option value="{{ $kelas->id }}">{{ $kelas->nama_kelas }}</option>
+                                    @foreach ($dataKelas as $kelas)
+                                        <option value="{{ $kelas->id }}" {{ old('id_kelas') == $kelas->id ? 'selected' : '' }}>{{ $kelas->nama_kelas }}</option>
                                     @endforeach
                                 </select>
                                 @error('level')
@@ -110,7 +129,7 @@
                             </div>
                             <div class="form-group">
                                 <label>No Telp</label>
-                                <input type="number" name="no_telp"
+                                <input type="number" name="no_telp" id="no_telp" value="{{ old('no_telp') }}"
                                     class="form-control form-input @error('no_telp')is-invalid @enderror"
                                     placeholder="Masukkan No Telp Anda">
                                 @error('no_telp')

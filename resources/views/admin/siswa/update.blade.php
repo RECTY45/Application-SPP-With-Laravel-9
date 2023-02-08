@@ -8,7 +8,8 @@
                         <div class="col-md-12 ">
                             <span>
                                 <p class="h2">Kelola Data Siswa</p>
-                                <p class="font-weight-bold" style="line-height: 10px">Dashboard/Data Siswa/{{ $name }}</p>
+                                <p class="font-weight-bold" style="line-height: 10px">Dashboard/Data Siswa/{{ $name }}
+                                </p>
                             </span>
                         </div>
                     </div>
@@ -32,7 +33,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>NISN</label>
-                                <input value="{{ $item->nisn }}" type="text" name="nisn"
+                                <input value="{{ $item->nisn }}" type="text" name="nisn" id="nisn"
                                     class="form-control form-input @error('nisn')is-invalid  @enderror"
                                     placeholder="Masukkan Nisn Anda">
                                 @error('nisn')
@@ -43,7 +44,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Nama</label>
-                                <input value="{{ $item->nama }}" type="text" name="nama"
+                                <input value="{{ $item->nama }}" type="text" name="nama" id="nama"
                                     class="form-control form-input @error('nama')is-invalid @enderror"
                                     placeholder="Masukkan Nama Anda">
                                 @error('nama')
@@ -55,7 +56,7 @@
 
                             <div class="form-group">
                                 <label>Alamat</label>
-                                <input value="{{ $item->alamat }}" type="text" name="alamat"
+                                <input value="{{ $item->alamat }}" type="text" name="alamat" id="alamat"
                                     class="form-control form-input @error('alamat')is-invalid @enderror"
                                     placeholder="Masukkan Alamat Anda">
                                 @error('alamat')
@@ -69,16 +70,16 @@
 
                             <div class="form-group">
                                 <label>SPP</label>
-                                <select name="id_spp" class="form-control form-input @error('id_spp')is-invalid @enderror">
-                                    @if($item->spp->id)
-                                    <option selected value="{{ $item->spp->id }}">{{ $item->spp->nominal }}</option>
+                                <select name="id_spp" id="id_spp" class="form-control form-input @error('id_spp')is-invalid @enderror">
+                                    @if ($item->spp->id)
+                                        <option selected value="{{ $item->spp->id }}">{{ $item->spp->nominal }}</option>
                                     @endif
                                     <option value="">Nominal SPP</option>
-                                    @foreach($dataSpp as $spp)
-                                    @if (old('id_spp') == $spp->id)
-                                        <option selected value="{{ $spp->id }}">Rp. {{ $spp->nominal }}</option>
-                                    @endif
-                                    <option value="{{ $spp->id }}">Rp. {{ $spp->nominal }}</option>
+                                    @foreach ($dataSpp as $spp)
+                                        @if (old('id_spp') == $spp->id)
+                                            <option selected value="{{ $spp->id }}">Rp. {{ $spp->nominal }}</option>
+                                        @endif
+                                        <option value="{{ $spp->id }}">Rp. {{ $spp->nominal }}</option>
                                     @endforeach
                                 </select>
                                 @error('id_spp')
@@ -93,7 +94,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>NIS</label>
-                                <input value="{{ $item->nis }}" id="nis" type="nis" name="nis"
+                                <input value="{{ $item->nis }}" id="nis" type="nis" name="nis" id="nis"
                                     class="form-control form-input @error('nis')is-invalid @enderror"
                                     placeholder="Masukkan NIs Anda">
                                 @error('nis')
@@ -104,44 +105,61 @@
                             </div>
 
                             <div class="form-group">
-                                <label>Kelas</label>
-                                <select name="id_kelas" class="form-control form-input @error('id_kelas')is-invalid @enderror">
-                                   @if($item->kelas->id)
-                                   <option selected value="{{ $item->kelas->id }}">{{ $item->kelas->nama_kelas }}</option>
-                                   @endif
-                                    <option value="">Pilih Kelas</option>
-                                    @foreach($dataKelas as $kelas)
-                                    @if (old('id_kelas') == $kelas->id)
-                                        <option selected value="{{ $kelas->id }}">Rp. {{ $kelas->nama_kelas }}</option>
-                                    @endif
-                                    <option value="{{ $kelas->id }}">{{ $kelas->nama_kelas }}</option>
-                                    @endforeach
+                                <label>Jenis Kelamin</label>
+                                <select id="jenis_kelamin" name="jenis_kelamin" id="jenis_kelamin"
+                                    class="form-control form-input @error('jenis_kelamin')is-invalid @enderror">
+                                  @if($item->id)
+                                    <option value="{{ $item->id }}">{{ $item->jenis_kelamin == 'L' ? 'Laki-Laki' : 'Perempuan' }}</option>
+                                  @endif()
+                                    <option value="">Pilih Jenis Kelamin</option>
+                                    <option value="L" {{ old('jenis_kelamin') == 'L' ? 'selected' : '' }}>Laki-Laki
+                                    </option>
+                                    <option value="P" {{ old('jenis_kelamin') == 'P' ? 'selected' : '' }}>Perempuan
+                                    </option>
                                 </select>
-                                @error('level')
-                                    <div class="invalid-feedbabck">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label>No Telp</label>
-                                <input value="{{ $item->no_telp }}" type="number" name="no_telp"
-                                    class="form-control form-input @error('no_telp')is-invalid @enderror"
-                                    placeholder="Masukkan No Telp Anda">
-                                @error('no_telp')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
+
+                                <div class="form-group">
+                                    <label>Kelas</label>
+                                    <select name="id_kelas" id="kelas"
+                                        class="form-control form-input @error('id_kelas')is-invalid @enderror">
+                                        @if ($item->kelas->id)
+                                            <option selected value="{{ $item->kelas->id }}">{{ $item->kelas->nama_kelas }}
+                                            </option>
+                                        @endif
+                                        <option value="">Pilih Kelas</option>
+                                        @foreach ($dataKelas as $kelas)
+                                            @if (old('id_kelas') == $kelas->id)
+                                                <option selected value="{{ $kelas->id }}">Rp. {{ $kelas->nama_kelas }}
+                                                </option>
+                                            @endif
+                                            <option value="{{ $kelas->id }}">{{ $kelas->nama_kelas }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('level')
+                                        <div class="invalid-feedbabck">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label>No Telp</label>
+                                    <input value="{{ $item->no_telp }}" type="number" name="no_telp" id="no_telp"
+                                        class="form-control form-input @error('no_telp')is-invalid @enderror"
+                                        placeholder="Masukkan No Telp Anda">
+                                    @error('no_telp')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+
                             </div>
 
+                            <div class="form-group px-3">
+                                <button type="submit" class="btn btn-primary">Edit</button>
+                                <a href="{{ route('siswa.index') }}" class="btn btn-success">Batal</a>
+                            </div>
                         </div>
-
-                        <div class="form-group px-3">
-                            <button type="submit" class="btn btn-primary">Edit</button>
-                            <a href="{{ route('siswa.index') }}" class="btn btn-success">Batal</a>
-                        </div>
-                    </div>
                 </form>
             </div>
         </div>

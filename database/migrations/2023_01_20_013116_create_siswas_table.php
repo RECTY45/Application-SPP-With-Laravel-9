@@ -19,6 +19,7 @@ return new class extends Migration
             $table->char("nis",8)->unique();
             $table->string("nama",35);
             $table->foreignId("id_kelas");
+            $table->enum('jenis_kelamin',['L','P']);
             $table->text("alamat")->nullable();
             $table->string("no_telp")->nullable();
             $table->foreignId("id_spp");

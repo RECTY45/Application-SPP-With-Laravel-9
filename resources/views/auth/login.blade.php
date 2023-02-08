@@ -9,12 +9,13 @@
     <link href="https://fonts.googleapis.com/css?family=Quicksand:400,500,600,700&amp;display=swap" rel="stylesheet">
     <link href="{{ asset('assets/css/bootstraps.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/css/form-2.css') }}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{{ asset('assets/sweetalert2/animate.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/sweetalert2/sweetalert2.min.css') }}">
 </head>
 
 <body class="form"
     style="background-image: url({{ asset('assets/img/categories/background.jpg') }}); background-size: cover;">
-
-
+    @include('sweetalert::alert')
     <div class="form-container outer">
         <div class="form-form">
             <div class="form-form-wrap">
@@ -29,19 +30,6 @@
                         <form class="text-left" action="{{ @route('authenticated') }}" method="POST">
                             @csrf
                             <div class="form">
-
-                                @if (session()->has('success'))
-                                    <div class="alert-success p-3 rounded">
-                                        {{ session('success') }}
-                                    </div>
-                                @endif
-
-                                @if (session()->has('error'))
-                                    <div class="alert alert-danger alert-dismissible fade show mb-5 p-3" role="alert">
-                                        {{ session('error') }}
-                                    </div>
-                                @endif
-
                                 <div id="username-field" class="field-wrapper input">
                                     <label for="username" style="color: white;">USERNAME</label>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -101,6 +89,7 @@
         </div>
     </div>
 
+    <script src="{{ asset('assets/sweetalert2/sweetalert2.min.js') }}"></script>
     <script src="{{ asset('assets/js/jquery-3.1.1.min.js') }}"></script>
     <script src="{{ asset('assets/js/popper.min.js') }}"></script>
     <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-
+use Alert;
 class LoginController extends Controller
 {
     public function Login(){
@@ -22,7 +22,7 @@ class LoginController extends Controller
             $request->session()->regenerate();
             return redirect()->intended('/dashboard')->with('success', 'Login Berhasil');
          }
-
+         Alert::error('Gagal Login');
          return back()->with('error', 'Login Gagal !');
     }
 
