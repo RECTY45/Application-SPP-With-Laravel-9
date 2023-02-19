@@ -7,8 +7,8 @@
                     <div class="row mb-2">
                         <div class="col-md-12 ">
                             <span>
-                                <p class="h2">Kelola Data Kelas</p>
-                                <p class="font-weight-bold" style="line-height: 10px">Dashboard/{{ $name }}</p>
+                                <p class="md:h2 h4">Kelola Data Kelas</p>
+                                <p class="font-weight-bold small" style="line-height: 10px">{{ $name }}</p>
                             </span>
                         </div>
                     </div>
@@ -22,7 +22,7 @@
                 <div class="table-responsive">
                     <table class="table users-table-info dt-table-hover" id="dataTable">
                         <thead>
-                            <tr class="stat-cards-info__num id">
+                            <tr>
                                 <th>No</th>
                                 <th>Nama Kelas</th>
                                 <th>Kompetensi Keahlian</th>
@@ -38,14 +38,14 @@
                                     <td>
                                         <div class="form-control-icon d-flex">
                                             <button type="button" data-bs-toggle="modal" data-bs-target="#editData"
-                                                class="bg-success border-0 mb-3 px-2 py-1 rounded mx-1"><i
-                                                    class="icon edit"></i></button>
+                                                class="bg-success border-0 mb-3 px-2 py-1 rounded mr-1"><i
+                                                    class="icon edit mx-auto"></i></button>
 
                                             <form action="{{ @route('kelas.destroy', $item->id) }}" method="POST">
                                                 @method('delete')
                                                 @csrf
-                                                <button type="submit" class="border-0 bg-danger px-2 py-1 rounded mx-1"
-                                                    onclick="confirmDelete(event,this)"><i class="icon delete"></i></button>
+                                                <button type="submit" class="border-0 bg-danger px-2 py-1 rounded"
+                                                    onclick="confirmDelete(event,this)"><i class="icon delete mx-auto"></i></button>
                                             </form>
 
                                         </div>

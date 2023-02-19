@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,10 +9,13 @@
     <link rel="shortcut icon" href="{{ asset('assets/img/avatar/icon.jpg') }}" type="image/x-icon">
     <!-- Custom styles -->
     <link href="{{ asset('assets/css/bootstraps.css') }}" rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('assets/css/style.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/sweetalert2/animate.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/sweetalert2/sweetalert2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/jquery.dataTables.min.css') }}">
+    <script src="{{ asset('assets/js/jquery-3.6.0.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.dataTables.min.js') }}"></script>
 
     <title>E-SPP</title>
 </head>
@@ -33,31 +37,24 @@
         </div>
     </div>
 
-    <script src="{{ asset('assets/js/jquery-3.6.0.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery.dataTables.min.js') }}"></script>
 
     {{-- Modal --}}
     <script src="{{ asset('assets/js/popper.min.js') }}"></script>
-    <script src="{{ asset('assets/js/bootstrap.min.js')}}"></script>
+    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
     {{-- End Modal --}}
 
-  <!-- Chart library -->
-  <script src="{{ asset('assets/plugins/chart.min.js') }}"></script>
-  <!-- Icons library -->
-  <script src="{{ asset('assets/plugins/feather.min.js') }}"></script>
-  <!-- Custom scripts -->
-  <script src="{{ asset('assets/js/script.js') }}"></script>
-  <script src="{{ asset('assets/sweetalert2/sweetalert2.min.js') }}"></script>
-
-
-  <script>
-
-  </script>
+    <!-- Chart library -->
+    <script src="{{ asset('assets/plugins/chart.min.js') }}"></script>
+    <!-- Icons library -->
+    <script src="{{ asset('assets/plugins/feather.min.js') }}"></script>
+    <!-- Custom scripts -->
+    <script src="{{ asset('assets/js/script.js') }}"></script>
+    <script src="{{ asset('assets/sweetalert2/sweetalert2.min.js') }}"></script>
 
 </body>
 
 <script>
-     const swalWithBootstrapButtons = Swal.mixin({
+    const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
             confirmButton: 'btn btn-success',
             cancelButton: 'btn btn-danger'
@@ -87,15 +84,17 @@
             }
         })
     }
-
-    $('#dataTable').DataTable({ "oLanguage": {
-                "sSearchPlaceholder": "Silahkan Search...",
-                "sLengthMenu": "Results :  _MENU_",
-            },
-            "stripeClasses": [],
-            "lengthMenu": [1,5, 10, 20, 50],
-            "pageLength": 5
-        });
+    $('#dataTable').DataTable({
+        "oLanguage": {
+            "sSearchPlaceholder": "Silahkan Search...",
+            "sLengthMenu": "Results :  _MENU_",
+        },
+        "stripeClasses": [],
+        "lengthMenu": [5, 10, 20, 50],
+        "pageLength": 5
+    });
 </script>
+</script>
+@stack("script.js")
 
 </html>

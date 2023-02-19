@@ -7,22 +7,22 @@
                     <div class="row mb-2">
                         <div class="col-md-12 ">
                             <span>
-                                <p class="h2">Kelola Data SPP</p>
-                                <p class="font-weight-bold" style="line-height: 10px">Dashboard/{{ $name }}</p>
+                                <p class="md:h2 h4">Kelola Data SPP</p>
+                                <p class="font-weight-bold small" style="line-height: 10px">{{ $name }}</p>
                             </span>
                         </div>
                     </div>
                 </section>
             </div>
             <div class="d-flex justify-content-end">
-                <button data-bs-toggle="modal" data-bs-target="#tambahData" type="button" class="btn btn-primary">Tambah
+                <button data-bs-toggle="modal" data-bs-target="#tambahData" type="button" class="btn btn-primary ">Tambah
                     Data</button>
             </div>
             <div class="card-body white-block">
                 <div class="table-responsive">
                     <table class="table users-table-info dt-table-hover" id="dataTable">
                         <thead>
-                            <tr class="stat-cards-info__num id">
+                            <tr>
                                 <th>No</th>
                                 <th>Tahun</th>
                                 <th>Nominal</th>
@@ -39,14 +39,14 @@
                                         <div class="form-control-icon d-flex">
                                             <button type="button"
                                                 class="bg-success border-0 mb-3 px-2 py-1 rounded mx-1"><i
-                                                    data-bs-toggle="modal" data-bs-target="#editData" class="icon edit"></i>
+                                                    data-bs-toggle="modal" data-bs-target="#editData" class="icon edit mx-auto"></i>
                                             </button>
 
                                             <form action="{{ @route('spp.destroy', $item->id) }}" method="POST">
                                                 @method('delete')
                                                 @csrf
                                                 <button type="submit" class="border-0 bg-danger px-2 py-1 rounded mx-1"
-                                                    onclick="confirmDelete(event,this)"><i class="icon delete"></i></button>
+                                                    onclick="confirmDelete(event,this)"><i class="icon delete mx-auto"></i></button>
                                             </form>
                                         </div>
                                     </td>

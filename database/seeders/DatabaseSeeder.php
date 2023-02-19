@@ -61,7 +61,7 @@ class DatabaseSeeder extends Seeder
                 'alamat' => "Jl.Pajjaiang",
                 'no_telp' => '09328380',
                 'id_spp' => 2
-            ]
+            ],
             ];
 
     $pembayaran = [
@@ -69,7 +69,25 @@ class DatabaseSeeder extends Seeder
                     'id_petugas' => 1,
                     'nisn' => '1234567890',
                     'tgl_bayar' => "2022-08-02",
-                    'bulan_dibayar' => '08',
+                    'bulan_dibayar' => 'Agustus',
+                    'tahun_dibayar' => '2022',
+                    'id_spp' => 1,
+                    'jumlah_bayar' => 200000
+                    ],
+                    [
+                    'id_petugas' => 1,
+                    'nisn' => '1234567890',
+                    'tgl_bayar' => "2022-05-02",
+                    'bulan_dibayar' => 'Mei',
+                    'tahun_dibayar' => '2022',
+                    'id_spp' => 1,
+                    'jumlah_bayar' => 200000
+                    ],
+                    [
+                    'id_petugas' => 1,
+                    'nisn' => '1234567890',
+                    'tgl_bayar' => "2022-09-02",
+                    'bulan_dibayar' => 'Februari',
                     'tahun_dibayar' => '2022',
                     'id_spp' => 1,
                     'jumlah_bayar' => 200000
@@ -78,49 +96,132 @@ class DatabaseSeeder extends Seeder
                     'id_petugas' => 2,
                     'nisn' => '123456440',
                     'tgl_bayar' => "2023-09-07",
-                    'bulan_dibayar' => '09',
+                    'bulan_dibayar' => 'Januari',
                     'tahun_dibayar' => '2023',
                     'id_spp' => 2,
                     'jumlah_bayar' => 300000
-                    ]
+                    ],
+                    [
+                    'id_petugas' => 2,
+                    'nisn' => '123456440',
+                    'tgl_bayar' => "2023-09-07",
+                    'bulan_dibayar' => 'Maret',
+                    'tahun_dibayar' => '2023',
+                    'id_spp' => 2,
+                    'jumlah_bayar' => 300000
+                    ],
+                    [
+                    'id_petugas' => 2,
+                    'nisn' => '123456440',
+                    'tgl_bayar' => "2023-09-07",
+                    'bulan_dibayar' => 'April',
+                    'tahun_dibayar' => '2023',
+                    'id_spp' => 2,
+                    'jumlah_bayar' => 300000
+                    ],
+                    [
+                    'id_petugas' => 2,
+                    'nisn' => '123456440',
+                    'tgl_bayar' => "2023-09-07",
+                    'bulan_dibayar' => 'November',
+                    'tahun_dibayar' => '2023',
+                    'id_spp' => 2,
+                    'jumlah_bayar' => 300000
+                    ],
 
            ];
 
-           $spps  = [
-                [
-                    'tahun' => '2022',
-                    'nominal' => 200000,
-                ],
-                [
-                    'tahun' => '2023',
-                    'nominal' => 300000,
-                ]
-           ];
+           $data_spp = [
+            [
+                "tahun" => 2019,
+                "nominal" => 170000,
+            ],
+            [
+                "tahun" => 2020,
+                "nominal" => 200000,
+            ],
+            [
+                "tahun" => 2021,
+                "nominal" => 250000,
+            ],
+            [
+                "tahun" => 2022,
+                "nominal" => 270000,
+            ],
+            [
+                "tahun" => 2023,
+                "nominal" => 300000,
+            ],
+        ];
 
 
-           $kelas = [
-                [
-                    'nama_kelas' => "RPL2",
-                    'kompetensi_keahlian' => "Teknik Informatika"
-                ],
-                [
-                    'nama_kelas' => "TKJ1",
-                    'kompetensi_keahlian' => "Teknik Komputer Dan Jaringan"
-                ]
-           ];
+
+        $data_kelas = [
+            [
+                "nama_kelas" => "3 RPL 2",
+                "kompetensi_keahlian" => "Rekayasa Prangkat Lunak",
+            ],
+            [
+                "nama_kelas" => "2 RPL 2",
+                "kompetensi_keahlian" => "Rekayasa Prangkat Lunak",
+            ],
+            [
+                "nama_kelas" => "1 RPL 2",
+                "kompetensi_keahlian" => "Rekayasa Prangkat Lunak",
+            ],
+            [
+                "nama_kelas" => "3 RPL 1",
+                "kompetensi_keahlian" => "Rekayasa Prangkat Lunak",
+            ],
+            [
+                "nama_kelas" => "2 RPL 1",
+                "kompetensi_keahlian" => "Rekayasa Prangkat Lunak",
+            ],
+            [
+                "nama_kelas" => "1 RPL 1",
+                "kompetensi_keahlian" => "Rekayasa Prangkat Lunak",
+            ],
+            [
+                "nama_kelas" => "3 TKJ 1",
+                "kompetensi_keahlian" => "Teknik Komputer Jaringan",
+            ],
+            [
+                "nama_kelas" => "2 TKJ 1",
+                "kompetensi_keahlian" => "Teknik Komputer Jaringan",
+            ],
+            [
+                "nama_kelas" => "1 TKJ 1",
+                "kompetensi_keahlian" => "Teknik Komputer Jaringan",
+            ],
+            [
+                "nama_kelas" => "3 MMD 1",
+                "kompetensi_keahlian" => "Multi Media",
+            ],
+            [
+                "nama_kelas" => "2 MMD 1",
+                "kompetensi_keahlian" => "Multi Media",
+            ],
+            [
+                "nama_kelas" => "1 MMD 1",
+                "kompetensi_keahlian" => "Multi Media",
+            ],
+        ];
+
 foreach ($petugas as $user) {
     User::create($user);
 }
 foreach ($siswas as $siswa) {
     Siswa::create($siswa);
 }
+Siswa::factory()->count(10)->create();
+User::factory()->count(10)->create();
 foreach ($pembayaran as $bayar) {
     Pembayaran::create($bayar);
 }
-foreach ($spps as $spp) {
+foreach ($data_spp as $spp) {
     Spp::create($spp);
 }
-foreach ($kelas as $kelas) {
+foreach ($data_kelas as $kelas) {
     Kelas::create($kelas);
 }
 

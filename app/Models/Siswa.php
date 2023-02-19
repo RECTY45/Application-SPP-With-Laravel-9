@@ -11,9 +11,7 @@ class Siswa extends Model
    protected $guarded = ['id'];
 
     public function kelas(){
-        return $this->belongsTo(Kelas::class,'id_kelas','id')->withDefault(function($kelas){
-            $kelas->nama_kelas = 'Tidak Ada';
-        });
+        return $this->belongsTo(Kelas::class,'id_kelas','id');
     }
 
     public function spp(){
@@ -22,6 +20,17 @@ class Siswa extends Model
 
     public function pembayaran(){
         return $this->hasMany(Pembayaran::class,'nisn','nisn');
+    }
+
+    // ! Membuat Triger Hapus Pada Siswa siswa->pembayaran
+
+    protected static function boot()
+    {
+        parent::boot();
+        static::deleting(function ($siswa)
+        {
+            $siswa->pembayaran()->delete();
+        });
     }
 
 }

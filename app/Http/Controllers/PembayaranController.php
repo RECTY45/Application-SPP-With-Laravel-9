@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 use Illuminate\Validation\Rule;
 use index;
+use Alert;
 use App\Models\Pembayaran;
 use App\Models\Siswa;
 use App\Models\User;
 use App\Models\Spp;
+use App\Models\Kelas;
 use Illuminate\Http\Request;
 
 
@@ -17,12 +19,36 @@ class PembayaranController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     public $month;
+
+     public function __construct()
+     {
+         $this->month = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+                 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+     }
+
+    public function transaksi()
+    {
+        $siswas = Siswa::orderBy("created_at", "desc")
+        ->orderBy("updated_at", "desc")
+        ->get();
+        return view('admin.Entry_pembayaran.transaksi',[
+                'title' => 'Pembayaran',
+                'name' => 'Transaksi Pembayaran',
+                'transaksi' => $siswas,
+                'dataMonth' => $this->month,
+        ]);
+    }
+
     public function index()
     {
-        $pembayaran = Pembayaran::all();
+        $pembayaran = Pembayaran::orderBy("created_at", "desc")
+        ->orderBy("updated_at", "desc")
+        ->get();
         return view('admin.Entry_pembayaran.index',[
             'title' => 'Pembayaran',
-            'name' => 'Data Pembayaran',
+            'name' => 'Kelola History Pembayaran',
             'items' => $pembayaran,
         ]);
     }
@@ -32,16 +58,21 @@ class PembayaranController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Siswa $siswa)
     {
-        $petugas = User::all();
+        $kelas = Kelas::all();
         $spp = Spp::all();
+        $bulan = Pembayaran::all();
 
         return view('admin.Entry_Pembayaran.create',[
             'title' => 'Pembayaran',
-            'name' => 'Create Data Pembayaran',
-            'dataPetugas' => $petugas,
+            'name' => 'Transaksi Pembayaran',
             'dataSpp' => $spp,
+            'level' => auth()->user(),
+            'pembayaran' => $bulan,
+            'kelas' => $kelas,
+            'siswa' => $siswa,
+            'dataMonth' => $this->month,
         ]);
     }
 
@@ -53,27 +84,45 @@ class PembayaranController extends Controller
      */
     public function store(Request $request)
     {
-        $idPetugas = User::pluck('id')->toArray();
-        $idSpp = Spp::pluck('id')->toArray();
+        $idPetugas = Pembayaran::pluck('id');
+        $idSpp = Spp::pluck('id');
 
         $validateData = $request->validate([
             'id_petugas' => ['required', Rule::in($idPetugas)],
-            'id_spp' => ['required',Rule::in($idSpp)],
-            'tgl_bayar' => ['required'],
-            'bulan_dibayar' => ['required'],
-            'tahun_dibayar' => ['required'],
+            'id_spp' => ['required', Rule::in($idSpp)],
+            'nisn' => ['required', 'max:10'],
+            'tgl_bayar' => ['required', 'date'],
+            'bulan_dibayar' => ['required', 'max:13', 'array'],
+            'tahun_dibayar' => ['required', 'max:4'],
             'jumlah_bayar' => ['required'],
-            'nisn' => ['required','max:10'],
         ]);
 
-        if($validateData){
-            $check = Pembayaran::create($validateData);
+        $existingPayments = Pembayaran::where('nisn', $validateData['nisn'])
+            ->whereIn('bulan_dibayar', $validateData['bulan_dibayar'])
+            ->get();
+
+        if ($existingPayments->isNotEmpty()) {
+         Alert::error('Cek bulan,bulan telah di bayar!');
+            return back();
         }
 
-        if($check){
-            return redirect(@route('pembayaran.index'))->with('success', 'Data Berhasil Di Tambah');
+        try {
+
+            foreach ($validateData['bulan_dibayar'] as $bulan) {
+                Pembayaran::create([
+                    'id_petugas' => $validateData['id_petugas'],
+                    'id_spp' => $validateData['id_spp'],
+                    'nisn' => $validateData['nisn'],
+                    'tgl_bayar' => $validateData['tgl_bayar'],
+                    'bulan_dibayar' => $bulan,
+                    'tahun_dibayar' => $validateData['tahun_dibayar'],
+                    'jumlah_bayar' => $validateData['jumlah_bayar'],
+                ]);
+            }
+            return redirect(route('pembayaran.transaksi'))->with('success', 'Data berhasil di tambah kan');
+        } catch (Exception $e) {
+            return back()->with('error', 'Data gagal di tambahkan');
         }
-        return back()->with('error', 'Data Gagal Di Tambah');
     }
 
     /**
@@ -95,13 +144,13 @@ class PembayaranController extends Controller
      */
     public function edit(Pembayaran $pembayaran)
     {
-        return view('admin.Entry_Pembayaran.update',[
-            'title' => 'Pembayaran',
-            'name' => 'Edit Data Pembayaran',
-            'item' => $pembayaran,
-            'dataPetugas' => User::all(),
-            'dataSpp' => Spp::all(),
-        ]);
+        // return view('admin.Entry_Pembayaran.update',[
+        //     'title' => 'Pembayaran',
+        //     'name' => 'Edit Data Pembayaran',
+        //     'item' => $pembayaran,
+        //     'dataPetugas' => User::all(),
+        //     'dataSpp' => Spp::all(),
+        // ]);
     }
 
     /**
@@ -113,28 +162,28 @@ class PembayaranController extends Controller
      */
     public function update(Request $request, Pembayaran $pembayaran)
     {
-        $idPetugas = User::pluck('id')->toArray();
-        $idSpp = Spp::pluck('id')->toArray();
+        // $idPetugas = User::pluck('id')->toArray();
+        // $idSpp = Spp::pluck('id')->toArray();
 
-        $validateData = $request->validate([
-            'id_petugas' => ['required', Rule::in($idPetugas)],
-            'id_spp' => ['required',Rule::in($idSpp)],
-            'tgl_bayar' => ['required'],
-            'bulan_dibayar' => ['required'],
-            'tahun_dibayar' => ['required'],
-            'jumlah_bayar' => ['required'],
-            'nisn' => ['required','max:10'],
+        // $validateData = $request->validate([
+        //     'id_petugas' => ['required', Rule::in($idPetugas)],
+        //     'id_spp' => ['required',Rule::in($idSpp)],
+        //     'tgl_bayar' => ['required'],
+        //     'bulan_dibayar' => ['required'],
+        //     'tahun_dibayar' => ['required'],
+        //     'jumlah_bayar' => ['required'],
+        //     'nisn' => ['required','max:10'],
 
-        ]);
+        // ]);
 
-        if($validateData){
-            $check = $pembayaran->update($validateData);
-        }
+        // if($validateData){
+        //     $check = $pembayaran->update($validateData);
+        // }
 
-        if($check){
-            return redirect(@route('pembayaran.index'))->with('success', 'Data Berhasil Di Edit');
-        }
-        return back()->with('error', 'Data Gagal Di Edit');
+        // if($check){
+        //     return redirect(@route('pembayaran.index'))->with('success', 'Data Berhasil Di Edit');
+        // }
+        // return back()->with('error', 'Data Gagal Di Edit');
     }
 
     /**

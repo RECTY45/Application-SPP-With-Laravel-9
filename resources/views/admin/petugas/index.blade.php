@@ -7,8 +7,8 @@
                     <div class="row mb-2">
                         <div class="col-md-12 ">
                             <span>
-                                <p class="h2">Kelola Data Petugas</p>
-                                <p class="font-weight-bold" style="line-height: 10px">Dashboard/{{ $name }}</p>
+                                <p class="md:h2 h4">Kelola Data Petugas</p>
+                                <p class="font-weight-bold small" style="line-height: 10px">{{ $name }}</p>
                             </span>
                         </div>
                     </div>
@@ -18,20 +18,10 @@
                 </div>
             </div>
             <div class="card-body white-block">
-                @if (session()->has('success'))
-                    <div class="alert-success p-3 rounded">
-                        {{ session('success') }}
-                    </div>
-                @endif
-                @if (session()->has('error'))
-                    <div class="alert-success p-3 rounded">
-                        {{ session('error') }}
-                    </div>
-                @endif
                 <div class="table-responsive">
                     <table class="table users-table-info dt-table-hover" id="dataTable">
                         <thead>
-                            <tr class="stat-cards-info__num id">
+                            <tr>
                                 <th>No</th>
                                 <th>Nama Petugas</th>
                                 <th>Username</th>

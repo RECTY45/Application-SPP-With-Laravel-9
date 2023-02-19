@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId("id_petugas");
             $table->string("nisn",10)->nullable();
             $table->date("tgl_bayar");
-            $table->string("bulan_dibayar",8)->nullable();
+            $table->string("bulan_dibayar",50)->nullable();
             $table->string("tahun_dibayar",4)->nullable();
             $table->foreignId("id_spp");
             $table->integer("jumlah_bayar")->nullable();

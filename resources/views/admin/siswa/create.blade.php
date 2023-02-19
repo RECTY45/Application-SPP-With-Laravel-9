@@ -7,8 +7,8 @@
                     <div class="row mb-2">
                         <div class="col-md-12 ">
                             <span>
-                                <p class="h2">Kelola Data Siswa</p>
-                                <p class="font-weight-bold" style="line-height: 10px">Dashboard/Data Siswa/{{ $name }}
+                                <p class="md:h2 h4">Kelola Data Siswa</p>
+                                <p class="font-weight-bold small" style="line-height: 10px">Data Siswa/{{ $name }}
                                 </p>
                             </span>
                         </div>
@@ -129,7 +129,7 @@
                             </div>
                             <div class="form-group">
                                 <label>No Telp</label>
-                                <input type="number" name="no_telp" id="no_telp" value="{{ old('no_telp') }}"
+                                <input type="text" name="no_telp" id="no_telp" value="{{ old('no_telp') }}"
                                     class="form-control form-input @error('no_telp')is-invalid @enderror"
                                     placeholder="Masukkan No Telp Anda">
                                 @error('no_telp')
@@ -141,7 +141,7 @@
 
                         </div>
 
-                        <div class="form-group px-3">
+                        <div class="form-group mr-1">
                             <button type="submit" class="btn btn-primary">Tambah</button>
                             <a href="{{ route('siswa.index') }}" class="btn btn-success">Batal</a>
                         </div>

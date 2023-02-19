@@ -14,7 +14,9 @@ class SppController extends Controller
      */
     public function index()
     {
-        $spps = Spp::all();
+        $spps = Spp::orderBy("created_at", "desc")
+        ->orderBy("updated_at", "desc")
+        ->get();
         return view('admin.spp.index',[
             'title' => "SPP",
             'name' => 'Data SPP',

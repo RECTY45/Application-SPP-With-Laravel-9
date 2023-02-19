@@ -16,7 +16,9 @@ class SiswaController extends Controller
      */
     public function index()
     {
-        $siswas = Siswa::all();
+        $siswas = Siswa::orderBy("created_at", "desc")
+        ->orderBy("updated_at", "desc")
+        ->get();
         return view('admin.siswa.index',[
             'title' => 'Siswa',
             'name' => 'Data Siswa',
@@ -112,7 +114,7 @@ class SiswaController extends Controller
     public function update(Request $request, Siswa $siswa)
     {
         $idkelas = Kelas::pluck('id')->toArray();
-        $idSpp = Kelas::pluck('id')->toArray();
+        $idSpp = Spp::pluck('id')->toArray();
 
         $validateData = $request->validate([
             'nisn' => ['required', 'max:10' ],

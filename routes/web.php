@@ -96,14 +96,11 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'isAdmin'],function() {
     // PAGE PEMBAYARAN ADMIN
     // RECORD
     Route::get('data-pembayaran',[PembayaranController::class, 'index'])->name('pembayaran.index');
+    Route::get('data-transaksi',[PembayaranController::class, 'transaksi'])->name('pembayaran.transaksi');
     // CREATE
-    Route::get('data-pembayaran/create',[PembayaranController::class, 'create'])->name('pembayaran.create');
+    Route::get('data-pembayaran/{siswa:nisn}/create',[PembayaranController::class, 'create'])->name('pembayaran.create');
     // STORE
     Route::post('data-pembayaran/create',[PembayaranController::class, 'store'])->name('pembayaran.store');
-    // EDIT
-    Route::get('data-pembayaran/{pembayaran:id}/edit',[PembayaranController::class, 'edit'])->name('pembayaran.edit');
-    // UPDATE
-    Route::put('data-pembayaran/{pembayaran:id}',[PembayaranController::class,'update'])->name('pembayaran.update');
     // DELETE
     Route::delete('data-pembayaran/{pembayaran:id}',[PembayaranController::class,'destroy'])->name('pembayaran.destroy');
 
@@ -114,14 +111,11 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'isAdmin'],function() {
     // PAGE PEMBAYARAN PETUGAS
     // RECORD
     Route::get('data-pembayaran',[PembayaranController::class, 'index'])->name('pembayaran.index');
+    Route::get('data-transaksi',[PembayaranController::class, 'transaksi'])->name('pembayaran.transaksi');
     // CREATE
-    Route::get('data-pembayaran/create',[PembayaranController::class, 'create'])->name('pembayaran.create');
+    Route::get('data-pembayaran/{siswa:nisn}/create',[PembayaranController::class, 'create'])->name('pembayaran.create');
     // STORE
-    Route::post('data-pembayaran/create',[PembayaranController::class, 'store'])->name('pembayaran.store');
-    // EDIT
-    Route::get('data-pembayaran/{pembayaran:id}/edit',[PembayaranController::class, 'edit'])->name('pembayaran.edit');
-    // UPDATE
-    Route::put('data-pembayaran/{pembayaran:id}',[PembayaranController::class,'update'])->name('pembayaran.update');
+    Route::post('data-pembayaran/store',[PembayaranController::class, 'store'])->name('pembayaran.store');
     // DELETE
     Route::delete('data-pembayaran/{pembayaran:id}',[PembayaranController::class,'destroy'])->name('pembayaran.destroy');
 });

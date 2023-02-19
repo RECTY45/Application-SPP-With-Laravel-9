@@ -12,7 +12,9 @@ class PetugasController extends Controller
      */
     public function index()
     {
-        $petugas = User::all();
+        $petugas = User::orderBy("created_at", "desc")
+        ->orderBy("updated_at","desc")
+        ->get();
         return view('admin.petugas.index',[
             'title' => 'Petugas',
             'name'  => 'Data Petugas',

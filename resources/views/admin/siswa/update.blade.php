@@ -7,8 +7,8 @@
                     <div class="row mb-2">
                         <div class="col-md-12 ">
                             <span>
-                                <p class="h2">Kelola Data Siswa</p>
-                                <p class="font-weight-bold" style="line-height: 10px">Dashboard/Data Siswa/{{ $name }}
+                                <p class="md:h2 h4">Kelola Data Siswa</p>
+                                <p class="font-weight-bold small" style="line-height: 10px">Data Siswa/{{ $name }}
                                 </p>
                             </span>
                         </div>
@@ -70,15 +70,12 @@
 
                             <div class="form-group">
                                 <label>SPP</label>
-                                <select name="id_spp" id="id_spp" class="form-control form-input @error('id_spp')is-invalid @enderror">
+                                <select value="{{ $item->spp->id }}" name="id_spp" id="id_spp" class="form-control form-input @error('id_spp')is-invalid @enderror">
                                     @if ($item->spp->id)
-                                        <option selected value="{{ $item->spp->id }}">{{ $item->spp->nominal }}</option>
+                                        <option selected  value="{{ $item->spp->id }}">Rp. {{ $item->spp->nominal }}</option>
                                     @endif
-                                    <option value="">Nominal SPP</option>
                                     @foreach ($dataSpp as $spp)
-                                        @if (old('id_spp') == $spp->id)
-                                            <option selected value="{{ $spp->id }}">Rp. {{ $spp->nominal }}</option>
-                                        @endif
+                                    <option value="">Pilih Data Spp</option>
                                         <option value="{{ $spp->id }}">Rp. {{ $spp->nominal }}</option>
                                     @endforeach
                                 </select>
@@ -129,7 +126,7 @@
                                         <option value="">Pilih Kelas</option>
                                         @foreach ($dataKelas as $kelas)
                                             @if (old('id_kelas') == $kelas->id)
-                                                <option selected value="{{ $kelas->id }}">Rp. {{ $kelas->nama_kelas }}
+                                                <option selected value="{{ $kelas->id }}">{{ $kelas->nama_kelas }}
                                                 </option>
                                             @endif
                                             <option value="{{ $kelas->id }}">{{ $kelas->nama_kelas }}</option>
@@ -143,7 +140,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>No Telp</label>
-                                    <input value="{{ $item->no_telp }}" type="number" name="no_telp" id="no_telp"
+                                    <input value="{{ $item->no_telp }}" type="text" name="no_telp" id="no_telp"
                                         class="form-control form-input @error('no_telp')is-invalid @enderror"
                                         placeholder="Masukkan No Telp Anda">
                                     @error('no_telp')

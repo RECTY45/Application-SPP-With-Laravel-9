@@ -7,21 +7,21 @@
                     <div class="row mb-2">
                         <div class="col-md-12 ">
                             <span>
-                                <p class="h2">Kelola Entri Pembayaran</p>
-                                <p class="font-weight-bold" style="line-height: 10px">Dashboard/{{ $name }}</p>
+                                <p class="md:h2 h4">History Pembayaran</p>
+                                <p class="font-weight-bold small my-1" style="line-height: 10px"> {{ $name }}</p>
                             </span>
                         </div>
                     </div>
                 </section>
                 <div class="d-flex justify-content-end">
-                    <a href="{{ route('pembayaran.create') }}" class="btn btn-primary">Tambah Data</a>
+                    <a href="{{ route('pembayaran.transaksi') }}" class="btn btn-primary md:btn-md btn-sm md:fs-5 fs-6">Tambah Pembayaran +</a>
                 </div>
             </div>
             <div class="card-body white-block">
                 <div class="table-responsive">
                     <table class="table users-table-info" id="dataTable">
                         <thead>
-                            <tr class="stat-cards-info__num">
+                            <tr>
                                 <th>No</th>
                                 <th>Nama Petugas</th>
                                 <th>Nama Siswa</th>
@@ -29,8 +29,8 @@
                                 <th>Jenis Kelamin</th>
                                 <th>NISN</th>
                                 <th>Tanggal Bayar</th>
-                                <th>Bulan Di Bayar</th>
-                                <th>Tahun Di Bayar</th>
+                                <th>Bulan Bayar</th>
+                                <th>Tahun Bayar</th>
                                 <th>Nominal</th>
                                 <th>Jumlah Bayar</th>
                                 <th>Action</th>
@@ -40,26 +40,24 @@
                             @forelse($items as $item)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $item->petugas->nama_petugas}}</td>
-                                    <td>{{ $item->siswa->nama}}</td>
+                                    <td>{{ $item->petugas->nama_petugas }}</td>
+                                    <td>{{ $item->siswa->nama }}</td>
                                     <td>{{ $item->siswa->kelas->nama_kelas }}</td>
                                     <td>{{ $item->siswa->jenis_kelamin == 'L' ? 'Laki - Laki' : 'Perempuan' }}</td>
                                     <td>{{ $item->nisn }}</td>
                                     <td>{{ $item->tgl_bayar }}</td>
                                     <td>{{ $item->bulan_dibayar }}</td>
                                     <td>{{ $item->tahun_dibayar }}</td>
-                                    <td>{{ $item->spp->nominal}}</td>
-                                    <td>{{ $item->jumlah_bayar }}</td>
+                                    <td>Rp.{{ number_format($item->spp->nominal) }}</td>
+                                    <td>Rp.{{ number_format($item->jumlah_bayar) }}</td>
                                     <td>
                                         <div class="form-control-icon d-flex">
-                                            <a href="{{ route('pembayaran.edit', $item->id) }}" method="POST"
-                                                class="bg-success border-0 mb-3 px-2 py-1 rounded mx-1"><i
-                                                    class="icon edit"></i></a>
                                             <form action="{{ route('pembayaran.destroy', $item->id) }}" method="POST">
                                                 @method('delete')
                                                 @csrf
-                                                <button type="submit" class="border-0 bg-danger px-2 py-1 rounded mx-1"
-                                                    onclick="confirmDelete(event,this)"><i class="icon delete"></i></button>
+                                                <button type="submit" class="border-0 bg-danger px-2 py-1 rounded"
+                                                    onclick="confirmDelete(event,this)"><i
+                                                        class="icon delete mx-auto"></i></button>
                                             </form>
                                         </div>
                                     </td>

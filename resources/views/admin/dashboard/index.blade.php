@@ -5,8 +5,8 @@
     <div class="row stat-cards">
       <div class="col-md-6 col-xl-3">
         <article class="stat-cards-item">
-          <div class="stat-cards-icon" style="background-color: rgba(74, 132, 240, 0.758)">
-            <i class="icon user-3 " aria-hidden="true"></i>
+          <div class="sidebar-user-img bg-primary" style="text-align: justify" >
+            <i class="icon user-3 py-4 mx-auto" aria-hidden="true"></i>
           </div>
           <div class="stat-cards-info">
             <p class="stat-cards-info__num">{{ $petugas }}</p>
@@ -16,8 +16,8 @@
       </div>
       <div class="col-md-6 col-xl-3">
         <article class="stat-cards-item">
-          <div class="stat-cards-icon" style="background-color: rgba(74, 132, 240, 0.758)">
-            <i class=" icon radio" aria-hidden="true"></i>
+          <div class="sidebar-user-img bg-primary">
+            <i class=" icon user-2 py-4  mx-auto" aria-hidden="true"></i>
           </div>
           <div class="stat-cards-info">
             <p class="stat-cards-info__num">{{ $siswa }}</p>
@@ -27,8 +27,8 @@
       </div>
       <div class="col-md-6 col-xl-3">
         <article class="stat-cards-item">
-          <div class="stat-cards-icon" style="background-color: rgba(74, 132, 240, 0.758)">
-            <i class="icon home" aria-hidden="true"></i>
+          <div class="sidebar-user-img bg-primary " >
+            <i class="icon home py-4  mx-auto" aria-hidden="true"></i>
           </div>
           <div class="stat-cards-info">
             <p class="stat-cards-info__num">{{ $kelas }}</p>
@@ -38,8 +38,8 @@
       </div>
       <div class="col-md-6 col-xl-3">
         <article class="stat-cards-item">
-          <div class="stat-cards-icon" style="background-color: rgba(74, 132, 240, 0.758)">
-            <i class="icon money" aria-hidden="true"></i>
+          <div class="sidebar-user-img bg-primary" >
+            <i class="icon money py-4  mx-auto" aria-hidden="true"></i>
           </div>
           <div class="stat-cards-info">
             <p class="stat-cards-info__num">{{ $spp }}</p>

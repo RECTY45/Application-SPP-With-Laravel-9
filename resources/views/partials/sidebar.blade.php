@@ -33,7 +33,7 @@
                         </span>
                         <li>
                             <a class="{{ request()->routeIs('siswa.index','siswa.create','siswa.edit') ? 'active' : '' }}"
-                                href="{{ route('siswa.index') }}"><span class="icon radio "
+                                href="{{ route('siswa.index') }}"><span class="icon user-2 "
                                     aria-hidden="true"></span>Kelola Data Siswa</a>
                         </li>
                         <li>

@@ -7,8 +7,8 @@
                     <div class="row mb-2">
                         <div class="col-md-12 ">
                             <span>
-                                <p class="h2">Kelola Data Petugas</p>
-                                <p class="font-weight-bold" style="line-height: 10px">Dashboard/Data
+                                <p class="md:h2 h4">Kelola Data Petugas</p>
+                                <p class="font-weight-bold small" style="line-height: 10px">Data
                                     Petugas/{{ $name }}</p>
                             </span>
                         </div>
