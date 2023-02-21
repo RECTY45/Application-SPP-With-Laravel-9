@@ -78,11 +78,7 @@ class KelasController extends Controller
      */
     public function edit(Kelas $kelas)
     {
-        return view('admin.kelas.update',[
-            'title' => 'Kelas',
-            'name' => 'Edit Data Kelas',
-            'item' => $kelas
-        ]);
+        return response()->json($kelas);
     }
 
     /**

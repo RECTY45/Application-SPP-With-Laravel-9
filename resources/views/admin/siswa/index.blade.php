@@ -7,15 +7,14 @@
                     <div class="row mb-2">
                         <div class="col-md-12 ">
                             <span>
-                                <p class="md:h2 h4">Kelola Data Siswa</p>
-                                <p class="font-weight-bold small" style="line-height: 10px">{{ $name }}</p>
+                                <a href="{{ route('siswa.create') }}" class="btn btn-primary md:btn-lg btn-sm  float-right">Tambah Data+</a>
+                                <p class="md:h2 h4">Kelola Data Siswa
+                                    <p class="font-weight-bold small" style="line-height: 10px">{{ $name }}</p>
+                                </p>
                             </span>
                         </div>
                     </div>
                 </section>
-                <div class="d-flex justify-content-end">
-                    <a href="{{ route('siswa.create') }}" class="btn btn-primary">Tambah Data+</a>
-                </div>
             </div>
             <div class="card-body white-block">
                 <div class="table-responsive">

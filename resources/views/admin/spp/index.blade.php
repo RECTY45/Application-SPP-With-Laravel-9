@@ -7,17 +7,16 @@
                     <div class="row mb-2">
                         <div class="col-md-12 ">
                             <span>
+                                <button data-bs-toggle="modal" data-bs-target="#tambahData" type="button"
+                                    class="btn btn-primary md:btn-lg btn-sm  float-right">Tambah
+                                    Data</button>
                                 <p class="md:h2 h4">Kelola Data SPP</p>
                                 <p class="font-weight-bold small" style="line-height: 10px">{{ $name }}</p>
                             </span>
                         </div>
                     </div>
-                </section>
             </div>
-            <div class="d-flex justify-content-end">
-                <button data-bs-toggle="modal" data-bs-target="#tambahData" type="button" class="btn btn-primary ">Tambah
-                    Data</button>
-            </div>
+            </section>
             <div class="card-body white-block">
                 <div class="table-responsive">
                     <table class="table users-table-info dt-table-hover" id="dataTable">
@@ -38,15 +37,17 @@
                                     <td>
                                         <div class="form-control-icon d-flex">
                                             <button type="button"
-                                                class="bg-success border-0 mb-3 px-2 py-1 rounded mx-1"><i
-                                                    data-bs-toggle="modal" data-bs-target="#editData" class="icon edit mx-auto"></i>
+                                                class="editBtn bg-success border-0 mb-3 px-2 py-1 rounded mx-1"
+                                                data-id="{{ $item->id }}"><i data-bs-toggle="modal"
+                                                    data-bs-target="#editData" class="icon edit mx-auto"></i>
                                             </button>
 
                                             <form action="{{ @route('spp.destroy', $item->id) }}" method="POST">
                                                 @method('delete')
                                                 @csrf
                                                 <button type="submit" class="border-0 bg-danger px-2 py-1 rounded mx-1"
-                                                    onclick="confirmDelete(event,this)"><i class="icon delete mx-auto"></i></button>
+                                                    onclick="confirmDelete(event,this)"><i
+                                                        class="icon delete mx-auto"></i></button>
                                             </form>
                                         </div>
                                     </td>
@@ -82,7 +83,12 @@
     <!-- Modal -->
     <div class="modal fade" id="editData" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog ">
-            <div class="modal-content ">
+            <div class="d-flex justify-content-center">
+                <div class="badge bg-warning text-white py-3 px-2" id="loading">
+                    <p class="text-white">LOADING...</p>
+                </div>
+            </div>
+            <div class="modal-content" id="modal-dialog">
                 <div class="modal-header">
                     <h5 class="modal-title fs-5" id="exampleModalLabel">Edit Data SPP</h5>
                     <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true"><svg
@@ -100,3 +106,26 @@
         </div>
     </div>
 @endsection
+@push('script')
+    <script>
+        $(document).ready(function() {
+            $('.editBtn').click(function() {
+                let ID = $(this).data('id');
+                $("#modal-dialog").hide();
+                $("#loading").show();
+                $.ajax({
+                    url: `data-spp/${ID}/edit`,
+                    method: 'GET',
+                    success: (res) => {
+                        $("#modal-dialog").show();
+                        $("#loading").hide();
+
+                        $('#edit_tahun').val(res.tahun);
+                        $('#edit_nominal').val(res.nominal);
+                        $('#editForm').attr('action', `/dashboard/data-spp/${ID}`)
+                    }
+                });
+            });
+        })
+    </script>
+@endpush

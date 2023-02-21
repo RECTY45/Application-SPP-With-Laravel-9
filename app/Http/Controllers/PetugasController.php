@@ -81,10 +81,7 @@ class PetugasController extends Controller
      */
     public function edit(User $petugas)
     {
-        return view('admin.petugas.update',[
-            'title' => 'Petugas',
-            'item'=> $petugas,
-        ]);
+        return response()->json($petugas);
     }
 
     /**

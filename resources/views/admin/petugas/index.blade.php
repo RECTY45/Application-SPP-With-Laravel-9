@@ -7,15 +7,14 @@
                     <div class="row mb-2">
                         <div class="col-md-12 ">
                             <span>
+                                <a href="{{ route('petugas.create') }}"
+                                    class="btn btn-primary md:btn-lg btn-sm  float-right">Tambah Data</a>
                                 <p class="md:h2 h4">Kelola Data Petugas</p>
                                 <p class="font-weight-bold small" style="line-height: 10px">{{ $name }}</p>
                             </span>
                         </div>
                     </div>
                 </section>
-                <div class="d-flex justify-content-end">
-                    <a href="{{ route('petugas.create') }}" class="btn btn-primary">Tambah Data</a>
-                </div>
             </div>
             <div class="card-body white-block">
                 <div class="table-responsive">
@@ -42,8 +41,10 @@
                                     </td>
                                     <td>
                                         <div class="form-control-icon d-flex">
-                                            <button type="submit" class="bg-success border-0 mb-3 px-2 py-1 rounded mx-1"
-                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            <button type="submit"
+                                                class="editBtn bg-success border-0 mb-3 px-2 py-1 rounded mx-1"
+                                                data-id="{{ $item->id }}" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal">
                                                 <i class="icon edit"></i></button>
 
                                             <form action="{{ @route('petugas.destroy', $item->id) }}" method="POST">
@@ -68,7 +69,12 @@
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog ">
-            <div class="modal-content ">
+            <div class="d-flex justify-content-center">
+                <div class="badge bg-warning text-white py-3 px-2" id="loading">
+                    <p class="text-white">LOADING...</p>
+                </div>
+            </div>
+            <div class="modal-content " id="modal_dialog">
                 <div class="modal-header">
                     <h5 class="modal-title fs-5" id="exampleModalLabel">Edit Data Petugas</h5>
                     <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true"><svg
@@ -87,3 +93,27 @@
     </div>
     </div>
 @endsection
+
+@push('script')
+    <script>
+        $(document).ready(function() {
+            $(".editBtn").click(function() {
+                let ID = $(this).data("id");
+                $('#modal_dialog').hide();
+                $('#loading').show();
+                $.ajax({
+                    url: `data-petugas/${ID}/edit`,
+                    method: 'GET',
+                    success: (res) => {
+                        $('#modal_dialog').show();
+                        $('#loading').hide();
+                        $('#edit_nama_petugas').val(res.nama_petugas);
+                        $('#edit_username').val(res.username);
+                        $('#edit_level').val(res.level);
+                        $('#formEdit').attr('action', `/dashboard/data-petugas/${ID}`);
+                    }
+                });
+            })
+        });
+    </script>
+@endpush

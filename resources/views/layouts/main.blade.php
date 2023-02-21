@@ -39,7 +39,6 @@
 
 
     {{-- Modal --}}
-    <script src="{{ asset('assets/js/popper.min.js') }}"></script>
     <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
     {{-- End Modal --}}
 
@@ -94,7 +93,6 @@
         "pageLength": 5
     });
 </script>
-</script>
-@stack("script.js")
+@stack("script")
 
 </html>

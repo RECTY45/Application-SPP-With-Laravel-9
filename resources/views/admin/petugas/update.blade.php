@@ -1,19 +1,19 @@
-<form action="{{ @route('petugas.update', $item->id) }}" method="POST">
+<form method="POST" id="formEdit">
     @csrf
     @method('PUT')
     <div class="form-group">
         <label>Nama Petugas</label>
-        <input value="{{ old('nama_petugas', $item->nama_petugas) }}" type="text" name="nama_petugas"
+        <input value="{{ old('nama_petugas', $item->nama_petugas) }}" type="text" name="nama_petugas" id="edit_nama_petugas"
             class="form-control form-input" placeholder="Masukkan Nama Petugas Anda">
     </div>
     <div class="form-group">
         <label>Username</label>
-        <input value="{{ old('username', $item->username) }}" type="text" name="username"
+        <input value="{{ old('username', $item->username) }}" type="text" name="username" id="edit_username"
             class="form-control form-input" placeholder="Masukkan Username Anda">
     </div>
     <div class="form-group">
         <label>Level</label>
-        <select value="{{ $item->level }}" name="level" class="form-control form-input">
+        <select value="{{ $item->level }}" name="level" id="edit_level" class="form-control form-input">
             @if ($item->level)
                 <option selected value="{{ $item->level }}">{{ $item->level }}</option>
             @endif

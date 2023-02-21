@@ -77,10 +77,7 @@ class SppController extends Controller
      */
     public function edit(Spp $spp)
     {
-        return view('admin.spp.update',[
-            'title' => 'Edit SPP',
-            'item' => $spp
-        ]);
+        return response()->json($spp);
     }
 
     /**

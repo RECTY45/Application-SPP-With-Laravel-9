@@ -1,9 +1,9 @@
-<form action="{{ @route('spp.update', $item->id) }}" method="POST">
+<form method="POST" id="editForm">
     @csrf
     @method('PUT')
     <div class="form-group">
         <label>Tahun SPP</label>
-        <input value="{{ $item->tahun }}" type="number" name="tahun"
+        <input value="{{ $item->tahun }}" type="number" name="tahun" id="edit_tahun"
             class="form-control @error('tahun')is-invalid  @enderror form-input" placeholder="Masukkan Nama Kelas Anda">
 
         @error('tahun')
@@ -14,7 +14,7 @@
     </div>
     <div class="form-group">
         <label>Nominal SPP</label>
-        <input value="{{ $item->nominal }}" type="number" name="nominal"
+        <input value="{{ $item->nominal }}" type="number" name="nominal" id="edit_nominal"
             class="form-control @error('nominal')is-invalid @enderror form-input"
             placeholder="Masukkan Nominal SPP Anda">
         @error('nominal')

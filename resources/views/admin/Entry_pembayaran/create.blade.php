@@ -8,7 +8,8 @@
                         <div class="col-md-12 ">
                             <span>
                                 <p class="md:h2 h4">Kelola Entri Pembayaran</p>
-                                <p class="font-weight-bold small" style="line-height: 10px">Kelola History Pembayaran/{{ $name }}</p>
+                                <p class="font-weight-bold small" style="line-height: 10px">Kelola History
+                                    Pembayaran/{{ $name }}</p>
                             </span>
                         </div>
                     </div>
@@ -41,7 +42,7 @@
                             <form action="{{ route('pembayaran.store') }}" method="POST">
                                 @csrf
                                 <label>*Pilih Bulanan :</label>
-                                <div class="form-group" style="color: black" >
+                                <div class="form-group" style="color: black">
                                     <select class="js-example-basic-multiple form-control"name="bulan_dibayar[]"
                                         multiple="multiple">
                                         @foreach ($dataMonth as $month)
@@ -65,9 +66,10 @@
                             </form>
                         </div>
 
-                        <div class="col-md-6">
-                            <p class="md:h6 fs-6">*Catatan : Jumlah pembayaran SPP sebesar</p>
-                            <h5 class="md:m-4 mr-1 my-3 fw-bold fs-4">Rp.{{ number_format($siswa->spp->nominal) }}</h5>
+                        <div class="col-md-6 ">
+                            <p class="md:h6 fs-6 ">*Catatan : Jumlah pembayaran SPP sebesar</p>
+                            <h5 class="md:m-4 mr-1 my-3 fw-bold fs-4 mb-4">Rp.{{ number_format($siswa->spp->nominal) }}
+                            </h5>
                             <div class="table-responsive">
                                 <table class="table users-table-info md:fs-5 fs-6 h6">
                                     <thead class="md:fs-5 fs-6">
@@ -108,7 +110,7 @@
         </div>
     @endsection
 
-    @push('script.js')
+    @push('script')
         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
         <script>
             $(document).ready(function() {

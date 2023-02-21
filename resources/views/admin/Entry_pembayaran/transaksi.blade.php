@@ -8,7 +8,7 @@
                         <div class="col-md-12 ">
                             <span>
                                 <p class="md:h2 h4">Kelola Data Transaksi</p>
-                                <p class="font-weight-bold small" style="line-height: 10px">Kelola History Pembayaran/{{ $name }}</p>
+                                <p class="font-weight-bold small" style="line-height: 10px">Kelola History <Pembayaran>{{ $name }}</p>
                             </span>
                         </div>
                     </div>
