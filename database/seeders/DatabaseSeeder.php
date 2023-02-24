@@ -66,64 +66,10 @@ class DatabaseSeeder extends Seeder
 
     $pembayaran = [
                     [
-                    'id_petugas' => 1,
-                    'nisn' => '1234567890',
-                    'tgl_bayar' => "2022-08-02",
-                    'bulan_dibayar' => 'Agustus',
-                    'tahun_dibayar' => '2022',
-                    'id_spp' => 1,
-                    'jumlah_bayar' => 200000
-                    ],
-                    [
-                    'id_petugas' => 1,
-                    'nisn' => '1234567890',
-                    'tgl_bayar' => "2022-05-02",
-                    'bulan_dibayar' => 'Mei',
-                    'tahun_dibayar' => '2022',
-                    'id_spp' => 1,
-                    'jumlah_bayar' => 200000
-                    ],
-                    [
-                    'id_petugas' => 1,
-                    'nisn' => '1234567890',
-                    'tgl_bayar' => "2022-09-02",
-                    'bulan_dibayar' => 'Februari',
-                    'tahun_dibayar' => '2022',
-                    'id_spp' => 1,
-                    'jumlah_bayar' => 200000
-                    ],
-                    [
                     'id_petugas' => 2,
                     'nisn' => '123456440',
                     'tgl_bayar' => "2023-09-07",
-                    'bulan_dibayar' => 'Januari',
-                    'tahun_dibayar' => '2023',
-                    'id_spp' => 2,
-                    'jumlah_bayar' => 300000
-                    ],
-                    [
-                    'id_petugas' => 2,
-                    'nisn' => '123456440',
-                    'tgl_bayar' => "2023-09-07",
-                    'bulan_dibayar' => 'Maret',
-                    'tahun_dibayar' => '2023',
-                    'id_spp' => 2,
-                    'jumlah_bayar' => 300000
-                    ],
-                    [
-                    'id_petugas' => 2,
-                    'nisn' => '123456440',
-                    'tgl_bayar' => "2023-09-07",
-                    'bulan_dibayar' => 'April',
-                    'tahun_dibayar' => '2023',
-                    'id_spp' => 2,
-                    'jumlah_bayar' => 300000
-                    ],
-                    [
-                    'id_petugas' => 2,
-                    'nisn' => '123456440',
-                    'tgl_bayar' => "2023-09-07",
-                    'bulan_dibayar' => 'November',
+                    'bulan_dibayar' => '',
                     'tahun_dibayar' => '2023',
                     'id_spp' => 2,
                     'jumlah_bayar' => 300000

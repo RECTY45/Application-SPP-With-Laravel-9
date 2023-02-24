@@ -43,17 +43,23 @@
                                 @csrf
                                 <label>*Pilih Bulanan :</label>
                                 <div class="form-group" style="color: black">
-                                    <select class="js-example-basic-multiple form-control"name="bulan_dibayar[]"
-                                        multiple="multiple">
+                                    <select
+                                        class="select2 form-control @error('bulan_dibayar')is-invalid
+                                        @enderror"
+                                        name="bulan_dibayar[]" multiple="multiple">
                                         @foreach ($dataMonth as $month)
                                             <option value="{{ $month }}">{{ $month }}</option>
                                         @endforeach
                                     </select>
+                                    @error('bulan_dibayar')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
                                 <input type="hidden" name="id_petugas" value="{{ $level->id }}">
                                 <input type="hidden" name="id_spp" value="{{ $siswa->spp->id }}" readonly>
                                 <input type="hidden" name="tgl_bayar" value="{{ date('Y-m-d') }}" readonly>
-
                                 <input type="hidden" name="tahun_dibayar" value="{{ $siswa->spp->tahun }}" readonly>
                                 <input type="hidden" name="jumlah_bayar" value="{{ $siswa->spp->nominal }}" readonly>
                                 <input type="hidden" name="nisn" value="{{ $siswa->nisn }}" readonly>
@@ -62,7 +68,6 @@
                                     <a href="{{ route('pembayaran.transaksi') }}"
                                         class="btn btn-primary xl:btn-lg md:btn-lg btn-sm">Batal</a>
                                 </div>
-
                             </form>
                         </div>
 
@@ -111,10 +116,10 @@
     @endsection
 
     @push('script')
-        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+        <script src="{{ asset('assets/js/select2.min.js') }}"></script>
         <script>
             $(document).ready(function() {
-                $('.js-example-basic-multiple').select2();
+                $('.select2').select2();
             });
         </script>
     @endpush

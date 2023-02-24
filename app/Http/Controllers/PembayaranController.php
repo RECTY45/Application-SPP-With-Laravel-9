@@ -9,8 +9,10 @@ use App\Models\Siswa;
 use App\Models\User;
 use App\Models\Spp;
 use App\Models\Kelas;
+use App\Models\Kwitansi;
+use App\Helpers\RECTY;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
-
 
 class PembayaranController extends Controller
 {
@@ -28,6 +30,24 @@ class PembayaranController extends Controller
                  'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
      }
 
+     public function kwitansi(Kwitansi $kwitansi)
+     {
+         $nominal = $kwitansi->siswa->spp->nominal;
+         $total_bulan = count($kwitansi->siswa->pembayaran);
+         $total =  $nominal * $total_bulan;
+         $terbilang_result = RECTY::toTerbilang($total);
+         $format_tanggal = Carbon::parse($kwitansi->tanggal)->format('d/m/Y');
+         return view('admin.kwitansi_pembayaran.index', [
+             'petugas' => auth()->user(),
+             'siswa' => $kwitansi->siswa,
+             'pembayaran' => $total,
+             'terbilang' => $terbilang_result,
+             'kwitansi' => $kwitansi,
+             'tanggal' => $format_tanggal,
+             'kelas' => $kwitansi->siswa->kelas,
+         ]);
+     }
+
     public function transaksi()
     {
         $siswas = Siswa::orderBy("created_at", "desc")
@@ -43,13 +63,13 @@ class PembayaranController extends Controller
 
     public function index()
     {
-        $pembayaran = Pembayaran::orderBy("created_at", "desc")
+        $items = Kwitansi::orderBy("created_at", "desc")
         ->orderBy("updated_at", "desc")
         ->get();
         return view('admin.Entry_pembayaran.index',[
             'title' => 'Pembayaran',
             'name' => 'Kelola History Pembayaran',
-            'items' => $pembayaran,
+            'items' => $items,
         ]);
     }
 
@@ -92,7 +112,7 @@ class PembayaranController extends Controller
             'id_spp' => ['required', Rule::in($idSpp)],
             'nisn' => ['required', 'max:10'],
             'tgl_bayar' => ['required', 'date'],
-            'bulan_dibayar' => ['required', 'max:13', 'array'],
+            'bulan_dibayar' => ['required', 'max:12', 'array'],
             'tahun_dibayar' => ['required', 'max:4'],
             'jumlah_bayar' => ['required'],
         ]);
@@ -109,7 +129,7 @@ class PembayaranController extends Controller
         try {
 
             foreach ($validateData['bulan_dibayar'] as $bulan) {
-                Pembayaran::create([
+                $pembayaran = Pembayaran::create([
                     'id_petugas' => $validateData['id_petugas'],
                     'id_spp' => $validateData['id_spp'],
                     'nisn' => $validateData['nisn'],
@@ -118,6 +138,32 @@ class PembayaranController extends Controller
                     'tahun_dibayar' => $validateData['tahun_dibayar'],
                     'jumlah_bayar' => $validateData['jumlah_bayar'],
                 ]);
+            }
+
+            if ($pembayaran) {
+                $siswa = Siswa::query()
+                    ->where('nisn', $request->nisn)
+                    ->firstOrFail();
+                $bulan = $request->bulan_dibayar;
+                $kwitansi = Kwitansi::query()
+                    ->where('nis', $siswa->nis)->first();
+
+                if ($kwitansi) {
+                    $bulan_baru = array_merge(explode(",", $kwitansi->bulan), $bulan);
+                    $bulan_baru = array_unique($bulan_baru);
+                    sort($bulan_baru);
+
+                    $kwitansi->update([
+                        'tanggal' => now()->format('Y-m-d'),
+                        'bulan' => implode(",", $bulan_baru),
+                    ]);
+                } else {
+                    Kwitansi::create([
+                        'nis' => $siswa->nis,
+                        'tanggal' => now()->format('Y-m-d'),
+                        'bulan' => implode(",", $bulan),
+                    ]);
+                }
             }
             return redirect(route('pembayaran.transaksi'))->with('success', 'Data berhasil di tambah kan');
         } catch (Exception $e) {

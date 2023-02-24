@@ -110,6 +110,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'isAdmin'],function() {
     Route::group(['prefix' => 'dashboard', 'middleware' => 'isPetugas'],function() {
     // PAGE PEMBAYARAN PETUGAS
     // RECORD
+    Route::get('data-pembayaran/{kwitansi:nis}/kwitansi', [PembayaranController::class, 'kwitansi'])->name('kwitansi');
     Route::get('data-pembayaran',[PembayaranController::class, 'index'])->name('pembayaran.index');
     Route::get('data-transaksi',[PembayaranController::class, 'transaksi'])->name('pembayaran.transaksi');
     // CREATE

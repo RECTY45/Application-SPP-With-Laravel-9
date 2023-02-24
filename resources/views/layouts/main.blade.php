@@ -9,7 +9,7 @@
     <link rel="shortcut icon" href="{{ asset('assets/img/avatar/icon.jpg') }}" type="image/x-icon">
     <!-- Custom styles -->
     <link href="{{ asset('assets/css/bootstraps.css') }}" rel="stylesheet" type="text/css">
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="{{ asset('assets/css/select2.min.css') }}" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('assets/css/style.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/sweetalert2/animate.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/sweetalert2/sweetalert2.min.css') }}">
@@ -93,6 +93,6 @@
         "pageLength": 5
     });
 </script>
-@stack("script")
+@stack('script')
 
 </html>

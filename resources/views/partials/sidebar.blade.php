@@ -52,11 +52,8 @@
                                     aria-hidden="true"></span>Kelola Data SPP</a>
                         </li>
                         <li>
-                            <a  class="{{ request()->routeIs('pembayaran.index','pembayaran.create','pembayaran.edit') ? 'active' : '' }}"
+                            <a  class="{{ request()->routeIs('pembayaran.index','pembayaran.transaksi','pembayaran.create') ? 'active' : '' }}"
                             href="{{ route('pembayaran.index') }}"><span class="icon pay" aria-hidden="true"></span>Entri Pembayaran</a>
-                        </li>
-                        <li>
-                            <a href="#"><span class="icon paper" aria-hidden="true"></span>History Pembayaran</a>
                         </li>
                     </ul>
                 @endif
