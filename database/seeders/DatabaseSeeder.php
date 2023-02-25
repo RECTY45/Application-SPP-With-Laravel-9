@@ -64,18 +64,18 @@ class DatabaseSeeder extends Seeder
             ],
             ];
 
-    $pembayaran = [
-                    [
-                    'id_petugas' => 2,
-                    'nisn' => '123456440',
-                    'tgl_bayar' => "2023-09-07",
-                    'bulan_dibayar' => '',
-                    'tahun_dibayar' => '2023',
-                    'id_spp' => 2,
-                    'jumlah_bayar' => 300000
-                    ],
+    // $pembayaran = [
+    //                 [
+    //                 'id_petugas' => 2,
+    //                 'nisn' => '123456440',
+    //                 'tgl_bayar' => "2023-09-07",
+    //                 'bulan_dibayar' => '',
+    //                 'tahun_dibayar' => '2023',
+    //                 'id_spp' => 2,
+    //                 'jumlah_bayar' => 300000
+    //                 ],
 
-           ];
+    //        ];
 
            $data_spp = [
             [
@@ -161,9 +161,9 @@ foreach ($siswas as $siswa) {
 }
 Siswa::factory()->count(10)->create();
 User::factory()->count(10)->create();
-foreach ($pembayaran as $bayar) {
-    Pembayaran::create($bayar);
-}
+// foreach ($pembayaran as $bayar) {
+//     Pembayaran::create($bayar);
+// }
 foreach ($data_spp as $spp) {
     Spp::create($spp);
 }

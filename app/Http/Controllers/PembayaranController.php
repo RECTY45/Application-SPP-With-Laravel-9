@@ -104,7 +104,7 @@ class PembayaranController extends Controller
      */
     public function store(Request $request)
     {
-        $idPetugas = Pembayaran::pluck('id');
+        $idPetugas = User::pluck('id');
         $idSpp = Spp::pluck('id');
 
         $validateData = $request->validate([
