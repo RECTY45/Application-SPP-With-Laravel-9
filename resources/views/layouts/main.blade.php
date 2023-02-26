@@ -16,7 +16,11 @@
     <link rel="stylesheet" href="{{ asset('assets/css/jquery.dataTables.min.css') }}">
     <script src="{{ asset('assets/js/jquery-3.6.0.js') }}"></script>
     <script src="{{ asset('assets/js/jquery.dataTables.min.js') }}"></script>
-
+    <style>
+        .signature {
+          cursor: url('signature.cur'), pointer;
+        }
+      </style>
     <title>E-SPP</title>
 </head>
 

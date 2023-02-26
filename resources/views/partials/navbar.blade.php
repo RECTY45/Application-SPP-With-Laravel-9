@@ -48,8 +48,3 @@
     </div>
 </nav>
 
-<style>
-    .signature {
-      cursor: url('signature.cur'), pointer;
-    }
-  </style>
