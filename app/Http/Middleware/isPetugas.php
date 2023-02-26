@@ -18,9 +18,7 @@ class isPetugas
     {
         if(auth()->guest()){
             abort(403);
-        }
-
-        if(auth()->user()->level == "admin" || auth()->user()->level == "petugas"){
+        }else if(auth()->user()->level == "admin" || auth()->user()->level == "petugas"){
             return $next($request);
         }
 

@@ -114,7 +114,7 @@
                 $("#modal-dialog").hide();
                 $("#loading").show();
                 $.ajax({
-                    url: `data-spp/${ID}/edit`,
+                    url: `spp/${ID}/edit`,
                     method: 'GET',
                     success: (res) => {
                         $("#modal-dialog").show();
@@ -122,7 +122,7 @@
 
                         $('#edit_tahun').val(res.tahun);
                         $('#edit_nominal').val(res.nominal);
-                        $('#editForm').attr('action', `/dashboard/data-spp/${ID}`)
+                        $('#editForm').attr('action', `/dashboard/spp/${ID}`)
                     }
                 });
             });

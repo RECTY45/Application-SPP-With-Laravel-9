@@ -32,28 +32,29 @@
                             <span class="sr-only">Open List</span>
                         </span>
                         <li>
-                            <a class="{{ request()->routeIs('siswa.index','siswa.create','siswa.edit') ? 'active' : '' }}"
+                            <a class="{{ request()->routeIs('siswa.index', 'siswa.create', 'siswa.edit') ? 'active' : '' }}"
                                 href="{{ route('siswa.index') }}"><span class="icon user-2 "
                                     aria-hidden="true"></span>Kelola Data Siswa</a>
                         </li>
                         <li>
-                            <a class="{{ request()->routeIs('petugas.index','petugas.create','petugas.edit') ? 'active' : '' }}"
+                            <a class="{{ request()->routeIs('petugas.index', 'petugas.create', 'petugas.edit') ? 'active' : '' }}"
                                 href="{{ route('petugas.index') }}"><span class="icon user-3"
                                     aria-hidden="true"></span>Kelola Data Petugas</a>
                         </li>
                         <li>
-                            <a class="{{ request()->routeIs('kelas.index','kelas.create','kelas.edit') ? 'active' : '' }}"
+                            <a class="{{ request()->routeIs('kelas.index', 'kelas.create', 'kelas.edit') ? 'active' : '' }}"
                                 href="{{ route('kelas.index') }}"><span class="icon home"
                                     aria-hidden="true"></span>Kelola Data Kelas</a>
                         </li>
                         <li>
-                            <a class="{{ request()->routeIs('spp.index','spp.create','spp.edit') ? 'active' : '' }}"
+                            <a class="{{ request()->routeIs('spp.index', 'spp.create', 'spp.edit') ? 'active' : '' }}"
                                 href="{{ route('spp.index') }}"><span class="icon money"
                                     aria-hidden="true"></span>Kelola Data SPP</a>
                         </li>
                         <li>
-                            <a  class="{{ request()->routeIs('pembayaran.index','pembayaran.transaksi','pembayaran.create') ? 'active' : '' }}"
-                            href="{{ route('pembayaran.index') }}"><span class="icon pay" aria-hidden="true"></span>Entri Pembayaran</a>
+                            <a class="{{ request()->routeIs('pembayaran.index', 'pembayaran.transaksi', 'pembayaran.create') ? 'active' : '' }}"
+                                href="{{ route('pembayaran.index') }}"><span class="icon pay"
+                                    aria-hidden="true"></span>Entri Pembayaran</a>
                         </li>
                     </ul>
                 @endif
@@ -64,11 +65,9 @@
                             <span class="sr-only">Open List</span>
                         </span>
                         <li>
-                            <a class="{{ request()->routeIs('pembayaran.index','pembayaran.create','pembayaran.edit') ? 'active' : '' }}"
-                            href="{{ route('pembayaran.index') }}"><span class="icon edit" aria-hidden="true"></span>Entri Pembayaran</a>
-                        </li>
-                        <li>
-                            <a href="##"><span class="icon paper" aria-hidden="true"></span>History Pembayaran</a>
+                            <a class="{{ request()->routeIs('pembayaran.index', 'pembayaran.create', 'pembayaran.edit') ? 'active' : '' }}"
+                                href="{{ route('data-pembayaran.index') }}"><span class="icon edit"
+                                    aria-hidden="true"></span>Entri Pembayaran</a>
                         </li>
                     </ul>
                 @endif

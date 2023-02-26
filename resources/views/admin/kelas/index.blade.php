@@ -114,7 +114,7 @@
                 $("#modal-dialog").hide();
                 $("#loading").show();
                 $.ajax({
-                    url: `data-kelas/${ID}/edit`,
+                    url: `kelas/${ID}/edit`,
                     method: 'GET',
                     success: (res) => {
                         $("#modal-dialog").show();
@@ -122,7 +122,7 @@
 
                         $('#edit_nama_kelas').val(res.nama_kelas);
                         $('#edit_kompetensi_keahlian').val(res.kompetensi_keahlian);
-                        $('#editForm').attr('action', `/dashboard/data-kelas/${ID}`);
+                        $('#editForm').attr('action', `/dashboard/kelas/${ID}`);
                     }
                 })
             });

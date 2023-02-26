@@ -102,7 +102,7 @@
                 $('#modal_dialog').hide();
                 $('#loading').show();
                 $.ajax({
-                    url: `data-petugas/${ID}/edit`,
+                    url: `petugas/${ID}/edit`,
                     method: 'GET',
                     success: (res) => {
                         $('#modal_dialog').show();
@@ -110,7 +110,7 @@
                         $('#edit_nama_petugas').val(res.nama_petugas);
                         $('#edit_username').val(res.username);
                         $('#edit_level').val(res.level);
-                        $('#formEdit').attr('action', `/dashboard/data-petugas/${ID}`);
+                        $('#formEdit').attr('action', `/dashboard/petugas/${ID}`);
                     }
                 });
             })
