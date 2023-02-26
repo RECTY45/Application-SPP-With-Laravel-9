@@ -24,7 +24,6 @@ Route::prefix('auth')->group( function (){
         Route::get('login','Login')->name('AuthLogin')->middleware('guest');
         Route::post('login','AuthLogin')->name('authenticated');
         Route::post('logout','logout')->name('logout');
-
     });
     Route::get('/', function () {
         return redirect('auth/login');

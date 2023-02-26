@@ -66,7 +66,7 @@
                         </span>
                         <li>
                             <a class="{{ request()->routeIs('pembayaran.index', 'pembayaran.create', 'pembayaran.edit') ? 'active' : '' }}"
-                                href="{{ route('data-pembayaran.index') }}"><span class="icon edit"
+                                href="{{ route('pembayaran.index') }}"><span class="icon edit"
                                     aria-hidden="true"></span>Entri Pembayaran</a>
                         </li>
                     </ul>

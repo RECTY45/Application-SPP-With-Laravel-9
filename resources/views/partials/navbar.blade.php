@@ -36,7 +36,7 @@
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
-                    <li><a class="danger"
+                    <li><a class="danger signature"
                             onclick="event.preventDefault();
                 document.getElementById('logout-form').submit();">
                             <i data-feather="log-out" aria-hidden="true"></i>
@@ -47,3 +47,9 @@
         </div>
     </div>
 </nav>
+
+<style>
+    .signature {
+      cursor: url('signature.cur'), pointer;
+    }
+  </style>
