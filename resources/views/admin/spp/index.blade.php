@@ -23,8 +23,8 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Tahun</th>
                                 <th>Nominal</th>
+                                <th>Level</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -32,8 +32,8 @@
                             @forelse ($items as $item)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $item->tahun }}</td>
                                     <td>{{ $item->nominal }}</td>
+                                    <td>{{ $item->level }}</td>
                                     <td>
                                         <div class="form-control-icon d-flex">
                                             <button type="button"

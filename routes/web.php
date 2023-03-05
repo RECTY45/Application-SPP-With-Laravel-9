@@ -55,6 +55,12 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth','isPetugas']],fun
         Route::get('pembayaran/{kwitansi:nis}/kwitansi', 'kwitansi')->name('kwitansi');
         Route::get('transaksi', 'transaksi')->name('pembayaran.transaksi');
         Route::get('pembayaran/{siswa:nisn}/create', 'create')->name('pembayaran.create');
+
+        Route::get('pembayaran/tunggakan','tunggakan')->name('tunggakan');
+        Route::get('pembayaran/tunggakan/cetak/{kelas:id}','cetakTunggakan')->name('tunggakan.cetak');
+
+        Route::get('pembayaran/laporan','laporan')->name('laporan');
+        Route::get('pembayaran/laporan/rekap-kelas/{kelas:id}','rekapLaporan')->name('laporan.rekap');
         Route::resource('pembayaran', PembayaranController::class)->only(['index','store','destroy']);
     });
 });

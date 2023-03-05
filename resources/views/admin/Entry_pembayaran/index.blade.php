@@ -35,13 +35,16 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $item->nis }}</td>
-                                    <td>{{ $item->tanggal }}</td>
+                                    <td>{{ Carbon\Carbon::parse($item->tanggal)->format('d-m-y') }}</td>
                                     <td>{{ $item->bulan }}</td>
-                                    <td >
-                                        <div class="form-control-icon d-flex justify-content-center bg-light rounded-4">
-                                           <a href="{{ route('kwitansi',$item->nis) }}" class="border-0 px-2 py-1 h5 mb-1"><i
-                                                    class="icon cetak mx-auto d-inline-block mb--1"></i></a>
-                                        </div>
+                                    <td>
+                                        <a href="{{ route('kwitansi', $item->nis) }}"
+                                            class="border-0 px-2 py-1 h5 mb-1 bg-light d-inline-block mb--1 px-1 py-2 rounded-circle"
+                                            target="_blank">
+                                            <div class="justify-content-center icon cetak mx-auto "
+                                                style="width: 35px; height: 35px; border-radius: 10%">
+                                            </div>
+                                        </a>
                                     </td>
                                 </tr>
                             @empty

@@ -30,15 +30,59 @@ class PembayaranController extends Controller
                  'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
      }
 
+
+
+     public function tunggakan()
+     {
+        $items =  Kelas::all();
+         return view('admin.laporan.tunggukanKelas', [
+             'title' => 'Laporan',
+             'name' => 'Laporan bulan ini SMK Mutiara Ilmu',
+             'dataMonth' => $this->month,
+             'items' => $items
+         ]);
+     }
+
+     public function cetakTunggakan(Kelas $kelas)
+    {
+        $format_tanggal = Carbon::parse(date('Y-m-d') )->format('d-m-Y');
+        return view('admin.laporan.cetak.cetakTunggakan', [
+            'RekapKelas' => $kelas,
+            'dataMonth' => $this->month,
+            'tanggal' => $format_tanggal
+        ]);
+    }
+
+     public function laporan()
+     {
+        $format_tanggal = Carbon::parse(date('Y-m-d') )->format('d-m-Y');
+         return view('admin.laporan.rekapKelas', [
+             'title' => 'Laporan',
+             'name' => 'Laporan bulan ini SMK Mutiara Ilmu',
+             'items' => Kelas::all(),
+             'dataMonth' => $this->month,
+             'tanggal' => $format_tanggal
+         ]);
+     }
+
+     public function rekapLaporan(Kelas $kelas)
+    {
+        $format_tanggal = Carbon::parse(date('Y-m-d') )->format('d-m-Y');
+        return view('admin.laporan.cetak.cetakRekap', [
+            'RekapKelas' => $kelas,
+            'dataMonth' => $this->month,
+            'tanggal' => $format_tanggal
+        ]);
+    }
+
      public function kwitansi(Kwitansi $kwitansi)
      {
          $nominal = $kwitansi->siswa->spp->nominal;
          $total_bulan = count($kwitansi->siswa->pembayaran);
          $total =  $nominal * $total_bulan;
          $terbilang_result = RECTY::toTerbilang($total);
-         $format_tanggal = Carbon::parse($kwitansi->tanggal)->format('d/m/Y');
+         $format_tanggal = Carbon::parse($kwitansi->tanggal)->format('d-m-Y');
          return view('admin.kwitansi_pembayaran.index', [
-             'petugas' => auth()->user(),
              'siswa' => $kwitansi->siswa,
              'pembayaran' => $total,
              'terbilang' => $terbilang_result,
@@ -71,6 +115,8 @@ class PembayaranController extends Controller
             'name' => 'Kelola History Pembayaran',
             'items' => $items,
         ]);
+
+
     }
 
     /**

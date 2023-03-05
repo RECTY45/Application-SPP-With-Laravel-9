@@ -56,12 +56,28 @@
                                 href="{{ route('pembayaran.index') }}"><span class="icon pay"
                                     aria-hidden="true"></span>Entri Pembayaran</a>
                         </li>
+                        <li>
+                            <a class="{{ request()->routeIs('laporan','tunggakan') ? 'active' : '' }} show-cat-btn" href="##" >
+                                <span class="icon category" aria-hidden="true"></span>Laporan
+                                <span class="category__btn transparent-btn rotated" title="Open list">
+                                    <span class="sr-only">Open list</span>
+                                    <span class="icon arrow-down" aria-hidden="true"></span>
+                                </span>
+                            </a>
+                            <ul class="cat-sub-menu ">
+                                <li>
+                                    <a href="{{ route('laporan') }}" class="{{ request()->routeIs('laporan') ? 'active' : '' }}">Rekap Kelas</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('tunggakan') }}" class="{{ request()->routeIs('tunggakan') ? 'active' : ''  }}">Tunggakan Kelas</a>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
                 @endif
-
                 @if (auth()->user()->level === 'petugas')
                     <ul class="sidebar-body-menu ">
-                        <span class="category__btn transparent-btn show-cat-btn cat-sub-menu"" title="Open list">
+                        <span class="category__btn transparent-btn show-cat-btn cat-sub-menu"title="Open list">
                             <span class="sr-only">Open List</span>
                         </span>
                         <li>
@@ -73,4 +89,5 @@
                 @endif
             </div>
         </div>
+
     </aside>

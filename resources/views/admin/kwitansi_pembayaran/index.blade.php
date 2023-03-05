@@ -61,7 +61,7 @@
                         </tr>
                         <tr>
                             <td class="text-center pt-1 py-4 h6">Yang Menerima,<span
-                                    class="row pt-5 py-5 fw-bold mt-5 justify-content-center">{{ $petugas->nama_petugas }}</span>
+                                    class="row pt-5 py-5 fw-bold mt-5 justify-content-center">Hasmawati.S.Pd</span>
                             </td>
                         </tr>
                     </tbody>

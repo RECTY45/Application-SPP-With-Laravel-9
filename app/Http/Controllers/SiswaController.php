@@ -62,6 +62,7 @@ class SiswaController extends Controller
             'jenis_kelamin' => ['required'],
             'id_spp' => ['required', Rule::in($idSpp)],
             'alamat' => ['required'],
+            'level' => ['required'],
             'no_telp' => ['required'],
         ]);
 
@@ -124,6 +125,7 @@ class SiswaController extends Controller
             'jenis_kelamin' => ['required'],
             'id_spp' => ['required', Rule::in($idSpp)],
             'alamat' => ['required'],
+            'level' => ['required'],
             'no_telp' => ['required'],
         ]);
 

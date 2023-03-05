@@ -18,9 +18,9 @@
     <script src="{{ asset('assets/js/jquery.dataTables.min.js') }}"></script>
     <style>
         .signature {
-          cursor: url('signature.cur'), pointer;
+            cursor: url('signature.cur'), pointer;
         }
-      </style>
+    </style>
     <title>E-SPP</title>
 </head>
 
@@ -98,5 +98,4 @@
     });
 </script>
 @stack('script')
-
 </html>

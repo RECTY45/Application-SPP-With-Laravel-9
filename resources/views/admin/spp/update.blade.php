@@ -2,23 +2,26 @@
     @csrf
     @method('PUT')
     <div class="form-group">
-        <label>Tahun SPP</label>
-        <input value="{{ $item->tahun }}" type="number" name="tahun" id="edit_tahun"
-            class="form-control @error('tahun')is-invalid  @enderror form-input" placeholder="Masukkan Nama Kelas Anda">
-
-        @error('tahun')
-            <div class="invalid-feedback">
-                {{ $message }}
-            </div>
-        @enderror
-    </div>
-    <div class="form-group">
         <label>Nominal SPP</label>
         <input value="{{ $item->nominal }}" type="number" name="nominal" id="edit_nominal"
             class="form-control @error('nominal')is-invalid @enderror form-input"
             placeholder="Masukkan Nominal SPP Anda">
         @error('nominal')
             <div class="invalid-feedback">
+                {{ $message }}
+            </div>
+        @enderror
+    </div>
+    <div class="form-group">
+        <label>level</label>
+        <select name="level" class="form-control form-input @error('level')is-invalid @enderror">
+            <option value="">-- Pilih Level --</option>
+            <option value="X" {{ old('level') == 'X' ? 'selected' : ''}}>X</option>
+            <option value="XI" {{ old('level') == 'XI' ? 'selected' : '' }}>XI</option>
+            <option value="XII" {{ old('level')  == 'XII' ? 'selected' : ''}}>XII</option>
+        </select>
+        @error('level')
+            <div class="invalid-feedbabck">
                 {{ $message }}
             </div>
         @enderror

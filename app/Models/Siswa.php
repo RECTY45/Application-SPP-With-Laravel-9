@@ -21,6 +21,9 @@ class Siswa extends Model
     public function pembayaran(){
         return $this->hasMany(Pembayaran::class,'nisn','nisn');
     }
+    public function kwitansi(){
+        return $this->hasMany(Kwitansi::class, 'nis', 'nis');
+    }
 
     // ! Membuat Triger Hapus Pada Siswa siswa->pembayaran
 

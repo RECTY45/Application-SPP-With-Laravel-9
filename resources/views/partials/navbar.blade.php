@@ -1,9 +1,6 @@
 <nav class="main-nav--bg">
     <div class="container main-nav ">
         <div class="main-nav-start">
-            <div class="search-wrapper white-block font-weight-bold card text-center">
-                <h5>E-SPP Home/{{ $title }}</h5>
-            </div>
         </div>
         <div class="main-nav-end">
             <button class="sidebar-toggle transparent-btn" title="Menu" type="button">
@@ -47,4 +44,3 @@
         </div>
     </div>
 </nav>
-

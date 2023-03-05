@@ -66,16 +66,16 @@
                                 @enderror
                             </div>
 
-
-
                             <div class="form-group">
                                 <label>SPP</label>
-                                <select value="{{ $item->spp->id }}" name="id_spp" id="id_spp" class="form-control form-input @error('id_spp')is-invalid @enderror">
+                                <select value="{{ $item->spp->id }}" name="id_spp" id="id_spp"
+                                    class="form-control form-input @error('id_spp')is-invalid @enderror">
                                     @if ($item->spp->id)
-                                        <option selected  value="{{ $item->spp->id }}">Rp. {{ $item->spp->nominal }}</option>
+                                        <option selected value="{{ $item->spp->id }}">Rp. {{ $item->spp->nominal }}
+                                        </option>
                                     @endif
-                                    @foreach ($dataSpp as $spp)
                                     <option value="">Pilih Data Spp</option>
+                                    @foreach ($dataSpp as $spp)
                                         <option value="{{ $spp->id }}">Rp. {{ $spp->nominal }}</option>
                                     @endforeach
                                 </select>
@@ -86,13 +86,32 @@
                                 @enderror
                             </div>
 
+                            <div class="form-group">
+                                <label>Level</label>
+                                <select name="level"  id="level" class="form-control form-input @error('level')is-invalid @enderror">
+                                @if ($item->level)
+                                    <option selected value="{{ $item->level }}">{{ $item->level }}</option>
+                                @endif
+                                <option value="">-- Pilih Level --</option>
+                                <option value="X" {{ old('level') == 'X' ? 'selected' : ''}}>X</option>
+                                <option value="XI" {{ old('level') == 'XI' ? 'selected' : '' }}>XI</option>
+                                <option value="XII" {{ old('level')  == 'XII' ? 'selected' : ''}}>XII</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group px-3">
+                                <button type="submit" class="btn btn-primary">Edit</button>
+                                <a href="{{ route('siswa.index') }}" class="btn btn-success">Batal</a>
+                            </div>
+
+
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>NIS</label>
-                                <input value="{{ $item->nis }}" id="nis" type="nis" name="nis" id="nis"
-                                    class="form-control form-input @error('nis')is-invalid @enderror"
+                                <input value="{{ $item->nis }}" id="nis" type="nis" name="nis"
+                                    id="nis" class="form-control form-input @error('nis')is-invalid @enderror"
                                     placeholder="Masukkan NIs Anda">
                                 @error('nis')
                                     <div class="invalid-feedback">
@@ -105,9 +124,10 @@
                                 <label>Jenis Kelamin</label>
                                 <select id="jenis_kelamin" name="jenis_kelamin" id="jenis_kelamin"
                                     class="form-control form-input @error('jenis_kelamin')is-invalid @enderror">
-                                  @if($item->id)
-                                    <option value="{{ $item->id }}">{{ $item->jenis_kelamin == 'L' ? 'Laki-Laki' : 'Perempuan' }}</option>
-                                  @endif()
+                                    @if ($item->id)
+                                        <option value="{{ $item->jenis_kelamin }}">
+                                            {{ $item->jenis_kelamin == 'L' ? 'Laki-Laki' : 'Perempuan' }}</option>
+                                    @endif()
                                     <option value="">Pilih Jenis Kelamin</option>
                                     <option value="L" {{ old('jenis_kelamin') == 'L' ? 'selected' : '' }}>Laki-Laki
                                     </option>
@@ -150,11 +170,6 @@
                                     @enderror
                                 </div>
 
-                            </div>
-
-                            <div class="form-group px-3">
-                                <button type="submit" class="btn btn-primary">Edit</button>
-                                <a href="{{ route('siswa.index') }}" class="btn btn-success">Batal</a>
                             </div>
                         </div>
                 </form>

@@ -67,7 +67,8 @@
 
                             <div class="form-group">
                                 <label>SPP</label>
-                                <select name="id_spp" id="id_spp" class="form-control form-input @error('id_spp')is-invalid @enderror">
+                                <select name="id_spp" id="id_spp"
+                                    class="form-control form-input @error('id_spp')is-invalid @enderror">
                                     <option value="">Nominal Spp</option>
                                     @foreach ($dataSpp as $spp)
                                         <option value="{{ $spp->id }}">Rp. {{ $spp->nominal }}</option>
@@ -79,7 +80,20 @@
                                     </div>
                                 @enderror
                             </div>
-
+                            <div class="form-group">
+                                <label>level</label>
+                                <select name="level" class="form-control form-input @error('level')is-invalid @enderror">
+                                    <option value="">-- Pilih Level --</option>
+                                    <option value="X" {{ old('level') == 'X' ? 'selected' : ''}}>X</option>
+                                    <option value="XI" {{ old('level') == 'XI' ? 'selected' : '' }}>XI</option>
+                                    <option value="XII" {{ old('level')  == 'XII' ? 'selected' : ''}}>XII</option>
+                                </select>
+                                @error('level')
+                                    <div class="invalid-feedbabck">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
                         </div>
 
                         <div class="col-md-6">
@@ -118,7 +132,9 @@
                                     class="form-control form-input @error('id_kelas')is-invalid @enderror">
                                     <option value="">Pilih Kelas</option>
                                     @foreach ($dataKelas as $kelas)
-                                        <option value="{{ $kelas->id }}" {{ old('id_kelas') == $kelas->id ? 'selected' : '' }}>{{ $kelas->nama_kelas }}</option>
+                                        <option value="{{ $kelas->id }}"
+                                            {{ old('id_kelas') == $kelas->id ? 'selected' : '' }}>{{ $kelas->nama_kelas }}
+                                        </option>
                                     @endforeach
                                 </select>
                                 @error('level')
@@ -127,6 +143,7 @@
                                     </div>
                                 @enderror
                             </div>
+
                             <div class="form-group">
                                 <label>No Telp</label>
                                 <input type="text" name="no_telp" id="no_telp" value="{{ old('no_telp') }}"

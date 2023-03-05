@@ -8,7 +8,8 @@
                         <div class="col-md-12 ">
                             <span>
                                 <p class="md:h2 h4">Kelola Data Transaksi</p>
-                                <p class="font-weight-bold small" style="line-height: 10px">Kelola History <Pembayaran>{{ $name }}</p>
+                                <p class="font-weight-bold small" style="line-height: 10px">Kelola History <Pembayaran>
+                                        {{ $name }}</p>
                             </span>
                         </div>
                     </div>
@@ -39,22 +40,21 @@
                                     @foreach ($dataMonth as $bln)
                                         <td class="text-center">
                                             <span class="text-sm font-weight-normal">
-                                                @foreach ($siswa->pembayaran as $pembayaran)
-                                                    @if ($pembayaran->bulan_dibayar == $bln)
-                                                        <div class="icon success"></div>
-                                                    @endif
-                                                @endforeach
-                                                @if (!$siswa->pembayaran->contains('bulan_dibayar', $bln))
+                                                @if (in_array($bln, $siswa->pembayaran->pluck('bulan_dibayar')->toArray()))
+                                                    <div class="icon success"></div>
+                                                @else
                                                     <div class="icon error"></div>
-                                                @endif()
+                                                @endif
                                             </span>
                                         </td>
                                     @endforeach
+
                                     <td>
                                         <div class="form-control-icon d-flex">
                                             <div class="d-flex justify-content-end">
                                                 <a href="{{ route('pembayaran.create', $siswa->nisn) }}">
                                                     <div class="icon cart"></div>
+                                                </a>
                                                 </a>
                                             </div>
                                         </div>
