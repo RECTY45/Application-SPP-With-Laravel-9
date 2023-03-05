@@ -15,6 +15,9 @@
     <div class="form-group">
         <label>level</label>
         <select name="level" class="form-control form-input @error('level')is-invalid @enderror">
+            @if ($item->level)
+                <option value="{{ $item->level }}">{{ $item->level }}</option>
+            @endif
             <option value="">-- Pilih Level --</option>
             <option value="X" {{ old('level') == 'X' ? 'selected' : ''}}>X</option>
             <option value="XI" {{ old('level') == 'XI' ? 'selected' : '' }}>XI</option>

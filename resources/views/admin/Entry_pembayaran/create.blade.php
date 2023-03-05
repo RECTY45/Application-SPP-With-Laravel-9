@@ -60,7 +60,7 @@
                                 <input type="hidden" name="id_petugas" value="{{ $level->id }}">
                                 <input type="hidden" name="id_spp" value="{{ $siswa->spp->id }}" readonly>
                                 <input type="hidden" name="tgl_bayar" value="{{ date('Y-m-d') }}" readonly>
-                                <input type="hidden" name="tahun_dibayar" value="{{ $siswa->spp->tahun }}" readonly>
+                                <input type="hidden" name="level" value="{{ $siswa->spp->level }}" readonly>
                                 <input type="hidden" name="jumlah_bayar" value="{{ $siswa->spp->nominal }}" readonly>
                                 <input type="hidden" name="nisn" value="{{ $siswa->nisn }}" readonly>
                                 <div class="mt-3 mb-5">

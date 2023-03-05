@@ -11,12 +11,12 @@ use Illuminate\Http\Request;
 class DashboardController extends Controller
 {
     public function dashboard(){
-        $jmlpetugas = count( User::all());
-        $jmlsiswa = count( Siswa::all());
-        $jmlkelas = count(Kelas::all());
-        $jmlspp = count(Spp::all());
-        $jmlpembayarann = count(Pembayaran::all());
-
+        $jmlpetugas = User::count();
+        $jmlsiswa = Siswa::count();
+        $jmlkelas = Kelas::count();
+        $jmlspp = Spp::count();
+        $jmlpembayarann = Pembayaran::count();
+        $data_spp = Spp::with(['pembayaran', 'siswa'])->get();
         return view('admin.dashboard.index',[
            'title' => "Dashboard",
            'petugas' => $jmlpetugas,
@@ -24,6 +24,7 @@ class DashboardController extends Controller
            'kelas' => $jmlkelas,
            'spp' => $jmlspp,
            'pembayaran' => $jmlpembayarann,
+           'dataSpp' => $data_spp
         ]);
     }
 }

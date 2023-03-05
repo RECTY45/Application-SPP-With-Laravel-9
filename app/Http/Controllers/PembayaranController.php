@@ -159,7 +159,7 @@ class PembayaranController extends Controller
             'nisn' => ['required', 'max:10'],
             'tgl_bayar' => ['required', 'date'],
             'bulan_dibayar' => ['required', 'max:12', 'array'],
-            'tahun_dibayar' => ['required', 'max:4'],
+            'level' => ['required',],
             'jumlah_bayar' => ['required'],
         ]);
 
@@ -181,7 +181,7 @@ class PembayaranController extends Controller
                     'nisn' => $validateData['nisn'],
                     'tgl_bayar' => $validateData['tgl_bayar'],
                     'bulan_dibayar' => $bulan,
-                    'tahun_dibayar' => $validateData['tahun_dibayar'],
+                    'level' => $validateData['level'],
                     'jumlah_bayar' => $validateData['jumlah_bayar'],
                 ]);
             }

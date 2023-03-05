@@ -20,7 +20,7 @@
         </p>
     </div>
     <div class="border border-dark"></div>
-    <div class="row py-5 float-none">
+    <div class="row py-2 float-none">
         <div class="col-md-12 px-4 py-2">
             <table class="table table-bordered border-dark" cellpadding="5">
                 <thead>
