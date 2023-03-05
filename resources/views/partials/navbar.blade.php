@@ -22,14 +22,10 @@
                 </button>
                 <ul class="users-item-dropdown nav-user-dropdown dropdown">
                     <p class="logo-title stat-cards-info__num">{{ auth()->User()->nama_petugas }}</p>
-                    <p class="logo-subtitle"
-                        style="color: #ffffff; background-color:rgb(83, 132, 223); display: inline-block; padding-right: 5px; padding-left: 5px; border-radius: 15px; ">
+                    <p class="logo-subtitle bg-primary"
+                        style="color: #ffffff; display: inline-block; padding-right: 5px; padding-left: 5px; border-radius: 15px; ">
                         {{ auth()->User()->level }}</p>
-                    <div class="sidebar-head"></div>
-                    <li><a href="#">
-                            <i data-feather="user" aria-hidden="true"></i>
-                            <span>Profile</span>
-                        </a></li>
+                        <div class=" border border-3 logo-subtitle my-3"></div>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>

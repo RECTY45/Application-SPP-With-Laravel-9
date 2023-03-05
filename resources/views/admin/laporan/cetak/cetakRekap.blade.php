@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <h1 class="text-center text-uppercase fw-bold">Tunggakan Kelas {{ $RekapKelas->nama_kelas }} Pembayaran SPP</h1>
+    <h1 class="text-center text-uppercase fw-bold">Rekap Kelas {{ $RekapKelas->nama_kelas }} Pembayaran SPP</h1>
     <p class="text-center text-capitalize fw-bold h5 ">Smk Mutiara Ilmu</p>
     <div class="text-center fw-bold">
         <p class="mt-2 mb-0">Jl. Goa Ria/Pa’bongkayya Laikang | Sudiang | Kel. Laikang | Kec. Biringkanaya |

@@ -37,6 +37,7 @@
             <!-- ! Main -->
             <main class="main users chart-page" id="skip-target">
                 @yield('content')
+                @include('partials.footer')
             </main>
         </div>
     </div>

@@ -14,7 +14,7 @@
 </head>
 
 <body class="form"
-    style="background-image: url({{ asset('assets/img/categories/background.jpg') }}); background-size: cover;">
+    style="backdrop-filter: blur(3px); background-image: url({{ asset('assets/img/categories/background.jpg') }}); background-size: cover;">
     @include('sweetalert::alert')
     <div class="form-container outer">
         <div class="form-form">

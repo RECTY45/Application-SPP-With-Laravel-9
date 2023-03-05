@@ -28,7 +28,7 @@
                 <span class="system-menu__title">Kelola Data Master</span>
                 @if (auth()->user()->level === 'admin')
                     <ul class="sidebar-body-menu ">
-                        <span class="category__btn transparent-btn show-cat-btn cat-sub-menu"" title="Open list">
+                        <span class="category__btn transparent-btn show-cat-btn cat-sub-menu" title="Open list">
                             <span class="sr-only">Open List</span>
                         </span>
                         <li>
@@ -57,8 +57,9 @@
                                     aria-hidden="true"></span>Entri Pembayaran</a>
                         </li>
                         <li>
-                            <a class="{{ request()->routeIs('laporan','tunggakan') ? 'active' : '' }} show-cat-btn" href="##" >
-                                <span class="icon category" aria-hidden="true"></span>Laporan
+                            <a class="{{ request()->routeIs('laporan', 'tunggakan') ? 'active' : '' }} show-cat-btn"
+                                href="#">
+                                <span class="laporan" aria-hidden="true"></span>Laporan
                                 <span class="category__btn transparent-btn rotated" title="Open list">
                                     <span class="sr-only">Open list</span>
                                     <span class="icon arrow-down" aria-hidden="true"></span>
@@ -66,10 +67,13 @@
                             </a>
                             <ul class="cat-sub-menu ">
                                 <li>
-                                    <a href="{{ route('laporan') }}" class="{{ request()->routeIs('laporan') ? 'active' : '' }}">Rekap Kelas</a>
+                                    <a href="{{ route('laporan') }}"
+                                        class="{{ request()->routeIs('laporan') ? 'active' : '' }}">Rekap Kelas</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('tunggakan') }}" class="{{ request()->routeIs('tunggakan') ? 'active' : ''  }}">Tunggakan Kelas</a>
+                                    <a href="{{ route('tunggakan') }}"
+                                        class="{{ request()->routeIs('tunggakan') ? 'active' : '' }}">Tunggakan
+                                        Kelas</a>
                                 </li>
                             </ul>
                         </li>
@@ -85,9 +89,52 @@
                                 href="{{ route('pembayaran.index') }}"><span class="icon edit"
                                     aria-hidden="true"></span>Entri Pembayaran</a>
                         </li>
+                        <li>
+                            <a class="{{ request()->routeIs('laporan', 'tunggakan') ? 'active' : '' }} show-cat-btn"
+                                href="##">
+                                <span class="laporan" aria-hidden="true"></span>Laporan
+                                <span class="category__btn transparent-btn rotated" title="Open list">
+                                    <span class="sr-only">Open list</span>
+                                    <span class="icon arrow-down" aria-hidden="true"></span>
+                                </span>
+                            </a>
+                            <ul class="cat-sub-menu ">
+                                <li>
+                                    <a href="{{ route('laporan') }}"
+                                        class="{{ request()->routeIs('laporan') ? 'active' : '' }}">Rekap Kelas</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('tunggakan') }}"
+                                        class="{{ request()->routeIs('tunggakan') ? 'active' : '' }}">Tunggakan
+                                        Kelas</a>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
                 @endif
             </div>
         </div>
-
+        <div class="pt-5">
+            <div class="pt-5">
+                <div class="pt-5">
+                        <div class="pt-5">
+                            <div class="pt-5">
+                        <div class="pt-5">
+                            <div class="pt-5">
+                                <a href="#" class="sidebar-user">
+                                    <span class="sidebar-user-img">
+                                        <picture><img src="{{ asset('assets/img/avatar/kawai.jpg') }}" alt="User name"></picture>
+                                    </span>
+                                    <div class="sidebar-user-info">
+                                        <span class="sidebar-user__title"> {{ auth()->User()->nama_petugas }}</span>
+                                        <span class="sidebar-user__subtitle ">{{ auth()->User()->level }}</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
     </aside>
