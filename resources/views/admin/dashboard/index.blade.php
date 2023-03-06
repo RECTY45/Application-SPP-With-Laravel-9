@@ -66,19 +66,28 @@
                                 <div class="px-2 d-flex justify-content-between">
                                     <p class="h5 bg-primary"
                                         style="border-radius: 5px; display: inline;
-                        color: white; padding: 5px; text-align: center">
+                                             color: white; padding: 5px; text-align: center">
                                         Kelas {{ $data->level }}</p>
                                     <p class="h4">{{ number_format($data->nominal) }}</p>
                                 </div>
                                 <div class=" border border-3 logo-subtitle my-3"></div>
-                                <div class="px-1 d-flex bd-highlight">
-                                    <p class="stat-cards-info__title p-2 bd-highlight">Total Pembayaran : </p>
-                                    <p class="h6 fw- ms-auto p-2 bd-highlight">Rp.{{ number_format($totalPembayaran) }}-</p>
-                                </div>
-                                <div class="px-1 d-flex bd-highlight">
-                                    <p class="stat-cards-info__title p-2 bd-highlight">Total Tunggakan :</p>
-                                    <p class="h6 fw- ms-auto p-2 bd-highlight">Rp.{{ number_format($totalTunggakan) }}-</p>
-                                </div>
+                                <table cellpadding="8" cellspacing="0">
+                                    <tr>
+                                        <td  class="stat-cards-info__title">Total Pembayaran</td>
+                                        <td class="stat-cards-info__title">:</td>
+                                        <td>Rp.{{ number_format($totalPembayaran) }}-</td>
+                                    </tr>
+                                    <tr>
+                                        <td  class="stat-cards-info__title">Total Tunggakan</td>
+                                        <td class="stat-cards-info__title">:</td>
+                                        <td>Rp.{{ number_format($totalTunggakan) }}-</td>
+                                    </tr>
+                                    <tr>
+                                        <td  class="stat-cards-info__title">Total Siswa</td>
+                                        <td class="stat-cards-info__title">:</td>
+                                        <td>{{ count($data->siswa) }}</td>
+                                    </tr>
+                                </table>
                             </div>
                         </article>
                     </div>
@@ -109,20 +118,28 @@
                                 <div class="px-2 d-flex justify-content-between">
                                     <p class="h5 bg-primary"
                                         style="border-radius: 5px; display: inline;
-                        color: white; padding: 5px; text-align: center">
+                                               color: white; padding: 5px; text-align: center">
                                         Kelas {{ $data->level }}</p>
                                     <p class="h4">{{ number_format($data->nominal) }}</p>
                                 </div>
-                                <div class=" border border-3 logo-subtitle my-3"></div>
-                                <div class="px-1 d-flex bd-highlight">
-                                    <p class="stat-cards-info__title p-2 bd-highlight">Total Pembayaran : </p>
-                                    <p class="h6 fw- ms-auto p-2 bd-highlight">Rp.{{ number_format($totalPembayaran) }}-
-                                    </p>
-                                </div>
-                                <div class="px-1 d-flex bd-highlight">
-                                    <p class="stat-cards-info__title p-2 bd-highlight">Total Tunggakan :</p>
-                                    <p class="h6 fw- ms-auto p-2 bd-highlight">Rp.{{ number_format($totalTunggakan) }}-</p>
-                                </div>
+                                <div class="border border-3 logo-subtitle my-3"></div>
+                                <table cellpadding="8" cellspacing="0">
+                                    <tr>
+                                        <td class="stat-cards-info__title">Total Pembayaran</td>
+                                        <td class="stat-cards-info__title">:</td>
+                                        <td>Rp.{{ number_format($totalPembayaran) }}-</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="stat-cards-info__title">Total Tunggakan</td>
+                                        <td class="stat-cards-info__title">:</td>
+                                        <td>Rp.{{ number_format($totalTunggakan) }}-</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="stat-cards-info__title">Total Siswa</td>
+                                        <td class="stat-cards-info__title">:</td>
+                                        <td>{{ count($data->siswa) }}</td>
+                                    </tr>
+                                </table>
                             </div>
                         </article>
                     </div>

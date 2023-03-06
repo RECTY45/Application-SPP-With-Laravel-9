@@ -21,20 +21,20 @@
                     <table class="table users-table-info" id="dataTable">
                         <thead>
                             <tr>
-                                <th>No</th>
-                                <th>Nisn</th>
-                                <th>Nis</th>
-                                <th>Nama</th>
-                                <th>Kelas</th>
-                                <th>Jenis Kelamin</th>
-                                <th>No Telp</th>
-                                <th>Alamat</th>
-                                <th>Action</th>
+                                <th  class="text-center">No</th>
+                                <th  class="text-center">Nisn</th>
+                                <th  class="text-center">Nis</th>
+                                <th  class="text-center">Nama</th>
+                                <th  class="text-center">Kelas</th>
+                                <th  class="text-center">Jenis Kelamin</th>
+                                <th  class="text-center">No Telp</th>
+                                <th  class="text-center">Alamat</th>
+                                <th  class="text-center">Action</th>
                             </tr>
                         </thead>
                         <tbody class="users-table-info">
                             @forelse($siswas as $siswa)
-                                <tr>
+                                <tr class="text-center">
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $siswa->nisn }}</td>
                                     <td>{{ $siswa->nis }}</td>

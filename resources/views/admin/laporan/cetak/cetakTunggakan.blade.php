@@ -71,8 +71,8 @@
             <table class="d-flex flex-row-reverse bd-highlight px-4 ">
                 <tbody>
                     <tr>
-                        <td class="text-center h6 pb-3">Dicetak Tanggal <span
-                                class="fw-bold d-flex justify-content-center"><ins>{{ $tanggal }}</ins></span>
+                        <td class="text-center h6 ">Dicetak Tanggal <span
+                                class="fw-bold inline-block"><ins>{{ $tanggal }}</ins></span>
                         </td>
                     </tr>
                     <tr>

@@ -20,7 +20,7 @@
         </p>
     </div>
     <div class="border border-dark"></div>
-    <div class="row py-5 float-none">
+    <div class="row float-none">
         <div class="col-md-12 px-4 py-2">
             <table class="table table-bordered border-dark" cellpadding="5">
                 <thead>
@@ -66,8 +66,8 @@
             <table class="d-flex flex-row-reverse bd-highlight px-4 ">
                 <tbody>
                     <tr>
-                        <td class="text-center h6 pb-3">Dicetak Tanggal <span
-                                class="fw-bold d-flex justify-content-center"><ins>{{ $tanggal }}</ins></span>
+                        <td class="text-center h6">Dicetak Tanggal, <span
+                                class="fw-bold inline-block"><ins> {{ $tanggal }}</ins></span>
                         </td>
                     </tr>
                     <tr>
