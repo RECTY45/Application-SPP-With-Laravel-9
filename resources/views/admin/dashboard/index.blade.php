@@ -2,11 +2,11 @@
 @section('content')
     @if (auth()->user()->level === 'admin')
         <div class="container">
-            <div class="white-block ">
+            <div class="white-block">
                 <h2 class="main-title">Dashboard</h2>
-                <p class="text-capitalize h5 px-4">Selamat Datang, {{ auth()->user()->nama_petugas}}!</p>
+                <p class="text-capitalize h5 px-4">Selamat Datang, {{ auth()->user()->nama_petugas }}!</p>
                 <p class="text-capitalize h6 px-4">Aplikasi Pembayaran SPP Siswa - Versi UKK 2023</p>
-                </div>
+            </div>
             <div class="row stat-cards">
                 <div class="col-md-6 col-xl-3">
                     <article class="stat-cards-item">
@@ -77,17 +77,17 @@
                                 <div class=" border border-3 logo-subtitle my-3"></div>
                                 <table cellpadding="8" cellspacing="0">
                                     <tr>
-                                        <td  class="stat-cards-info__title">Total Pembayaran</td>
+                                        <td class="stat-cards-info__title">Total Pembayaran</td>
                                         <td class="stat-cards-info__title">:</td>
                                         <td>Rp.{{ number_format($totalPembayaran) }}-</td>
                                     </tr>
                                     <tr>
-                                        <td  class="stat-cards-info__title">Total Tunggakan</td>
+                                        <td class="stat-cards-info__title">Total Tunggakan</td>
                                         <td class="stat-cards-info__title">:</td>
                                         <td>Rp.{{ number_format($totalTunggakan) }}-</td>
                                     </tr>
                                     <tr>
-                                        <td  class="stat-cards-info__title">Total Siswa</td>
+                                        <td class="stat-cards-info__title">Total Siswa</td>
                                         <td class="stat-cards-info__title">:</td>
                                         <td>{{ count($data->siswa) }}</td>
                                     </tr>
@@ -106,7 +106,7 @@
                 <h2 class="main-title">Dashboard</h2>
                 <p class="text-capitalize h5 px-4">Selamat Datang, {{ auth()->user()->nama_petugas }}!</p>
                 <p class="text-capitalize h6 px-4">Aplikasi Pembayaran SPP Siswa - Versi UKK 2023</p>
-                </div>
+            </div>
             <div class="row stat-cards">
                 @foreach ($dataSpp as $data)
                     @php

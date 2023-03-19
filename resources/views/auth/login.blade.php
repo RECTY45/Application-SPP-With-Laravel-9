@@ -78,7 +78,7 @@
                                 <div class="d-sm-flex justify-content-between">
                                     <div class="field-wrapper">
                                         <input type="hidden" name="remember" value="1">
-                                        <button type="submit" class="btn btn-primary" value="">Log In</button>
+                                        <button type="submit" class="btn btn-primary rounded" value="">Log In</button>
                                     </div>
                                 </div>
                             </div>

@@ -66,24 +66,6 @@
             </table>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-12">
-            <table class="d-flex flex-row-reverse bd-highlight px-4 ">
-                <tbody>
-                    <tr>
-                        <td class="text-center h6 ">Dicetak Tanggal <span
-                                class="fw-bold inline-block"><ins>{{ $tanggal }}</ins></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-center pt-2 py-4 h6">Bendahara Sekolah<span
-                                class="row pt-5 py-5 fw-bold mt-5 justify-content-center">Hasmawati.S.Pd</span>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
 </body>
 <script>
     window.print()

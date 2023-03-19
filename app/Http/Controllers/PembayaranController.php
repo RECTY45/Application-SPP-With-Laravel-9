@@ -55,13 +55,11 @@ class PembayaranController extends Controller
 
      public function laporan()
      {
-        $format_tanggal = Carbon::parse(date('Y-m-d') )->format('d-m-Y');
          return view('admin.laporan.rekapKelas', [
              'title' => 'Laporan',
              'name' => 'Laporan bulan ini SMK Mutiara Ilmu',
              'items' => Kelas::all(),
              'dataMonth' => $this->month,
-             'tanggal' => $format_tanggal
          ]);
      }
 
@@ -236,13 +234,6 @@ class PembayaranController extends Controller
      */
     public function edit(Pembayaran $pembayaran)
     {
-        // return view('admin.Entry_Pembayaran.update',[
-        //     'title' => 'Pembayaran',
-        //     'name' => 'Edit Data Pembayaran',
-        //     'item' => $pembayaran,
-        //     'dataPetugas' => User::all(),
-        //     'dataSpp' => Spp::all(),
-        // ]);
     }
 
     /**
@@ -254,28 +245,6 @@ class PembayaranController extends Controller
      */
     public function update(Request $request, Pembayaran $pembayaran)
     {
-        // $idPetugas = User::pluck('id')->toArray();
-        // $idSpp = Spp::pluck('id')->toArray();
-
-        // $validateData = $request->validate([
-        //     'id_petugas' => ['required', Rule::in($idPetugas)],
-        //     'id_spp' => ['required',Rule::in($idSpp)],
-        //     'tgl_bayar' => ['required'],
-        //     'bulan_dibayar' => ['required'],
-        //     'tahun_dibayar' => ['required'],
-        //     'jumlah_bayar' => ['required'],
-        //     'nisn' => ['required','max:10'],
-
-        // ]);
-
-        // if($validateData){
-        //     $check = $pembayaran->update($validateData);
-        // }
-
-        // if($check){
-        //     return redirect(@route('pembayaran.index'))->with('success', 'Data Berhasil Di Edit');
-        // }
-        // return back()->with('error', 'Data Gagal Di Edit');
     }
 
     /**

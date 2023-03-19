@@ -21,29 +21,35 @@
                             <tr>
                                 <th class="text-center">No</th>
                                 <th class="text-center">Nama Kelas</th>
-                                <th class="text-center">Tanggal Dibuat</th>
+                                <th class="text-center">Total Pembayaran</th>
                                 <th class="text-center">Action</th>
                             </tr>
                         </thead>
                         <tbody class="users-table-info">
                             @forelse ($items as $item)
-                            <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $item->nama_kelas }}</td>
-                                <td>{{Carbon\Carbon::parse($item->created_at)->diffForHumans() }} </td>
-                            <td>
-                                    <a href="{{ route('laporan.rekap',$item->id) }}"
-                                        class="border-0 px-2 py-1 h5 mb-1 bg-light d-inline-block mb--1 px-1 py-2 rounded-circle"
-                                        target="_blank">
-                                        <div class="justify-content-center icon cetak mx-auto "
-                                            style="width: 35px; height: 35px; border-radius: 10%">
-                                        </div>
-                                    </a>
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $item->nama_kelas }}</td>
+                                    @php($paymentTotal = 0)
+                                        @foreach ($item->siswa as $siswa)
+                                            @foreach ($siswa->pembayaran as $pembayaran)
+                                               @php($paymentTotal += $pembayaran->jumlah_bayar)
+                                            @endforeach
+                                        @endforeach
+
+                                    <td> Rp. {{ number_format($paymentTotal) }},- </td>
+                                    <td>
+                                        <a href="{{ route('laporan.rekap', $item->id) }}"
+                                            class="border-0 px-2 py-1 h5 mb-1 bg-light d-inline-block mb--1 px-1 py-2 rounded-circle"
+                                            target="_blank">
+                                            <div class="justify-content-center icon cetak mx-auto "
+                                                style="width: 35px; height: 35px; border-radius: 10%">
+                                            </div>
+                                        </a>
+                                    </td>
+                                </tr>
 
                             @empty
-
                             @endforelse
                         </tbody>
                     </table>
