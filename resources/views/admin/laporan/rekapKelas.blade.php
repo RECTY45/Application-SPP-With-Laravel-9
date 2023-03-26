@@ -39,7 +39,7 @@
 
                                     <td> Rp. {{ number_format($paymentTotal) }},- </td>
                                     <td>
-                                        <a href="{{ route('laporan.rekap', $item->id) }}"
+                                          <a href="{{ route('laporan.rekap', $item->id) }}"
                                             class="border-0 px-2 py-1 h5 mb-1 bg-light d-inline-block mb--1 px-1 py-2 rounded-circle"
                                             target="_blank">
                                             <div class="justify-content-center icon cetak mx-auto "

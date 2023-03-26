@@ -51,32 +51,6 @@
                                 href="{{ route('spp.index') }}"><span class="icon money"
                                     aria-hidden="true"></span>Kelola Data SPP</a>
                         </li>
-                        <li>
-                            <a class="{{ request()->routeIs('pembayaran.index', 'pembayaran.transaksi', 'pembayaran.create') ? 'active' : '' }}"
-                                href="{{ route('pembayaran.index') }}"><span class="icon pay"
-                                    aria-hidden="true"></span>Entri Pembayaran</a>
-                        </li>
-                        <li>
-                            <a class="{{ request()->routeIs('laporan', 'tunggakan') ? 'active' : '' }} show-cat-btn"
-                                href="#">
-                                <span class="laporan" aria-hidden="true"></span>Laporan
-                                <span class="category__btn transparent-btn rotated" title="Open list">
-                                    <span class="sr-only">Open list</span>
-                                    <span class="icon arrow-down" aria-hidden="true"></span>
-                                </span>
-                            </a>
-                            <ul class="cat-sub-menu ">
-                                <li>
-                                    <a href="{{ route('laporan') }}"
-                                        class="{{ request()->routeIs('laporan') ? 'active' : '' }}">Rekap Kelas</a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('tunggakan') }}"
-                                        class="{{ request()->routeIs('tunggakan') ? 'active' : '' }}">Tunggakan
-                                        Kelas</a>
-                                </li>
-                            </ul>
-                        </li>
                     </ul>
                 @endif
                 @if (auth()->user()->level === 'petugas')
