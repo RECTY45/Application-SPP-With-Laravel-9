@@ -4,7 +4,7 @@ Aplikasi pembayaran SPP yang saya buat dengan tujuan tugas pemprograman web & mo
 
 Aplikasi pembayaran SPP saya juga dilengkapi dengan fitur laporan pembayaran SPP, yang memungkinkan para admin memantau dan melacak pembayaran SPP yang telah dilakukan. Dalam laporan ini, terdapat informasi detail tentang tanggal pembayaran, jumlah yang dibayarkan, dan status pembayaran. Dengan fitur ini, para siswa dan orang tua dapat dengan mudah mengakses catatan pembayaran SPP mereka dan memastikan bahwa pembayaran SPP telah dilakukan dengan benar. Dalam rangka meningkatkan kualitas layanan.
 
-Follow instagram saya [Muhammad Bintang](https://www.instagram.com/bntg.ch_icy/)
+Follow instagram saya [recty.exploit](https://www.instagram.com/recty.exploit/)
 
 > Aplikasi ini masih dalam tahap pengembangan!
 
@@ -12,7 +12,7 @@ Follow instagram saya [Muhammad Bintang](https://www.instagram.com/bntg.ch_icy/)
 
 ### Login Page
 <img src="![1](https://user-images.githubusercontent.com/68836194/229266334-ebb7d9ab-e4b7-4e7c-94b0-d29cb20039f5.png)" width="800" alt="gambarHomePage">
-
+![1](https://user-images.githubusercontent.com/68836194/229266334-ebb7d9ab-e4b7-4e7c-94b0-d29cb20039f5.png)
 ### Fitur Aplikasi
 <img src="https://github.com/M-BintangR/gambar-doc/blob/main/5.gif" alt="gambarHomePage">
 <img src="https://github.com/M-BintangR/gambar-doc/blob/main/1.png" width="800" alt="gambarHomePage">
