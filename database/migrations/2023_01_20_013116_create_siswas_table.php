@@ -21,7 +21,6 @@ return new class extends Migration
             $table->foreignId("id_kelas");
             $table->enum('jenis_kelamin',['L','P']);
             $table->text("alamat")->nullable();
-            $table->enum('level',['X','XI','XII']);
             $table->string("no_telp")->nullable();
             $table->foreignId("id_spp");
             $table->timestamps();

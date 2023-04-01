@@ -71,24 +71,10 @@
                                     class="form-control form-input @error('id_spp')is-invalid @enderror">
                                     <option value="">Nominal Spp</option>
                                     @foreach ($dataSpp as $spp)
-                                        <option value="{{ $spp->id }}">Rp. {{ $spp->nominal }}</option>
+                                        <option value="{{ $spp->id }}">{{ $spp->level }} - Rp. {{ number_format($spp->nominal )}}</option>
                                     @endforeach
                                 </select>
                                 @error('id_spp')
-                                    <div class="invalid-feedbabck">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label>level</label>
-                                <select name="level" class="form-control form-input @error('level')is-invalid @enderror">
-                                    <option value="">-- Pilih Level --</option>
-                                    <option value="X" {{ old('level') == 'X' ? 'selected' : ''}}>X</option>
-                                    <option value="XI" {{ old('level') == 'XI' ? 'selected' : '' }}>XI</option>
-                                    <option value="XII" {{ old('level')  == 'XII' ? 'selected' : ''}}>XII</option>
-                                </select>
-                                @error('level')
                                     <div class="invalid-feedbabck">
                                         {{ $message }}
                                     </div>
@@ -137,7 +123,7 @@
                                         </option>
                                     @endforeach
                                 </select>
-                                @error('level')
+                                @error('id_kelas')
                                     <div class="invalid-feedbabck">
                                         {{ $message }}
                                     </div>

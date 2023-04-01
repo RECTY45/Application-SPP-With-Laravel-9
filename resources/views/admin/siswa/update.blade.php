@@ -76,7 +76,7 @@
                                     @endif
                                     <option value="">Pilih Data Spp</option>
                                     @foreach ($dataSpp as $spp)
-                                        <option value="{{ $spp->id }}">Rp. {{ $spp->nominal }}</option>
+                                        <option value="{{ $spp->id }}"> {{ $spp->level }} - Rp. {{ number_format($spp->nominal) }}</option>
                                     @endforeach
                                 </select>
                                 @error('id_spp')
@@ -84,19 +84,6 @@
                                         {{ $message }}
                                     </div>
                                 @enderror
-                            </div>
-
-                            <div class="form-group">
-                                <label>Level</label>
-                                <select name="level"  id="level" class="form-control form-input @error('level')is-invalid @enderror">
-                                @if ($item->level)
-                                    <option selected value="{{ $item->level }}">{{ $item->level }}</option>
-                                @endif
-                                <option value="">-- Pilih Level --</option>
-                                <option value="X" {{ old('level') == 'X' ? 'selected' : ''}}>X</option>
-                                <option value="XI" {{ old('level') == 'XI' ? 'selected' : '' }}>XI</option>
-                                <option value="XII" {{ old('level')  == 'XII' ? 'selected' : ''}}>XII</option>
-                                </select>
                             </div>
 
                             <div class="form-group px-3">
