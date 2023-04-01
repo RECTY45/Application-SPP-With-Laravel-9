@@ -11,13 +11,12 @@ Follow instagram saya [recty.exploit](https://www.instagram.com/recty.exploit/)
 ## Screenshot
 
 ### Login Page
-<img src="https://user-images.githubusercontent.com/68836194/229266334-ebb7d9ab-e4b7-4e7c-94b0-d29cb20039f5.png" width="800" alt="gambarHomePage">
+<img src="https://user-images.githubusercontent.com/68836194/229266334-ebb7d9ab-e4b7-4e7c-94b0-d29cb20039f5.png" width="800" alt="gambarSPP">
 ### Fitur Aplikasi
-<img src="https://github.com/M-BintangR/gambar-doc/blob/main/5.gif" alt="gambarHomePage">
-<img src="https://github.com/M-BintangR/gambar-doc/blob/main/1.png" width="800" alt="gambarHomePage">
-<img src="https://github.com/M-BintangR/gambar-doc/blob/main/2.png" width="800" alt="gambarHomePage">
-<img src="https://github.com/M-BintangR/gambar-doc/blob/main/3.png" width="800" alt="gambarHomePage">
-<img src="https://github.com/M-BintangR/gambar-doc/blob/main/4.png" width="800" alt="gambarHomePage">
+<img src="https://user-images.githubusercontent.com/68836194/229266353-1e1e7966-309d-4762-ab7d-6a2b48cb50b9.gif" alt="gambarSPP">
+<img src="https://user-images.githubusercontent.com/68836194/229266343-c11da311-3cd2-4bc9-8efa-5ca6ed1dfb24.png" width="800" alt="gambarSPP">
+<img src="https://user-images.githubusercontent.com/68836194/229266344-7235a77b-7af7-4767-a28f-197a46eaa96c.png" width="800" alt="gambarSPP">
+<img src="user-images.githubusercontent.com/68836194/229266347-a743e2ab-5832-4f76-a53b-9c88a3b47518.png" width="800" alt="gambarSPP">
 
 ## Teknologi
 1. [Laravel 9](https://laravel.com/)
