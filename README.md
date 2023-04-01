@@ -11,8 +11,7 @@ Follow instagram saya [recty.exploit](https://www.instagram.com/recty.exploit/)
 ## Screenshot
 
 ### Login Page
-<img src="![1](https://user-images.githubusercontent.com/68836194/229266334-ebb7d9ab-e4b7-4e7c-94b0-d29cb20039f5.png)" width="800" alt="gambarHomePage">
-![1](https://user-images.githubusercontent.com/68836194/229266334-ebb7d9ab-e4b7-4e7c-94b0-d29cb20039f5.png)
+<img src="https://user-images.githubusercontent.com/68836194/229266334-ebb7d9ab-e4b7-4e7c-94b0-d29cb20039f5.png" width="800" alt="gambarHomePage">
 ### Fitur Aplikasi
 <img src="https://github.com/M-BintangR/gambar-doc/blob/main/5.gif" alt="gambarHomePage">
 <img src="https://github.com/M-BintangR/gambar-doc/blob/main/1.png" width="800" alt="gambarHomePage">
