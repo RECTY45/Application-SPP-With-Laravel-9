@@ -10,8 +10,8 @@ Follow instagram saya [Muhammad Bintang](https://www.instagram.com/bntg.ch_icy/)
 
 ## Screenshot
 
-### Home Page
-<img src="https://github.com/M-BintangR/gambar-doc/blob/main/homepage.png" width="800" alt="gambarHomePage">
+### Login Page
+<img src="![1](https://user-images.githubusercontent.com/68836194/229266334-ebb7d9ab-e4b7-4e7c-94b0-d29cb20039f5.png)" width="800" alt="gambarHomePage">
 
 ### Fitur Aplikasi
 <img src="https://github.com/M-BintangR/gambar-doc/blob/main/5.gif" alt="gambarHomePage">
@@ -22,10 +22,9 @@ Follow instagram saya [Muhammad Bintang](https://www.instagram.com/bntg.ch_icy/)
 
 ## Teknologi
 1. [Laravel 9](https://laravel.com/)
-2. [Reactjs](https://react.dev/)
-3. [Inertiajs](https://inertiajs.com/)
-4. [Tailwindcss](https://tailwindcss.com)
-5. [Vitejs](https://vitejs.dev/)
+2. [Data Tabel](https://datatables.net/)
+3. [Select 2](https://select2.org/)
+4. [Bootstrap 5](https://getbootstrap.com/)
 
 ## Fitur
 
@@ -43,7 +42,7 @@ Follow instagram saya [Muhammad Bintang](https://www.instagram.com/bntg.ch_icy/)
 
 clone repo ini dengan cara :
 ```bash
-https://github.com/M-BintangR/pembayaran-spp-laravel9.git
+https://github.com/RECTY45/app_spp.git
 ```
 Kemudian, buka terminal seperti bash, zsh, command prompt atau powershell dan nstall dependency composer dengan command berikut :
 ```bash
@@ -62,7 +61,7 @@ DB_DATABASE=xxx
 DB_USERNAME=root
 DB_PASSWORD=
 ```
-untuk panduan atau dokumentasi mengenai setup database pada file `.env` bisa kalian baca pada dokumentasi resmi laravelnya ya cui, [klik disini.](https://laravel.com/docs/9.x/database)
+untuk panduan atau dokumentasi mengenai setup database pada file `.env` bisa kalian baca pada dokumentasi resmi laravelnya bang yahh.., [klik disini.](https://laravel.com/docs/9.x/database)
 
 Kemudian, silahkan migrate semua database di project ini dengan menggunakan artisan command:
 ```bash
@@ -86,7 +85,7 @@ Langkah Terakhir, silahkan jalankan local development server Laravel dengan meng
 ```bash
 php artisan serve
 ```
-Project ini akan berjalan di `https://localhost:8080`.
+Project ini akan berjalan di `https://localhost:8000`.
 
 ## Database dan Tabel
 
