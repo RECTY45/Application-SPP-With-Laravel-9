@@ -71,7 +71,7 @@
                                 <select value="{{ $item->spp->id }}" name="id_spp" id="id_spp"
                                     class="form-control form-input @error('id_spp')is-invalid @enderror">
                                     @if ($item->spp->id)
-                                        <option selected value="{{ $item->spp->id }}">Rp. {{ $item->spp->nominal }}
+                                        <option selected value="{{ $item->spp->id }}"> {{ $item->spp->level }} - Rp. {{ $item->spp->nominal }}
                                         </option>
                                     @endif
                                     <option value="">Pilih Data Spp</option>
