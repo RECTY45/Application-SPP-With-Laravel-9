@@ -42,7 +42,6 @@ class SiswaController extends Controller
             'dataSpp'=> $spp,
         ]);
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -60,20 +59,31 @@ class SiswaController extends Controller
             'nama' => ['required'],
             'id_kelas' => ['required', Rule::in($idkelas)],
             'jenis_kelamin' => ['required'],
-            'id_spp' => ['required', Rule::in($idSpp)],
             'alamat' => ['required'],
-
             'no_telp' => ['required'],
         ]);
 
-        if($validateData){
-            $check = Siswa::create($validateData);
+        $idKelas = $request['id_kelas'];
+        $kelas = Kelas::where('id', $idKelas)->firstOrFail();
+
+        if ($kelas) {
+            $arr = explode(" ", $kelas->nama_kelas);
+            $data_spp = Spp::where('level', $arr[0])->firstOrFail();
+            if ($data_spp) {
+                $validateData['id_spp'] = $data_spp->id;
+            } else {
+                $validateData['id_spp'] = 1;
+            }
         }
+
+        $check = Siswa::create($validateData);
 
         if($check){
             return redirect(route('siswa.index'))->with('success','Data Berhasil Di Tambah');
+        } else {
+            return back()->with('error','Data Gagal Di Tambah');
         }
-        return back()->with('error','Data Gagal Di Edit');
+
 
     }
 
@@ -114,29 +124,44 @@ class SiswaController extends Controller
      */
     public function update(Request $request, Siswa $siswa)
     {
-        $idkelas = Kelas::pluck('id')->toArray();
-        $idSpp = Spp::pluck('id')->toArray();
+        $id_kelas = Kelas::pluck('id')->toArray();
+$id_spp = Spp::pluck('id')->toArray();
 
-        $validateData = $request->validate([
-            'nisn' => ['required', 'max:10' ],
-            'nis' => ['required',  'max:8'],
-            'nama' => ['required'],
-            'id_kelas' => ['required', Rule::in($idkelas)],
-            'jenis_kelamin' => ['required'],
-            'id_spp' => ['required', Rule::in($idSpp)],
-            'alamat' => ['required'],
+$validateData = $request->validate([
+    'nisn' => ['required'],
+    'nis' => ['required'],
+    'nama' => ['required'],
+    'id_kelas' => ['required', Rule::in($id_kelas)],
+    'jenis_kelamin' => ['required'],
+    'alamat' => ['required'],
+    'no_telp' => ['required'],
+]);
 
-            'no_telp' => ['required'],
-        ]);
+$id_kelas = $request['id_kelas'];
+$kelas = Kelas::where('id', $id_kelas)->firstOrFail();
 
-        if($validateData){
-            $check = $siswa->update($validateData);
-        }
+if ($kelas) {
+    $arr = explode(" ", $kelas->nama_kelas);
+    $data_spp = Spp::where('level', $arr[0])->firstOrFail();
+    if ($data_spp) {
+        $validateData['id_spp'] = $data_spp->id;
+    } else {
+        $validateData['id_spp'] = 1;
+    }
+}
 
-        if($check){
-            return redirect(route('siswa.index'))->with('success','Data Berhasil Di Edit');
-        }
-        return back()->with('error','Data Gagal Di Edit');
+// Menggunakan ID yang dikirimkan dalam request untuk mencari record siswa
+$siswa = Siswa::findOrFail($siswa->id);
+$check = $siswa->update($validateData);
+
+if ($check) {
+    return redirect(route('siswa.index'))->with('success','Data Berhasil Di Update');
+} else {
+    return back()->with('error','Data Gagal Di Update');
+}
+
+
+
     }
 
     /**

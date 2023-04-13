@@ -66,20 +66,17 @@
                             </div>
 
                             <div class="form-group">
-                                <label>SPP</label>
-                                <select name="id_spp" id="id_spp"
-                                    class="form-control form-input @error('id_spp')is-invalid @enderror">
-                                    <option value="">Nominal Spp</option>
-                                    @foreach ($dataSpp as $spp)
-                                        <option value="{{ $spp->id }}">{{ $spp->level }} - Rp. {{ number_format($spp->nominal )}}</option>
-                                    @endforeach
-                                </select>
-                                @error('id_spp')
-                                    <div class="invalid-feedbabck">
+                                <label>No Telp</label>
+                                <input type="text" name="no_telp" id="no_telp" value="{{ old('no_telp') }}"
+                                    class="form-control form-input @error('no_telp')is-invalid @enderror"
+                                    placeholder="Masukkan No Telp Anda">
+                                @error('no_telp')
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
+
                         </div>
 
                         <div class="col-md-6">
@@ -125,18 +122,6 @@
                                 </select>
                                 @error('id_kelas')
                                     <div class="invalid-feedbabck">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-
-                            <div class="form-group">
-                                <label>No Telp</label>
-                                <input type="text" name="no_telp" id="no_telp" value="{{ old('no_telp') }}"
-                                    class="form-control form-input @error('no_telp')is-invalid @enderror"
-                                    placeholder="Masukkan No Telp Anda">
-                                @error('no_telp')
-                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror

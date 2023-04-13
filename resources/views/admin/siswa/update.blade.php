@@ -67,20 +67,12 @@
                             </div>
 
                             <div class="form-group">
-                                <label>SPP</label>
-                                <select value="{{ $item->spp->id }}" name="id_spp" id="id_spp"
-                                    class="form-control form-input @error('id_spp')is-invalid @enderror">
-                                    @if ($item->spp->id)
-                                        <option selected value="{{ $item->spp->id }}"> {{ $item->spp->level }} - Rp. {{ $item->spp->nominal }}
-                                        </option>
-                                    @endif
-                                    <option value="">Pilih Data Spp</option>
-                                    @foreach ($dataSpp as $spp)
-                                        <option value="{{ $spp->id }}"> {{ $spp->level }} - Rp. {{ number_format($spp->nominal) }}</option>
-                                    @endforeach
-                                </select>
-                                @error('id_spp')
-                                    <div class="invalid-feedbabck">
+                                <label>No Telp</label>
+                                <input type="text" name="no_telp" id="no_telp" value="{{ $item->no_telp }}"
+                                    class="form-control form-input @error('no_telp')is-invalid @enderror"
+                                    placeholder="Masukkan No Telp Anda">
+                                @error('no_telp')
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
@@ -90,7 +82,6 @@
                                 <button type="submit" class="btn btn-primary">Edit</button>
                                 <a href="{{ route('siswa.index') }}" class="btn btn-success">Batal</a>
                             </div>
-
 
                         </div>
 
@@ -141,17 +132,6 @@
                                     </select>
                                     @error('level')
                                         <div class="invalid-feedbabck">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                                <div class="form-group">
-                                    <label>No Telp</label>
-                                    <input value="{{ $item->no_telp }}" type="text" name="no_telp" id="no_telp"
-                                        class="form-control form-input @error('no_telp')is-invalid @enderror"
-                                        placeholder="Masukkan No Telp Anda">
-                                    @error('no_telp')
-                                        <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
                                     @enderror
