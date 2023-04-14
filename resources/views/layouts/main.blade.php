@@ -16,6 +16,18 @@
     <link rel="stylesheet" href="{{ asset('assets/css/jquery.dataTables.min.css') }}">
     <script src="{{ asset('assets/js/jquery-3.6.0.js') }}"></script>
     <script src="{{ asset('assets/js/jquery.dataTables.min.js') }}"></script>
+
+    {{-- Modal --}}
+    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+    {{-- End Modal --}}
+
+    <!-- Chart library -->
+    <script src="{{ asset('assets/plugins/chart.min.js') }}"></script>
+    <!-- Icons library -->
+    <script src="{{ asset('assets/plugins/feather.min.js') }}"></script>
+    <!-- Custom scripts -->
+    <script src="{{ asset('assets/js/script.js') }}"></script>
+    <script src="{{ asset('assets/sweetalert2/sweetalert2.min.js') }}"></script>
     <style>
         .signature {
             cursor: url('signature.cur'), pointer;
@@ -41,19 +53,6 @@
             </main>
         </div>
     </div>
-
-
-    {{-- Modal --}}
-    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
-    {{-- End Modal --}}
-
-    <!-- Chart library -->
-    <script src="{{ asset('assets/plugins/chart.min.js') }}"></script>
-    <!-- Icons library -->
-    <script src="{{ asset('assets/plugins/feather.min.js') }}"></script>
-    <!-- Custom scripts -->
-    <script src="{{ asset('assets/js/script.js') }}"></script>
-    <script src="{{ asset('assets/sweetalert2/sweetalert2.min.js') }}"></script>
 
 </body>
 

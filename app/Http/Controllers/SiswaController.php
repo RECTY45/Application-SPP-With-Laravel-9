@@ -60,6 +60,7 @@ class SiswaController extends Controller
             'id_kelas' => ['required', Rule::in($idkelas)],
             'jenis_kelamin' => ['required'],
             'alamat' => ['required'],
+            'id_spp' => ['nullable', Rule::in($idSpp)],
             'no_telp' => ['required'],
         ]);
 
@@ -124,16 +125,17 @@ class SiswaController extends Controller
      */
     public function update(Request $request, Siswa $siswa)
     {
-        $id_kelas = Kelas::pluck('id')->toArray();
-$id_spp = Spp::pluck('id')->toArray();
+        $idKelas = Kelas::pluck('id')->toArray();
+        $idSpp = Spp::pluck('id')->toArray();
 
 $validateData = $request->validate([
     'nisn' => ['required'],
     'nis' => ['required'],
     'nama' => ['required'],
-    'id_kelas' => ['required', Rule::in($id_kelas)],
+    'id_kelas' => ['required', Rule::in($idKelas)],
     'jenis_kelamin' => ['required'],
     'alamat' => ['required'],
+    'id_spp' => ['nullable', Rule::in($idSpp)],
     'no_telp' => ['required'],
 ]);
 
