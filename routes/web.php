@@ -8,6 +8,7 @@ use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\SppController;
 use App\Http\Controllers\PembayaranController;
+use App\Http\Controllers\ResetPasswordController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -43,6 +44,10 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth','isAdmin']],funct
         Route::resource('kelas', KelasController::class)->parameters(['kelas' => 'kelas']);
     //  SPP
         Route::resource('spp',SppController::class);
+   // Route untuk tampilan form perubahan password
+        Route::get('users/{id}/reset', [ResetPasswordController::class, 'edit'])->name('change-password');
+  // Route untuk proses perubahan password
+        Route::put('users/{id}/update-password', [ResetPasswordController::class, 'update'])->name('change-password.update');
 
 });
 

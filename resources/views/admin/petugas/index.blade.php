@@ -40,6 +40,7 @@
                                 </td>
                                 <td>
                                     <div class="form-control-icon d-flex">
+                                        {{-- <a href="{{ @route('change-password',$item->id) }}"><i class="icon edit bg-success "></i></a> --}}
                                         <button type="submit"
                                             class="editBtn bg-success border-0 mb-3 px-2 py-1 rounded mx-1"
                                             data-id="{{ $item->id }}" data-bs-toggle="modal"
@@ -71,11 +72,11 @@
                         <p class="text-white">LOADING...</p>
                     </div>
                 </div>
-                <div class="modal-content " id="modal_dialog">
+                <div class="modal-content text-dark" id="modal_dialog">
                     <div class="modal-header">
                         <h5 class="modal-title fs-5" id="exampleModalLabel">Edit Data Petugas</h5>
                         <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"
-                            aria-hidden="true"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                            aria-hidden="true"><svg aria-hidden="true" width="24"
                                 height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                 stroke-linecap="round" stroke-linejoin="round" class="feather feather-x">
                                 <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -83,7 +84,7 @@
                             </svg></button>
                     </div>
                     <div class="modal-body">
-                        @include('admin.petugas.update')
+                        @include('admin.petugas.reset')
                     </div>
                 </div>
             </div>
@@ -100,15 +101,12 @@
                 $('#modal_dialog').hide();
                 $('#loading').show();
                 $.ajax({
-                    url: `petugas/${ID}/edit`,
+                    url: `users/${ID}/reset`,
                     method: 'GET',
                     success: (res) => {
                         $('#modal_dialog').show();
                         $('#loading').hide();
-                        $('#edit_nama_petugas').val(res.nama_petugas);
-                        $('#edit_username').val(res.username);
-                        $('#edit_level').val(res.level);
-                        $('#formEdit').attr('action', `/dashboard/petugas/${ID}`);
+                        $('#FormReset').attr('action', `/dashboard/users/${ID}/update-password`);
                     }
                 });
             })

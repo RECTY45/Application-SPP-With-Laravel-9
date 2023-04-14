@@ -20,6 +20,9 @@ class User extends Authenticatable
         public function pembayaran(){
             return $this->hasMany(Pembayaran::class,'id_petugas','id');
         }
+        protected $fillable = [
+            'name', 'email', 'password', 'new_password', 'confirm_password',
+        ];
     /**
      * The attributes that should be hidden for serialization.
      *

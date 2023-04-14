@@ -30,7 +30,7 @@
     <script src="{{ asset('assets/sweetalert2/sweetalert2.min.js') }}"></script>
     <style>
         .signature {
-            cursor: url('signature.cur'), pointer;
+            cursor: pointer;
         }
     </style>
     <title>E-SPP</title>

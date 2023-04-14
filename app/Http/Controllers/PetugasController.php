@@ -93,20 +93,7 @@ class PetugasController extends Controller
      */
     public function update(Request $request,User $petugas)
     {
-        $validateData = $request->validate([
-            'username' => ['required'],
-            'nama_petugas' => ['required'],
-            'level' => ['required'],
-        ]);
 
-        if($validateData){
-            $check = $petugas->update($validateData);
-        }
-
-        if($check){
-            return redirect(@route('petugas.index'))->with('success', 'Data berhasil di ubah');
-        }
-        return back()->with('error', 'Data gagal di ubah');
     }
     /**
      * Remove the specified resource from storage.
