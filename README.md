@@ -70,7 +70,7 @@ Lanjut, generate aplikasi key untuk keamanan pada project laravel dengan menggun
 php artisan key:generate
 # atau 
 php artisan key:generate --show
-``
+```
 Langkah Terakhir, silahkan jalankan local development server Laravel dengan menggunakan artisan command sebagai berikut:
 ```bash
 php artisan serve
