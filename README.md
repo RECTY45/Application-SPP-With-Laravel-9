@@ -75,7 +75,7 @@ Langkah Terakhir, silahkan jalankan local development server Laravel dengan meng
 ```bash
 php artisan serve
 ```
-Project ini akan berjalan di `https://localhost:8000`.
+Project ini akan berjalan di `https://localhost:8000`
 
 ## Database dan Tabel
 
